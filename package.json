@@ -9,14 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "friendly-words": "^1.2.4",
+    "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.2"
+    "title": "^3.5.3"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@faker-js/faker": "^8.2.0",
+    "@types/friendly-words": "^1.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
-    "@types/react-dom": "^18"
+    "@types/react-dom": "^18",
+    "@types/title": "^3.4.3",
+    "typescript": "^5"
   }
 }
