@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "friendly-words": "^1.2.4",
     "next": "14.0.2",
+    "prettier": "^3.1.0",
     "react": "^18",
     "react-dom": "^18",
     "title": "^3.5.3"

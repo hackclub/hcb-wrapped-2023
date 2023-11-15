@@ -1,10 +1,12 @@
 import { WrappedData } from "@/lib/data";
 import $ from "@/utils/theme";
 
-export default function BankWrapped ({ data }: { data: WrappedData }) {
-    return (
-        <>
-    <style dangerouslySetInnerHTML={{ __html: `
+export default function BankWrapped({ data }: { data: WrappedData }) {
+  return (
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         * {
             box-sizing: border-box;
         }
@@ -172,33 +174,56 @@ export default function BankWrapped ({ data }: { data: WrappedData }) {
             left: 50px;
             opacity: 0;
         }
-    `}} />
-    <div {...$({
-        margin: '0px',
-        padding: '0px',
-        height: '100svh',
-        width: '100vw',
-        zIndex: '19',
-        position: 'relative',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    })}>
+    `,
+        }}
+      />
+      <div
+        {...$({
+          margin: "0px",
+          padding: "0px",
+          height: "100svh",
+          width: "100vw",
+          zIndex: "19",
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        })}
+      >
         <div className="main">
-            <div className="content">
-                <h1 className="title"><span style={{color: 'var(--red)'}}>Bank</span> Wrapped</h1>
-                <h2 className="headline" style={{marginBottom: 'var(--spacing-5)'}}>🏦 🎁 2023</h2>
-            </div>
+          <div className="content">
+            <h1 className="title">
+              <span style={{ color: "var(--red)" }}>Bank</span> Wrapped
+            </h1>
+            <h2
+              className="headline"
+              style={{ marginBottom: "var(--spacing-5)" }}
+            >
+              🏦 🎁 2023
+            </h2>
+          </div>
         </div>
         <div className="footer">
-            <div className="inner-footer">
-                <p>Bank Wrapped 2023<span style={{ whiteSpace: 'pre' }}>  |  </span><a href="https://hackclub.com/hcb" target="_blank">Hack Club HCB</a><span style={{ whiteSpace: 'pre' }}>  |  </span><a href="https://github.com/hackclub/bank-wrapped" target="_blank">Source Code</a></p>
-            </div>
+          <div className="inner-footer">
+            <p>
+              Bank Wrapped 2023<span style={{ whiteSpace: "pre" }}> | </span>
+              <a href="https://hackclub.com/hcb" target="_blank">
+                Hack Club HCB
+              </a>
+              <span style={{ whiteSpace: "pre" }}> | </span>
+              <a
+                href="https://github.com/hackclub/bank-wrapped"
+                target="_blank"
+              >
+                Source Code
+              </a>
+            </p>
+          </div>
         </div>
-    </div>
-    <div className="bg-wrapper">
+      </div>
+      <div className="bg-wrapper">
         <div className="bg"></div>
-    </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }
