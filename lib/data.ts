@@ -44,6 +44,7 @@ export interface SpendingByMerchant {
 }
 
 export interface IndividualData {
+  firstName: string;
   totalMoneySpent: number;
   spendingByDate: {
     [key: date]: moneyCents;
@@ -106,6 +107,7 @@ export interface WrappedData {
 
 export default {
   individual: {
+    firstName: "Orpheus",
     totalMoneySpent: 0.0,
     spendingByDate: {
       "01-01-2023": 0,
@@ -475,6 +477,7 @@ export function generateTestData() {
   let newOrganizations = getRandomArbitrary(40, 1000);
   let newUsers = getRandomArbitrary(newOrganizations, 1500);
   let individual = {
+    firstName: faker.name.firstName(),
     totalMoneySpent,
     ranking: {
       overall: overallRankingBracket / 20,

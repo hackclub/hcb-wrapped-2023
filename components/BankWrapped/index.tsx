@@ -1,6 +1,13 @@
 import { WrappedData } from "@/lib/data";
 import $ from "@/utils/theme";
 
+let USDollarNoCents = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0, 
+    minimumFractionDigits: 0, 
+});
+
 export default function BankWrapped({ data }: { data: WrappedData }) {
   return (
     <>
@@ -192,15 +199,23 @@ export default function BankWrapped({ data }: { data: WrappedData }) {
       >
         <div className="main">
           <div className="content">
-            <h1 className="title">
-              <span style={{ color: "var(--red)" }}>Bank</span> Wrapped
-            </h1>
-            <h2
-              className="headline"
-              style={{ marginBottom: "var(--spacing-5)" }}
-            >
-              🏦 🎁 2023
+            <h2 {...$.title({marginBottom: $.s3})}>
+              🏦 🎁 🎉
             </h2>
+            <h1 className="title">
+              <span style={{ color: "var(--red)" }}>HCB</span> Wrapped 2023 
+            </h1>
+            <p className="lead">
+              Welcome {data.individual.firstName}; it was a big year on HCB for you. You spent over{' '}
+              {USDollarNoCents.format(
+                Math.floor(data.individual.totalMoneySpent / Math.pow(10, data.individual.totalMoneySpent.toString().length - 1)) 
+                * Math.pow(10, data.individual.totalMoneySpent.toString().length - 1)
+              )}
+              ! To celebrate, let's take a trip down memory lane and recap your year on HCB.
+            </p>
+            <button>
+              <span {...$({textTransform: 'uppercase'})}>Click here to <i>unwrap</i> the year...</span>          
+            </button>
           </div>
         </div>
         <div className="footer">
