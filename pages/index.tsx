@@ -21,22 +21,20 @@ export default function Home() {
         <p {...$.headline()}>🎁 Your year on HCB, wrapped</p>
       </Heading>
       <div
-        className="container"
-        style={{
-          paddingTop: "var(--spacing-3)",
-          paddingBottom: "var(--spacing-3)",
+        {...$.container({
+          paddingTop: $.s3,
+          paddingBottom: $.s3,
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
           alignItems: "center",
-          gap: "var(--spacing-3)",
-        }}
+          gap: $.s3,
+        })}
       >
         <h3
-          className="eyebrow"
-          style={{
+          {...$.eyebrow({
             margin: "0px",
-          }}
+          })}
         >
           Actions
         </h3>

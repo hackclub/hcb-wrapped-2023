@@ -2,7 +2,7 @@ import BankWrapped from "@/components/BankWrapped";
 import { generateTestData } from "@/lib/data";
 import type { WrappedData } from "@/lib/data";
 
-export default function Run({data}: {data: WrappedData}) {
+export default function Run({ data }: { data: WrappedData }) {
   return (
     <>
       <BankWrapped data={data} />
@@ -12,10 +12,10 @@ export default function Run({data}: {data: WrappedData}) {
 
 // prevents hydration errors
 
-export async function getServerSideProps(){
+export async function getServerSideProps() {
   return {
     props: {
-      data: generateTestData()
-    }
-  }
+      data: generateTestData(),
+    },
+  };
 }

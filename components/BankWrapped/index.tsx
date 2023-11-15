@@ -1,14 +1,66 @@
 import { WrappedData } from "@/lib/data";
 import $ from "@/utils/theme";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
-let USDollarNoCents = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0, 
-    minimumFractionDigits: 0, 
+let USDollarNoCents = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 0,
+  minimumFractionDigits: 0,
 });
 
 export default function BankWrapped({ data }: { data: WrappedData }) {
+  const router = useRouter();
+  const [slide, setSlide] = useState(
+    parseInt(router.query.slide as string) || 0,
+  );
+  const slides: {
+    [key: number]: {
+      content: JSX.Element,
+      button?: JSX.Element | null
+    }
+  } = {
+    0: {
+      content: (
+        <>
+          <h2 {...$.title({ marginBottom: $.s3 })}>🏦 🎁 🎉</h2>
+          <h1 {...$.title()}>
+            <span {...$({ color: "var(--red)" })}>HCB</span> Wrapped 2023
+          </h1>
+          <p {...$.lead()}>
+            Welcome {data.individual.firstName}; it was a big year on HCB for
+            you. You spent over{" "}
+            {USDollarNoCents.format(
+              Math.floor(
+                data.individual.totalMoneySpent /
+                  Math.pow(
+                    10,
+                    data.individual.totalMoneySpent.toString().length - 1,
+                  ),
+              ) *
+                Math.pow(
+                  10,
+                  data.individual.totalMoneySpent.toString().length - 1,
+                ),
+            )}
+            ! To celebrate, let's take a trip down memory lane and recap your
+            year on HCB.
+          </p>
+        </>
+      ),
+      button: (
+        <>
+          <span {...$({ textTransform: "uppercase" })}>
+            Click here to <i>unwrap</i> the year...
+          </span>
+        </>
+      ),
+    },
+    1: {
+      content: <>The end for now</>,
+    },
+  };
   return (
     <>
       <style
@@ -199,23 +251,12 @@ export default function BankWrapped({ data }: { data: WrappedData }) {
       >
         <div className="main">
           <div className="content">
-            <h2 {...$.title({marginBottom: $.s3})}>
-              🏦 🎁 🎉
-            </h2>
-            <h1 className="title">
-              <span style={{ color: "var(--red)" }}>HCB</span> Wrapped 2023 
-            </h1>
-            <p className="lead">
-              Welcome {data.individual.firstName}; it was a big year on HCB for you. You spent over{' '}
-              {USDollarNoCents.format(
-                Math.floor(data.individual.totalMoneySpent / Math.pow(10, data.individual.totalMoneySpent.toString().length - 1)) 
-                * Math.pow(10, data.individual.totalMoneySpent.toString().length - 1)
-              )}
-              ! To celebrate, let's take a trip down memory lane and recap your year on HCB.
-            </p>
-            <button>
-              <span {...$({textTransform: 'uppercase'})}>Click here to <i>unwrap</i> the year...</span>          
-            </button>
+            {slides[slide]?.content || slides[0]?.content}
+            {slide < Object.keys(slides).length - 1 && (
+              <button onClick={() => setSlide(slide + 1)}>
+                {slides[slide]?.button || slides[0]?.button}
+              </button>
+            )}
           </div>
         </div>
         <div className="footer">

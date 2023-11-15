@@ -477,7 +477,7 @@ export function generateTestData() {
   let newOrganizations = getRandomArbitrary(40, 1000);
   let newUsers = getRandomArbitrary(newOrganizations, 1500);
   let individual = {
-    firstName: faker.name.firstName(),
+    firstName: faker.person.firstName(),
     totalMoneySpent,
     ranking: {
       overall: overallRankingBracket / 20,
