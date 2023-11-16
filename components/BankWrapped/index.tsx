@@ -10,6 +10,44 @@ let USDollarNoCents = new Intl.NumberFormat("en-US", {
   minimumFractionDigits: 0,
 });
 
+function HCBStat({
+  data,
+  label,
+  background,
+}: {
+  data: string | number;
+  label: string;
+  background?: string;
+}) {
+  return (
+    <div
+      {...$({
+        background: background || $.sunken,
+        borderRadius: "12px",
+        padding: `${$.s3} ${$.s4}`,
+        textTransform: "uppercase",
+        display: "flex",
+        flexDirection: "column",
+        textAlign: "center",
+        justifyContent: "center",
+        alignItems: "center",
+      })}
+    >
+      <h2 {...$.title({ fontWeight: 800 })}> {data}</h2>
+      <div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
+        <b
+          {...$({
+            fontSize: "0.7em",
+            fontWeight: 800,
+          })}
+        >
+          {label}
+        </b>
+      </div>
+    </div>
+  );
+}
+
 export default function BankWrapped({ data }: { data: WrappedData }) {
   const router = useRouter();
   const [slide, setSlide] = useState(
@@ -17,9 +55,9 @@ export default function BankWrapped({ data }: { data: WrappedData }) {
   );
   const slides: {
     [key: number]: {
-      content: JSX.Element,
-      button?: JSX.Element | null
-    }
+      content: JSX.Element;
+      button?: JSX.Element | null;
+    };
   } = {
     0: {
       content: (
@@ -58,12 +96,59 @@ export default function BankWrapped({ data }: { data: WrappedData }) {
       ),
     },
     1: {
-      content: <>The end for now</>,
+      content: (
+        <>
+          <h1 {...$.headline({ fontSize: "2em" })}>
+            It was a BIG year for HCB.
+          </h1>
+          <div
+            {...$({
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "16px",
+            })}
+          >
+            <HCBStat
+              data={data.hcb.organizations.new}
+              label="new organizations"
+              background={$.orange}
+            />
+            <HCBStat
+              data={data.hcb.users.new}
+              label="new users"
+              background={$.yellow}
+            />
+            <HCBStat
+              data={USDollarNoCents.format(data.hcb.spent / 100)}
+              label="spent by organizations"
+              background={$.green}
+            />
+            <HCBStat
+              data={USDollarNoCents.format(data.hcb.raised / 100)}
+              label="raised on HCB"
+              background={$.cyan}
+            />
+          </div>
+          <div {...$({ margin: `${$.s3} 0`, fontSize: "0.9em" })}>
+            All this... plus surviving two bank collapses and{" "}
+            <a
+              href="https://changelog.hcb.hackclub.com/hack-club-bank-is-now-hcb-273207"
+              target="_blank"
+            >
+              rebranding
+            </a>{" "}
+            (<i>what's Bank?</i>).
+          </div>
+        </>
+      ),
+      button: <>Continue {">>"}</>,
+    },
+    2: {
+      content: <>yo!</>,
     },
   };
   return (
     <>
-      
       <div
         {...$({
           margin: "0px",
@@ -108,9 +193,11 @@ export default function BankWrapped({ data }: { data: WrappedData }) {
       <div className="bg-wrapper">
         <div className="bg"></div>
       </div>
-      <style dangerouslySetInnerHTML={{
-        __html: css 
-      }} />
+      <style
+        dangerouslySetInnerHTML={{
+          __html: css,
+        }}
+      />
     </>
   );
 }
@@ -283,4 +370,4 @@ const css = `
         left: 50px;
         opacity: 0;
     }
-`
+`;
