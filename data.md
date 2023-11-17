@@ -27,6 +27,8 @@ This document serves as a collection of SQL queries that have been created (or n
     END as location,
     (sum(amount_cents) / 100) * -1 as dollars_spent
   FROM "raw_stripe_transactions" rst
+  WHERE
+  EXTRACT(YEAR FROM date_posted) = 2023
   GROUP BY
     CASE
       WHEN coalesce(rst.stripe_transaction->'merchant_data'->>'state', '') <> '' THEN
@@ -66,6 +68,8 @@ This document serves as a collection of SQL queries that have been created (or n
       (sum(amount_cents) / 100) * -1 as dollars_spent
   
   FROM "raw_stripe_transactions" rst
+  WHERE
+  EXTRACT(YEAR FROM date_posted) = 2023
   GROUP BY
   
   case
@@ -88,6 +92,8 @@ This document serves as a collection of SQL queries that have been created (or n
       (sum(amount_cents) / 100) * -1 as dollars_spent
   
   FROM "raw_stripe_transactions" rst
+  WHERE
+  EXTRACT(YEAR FROM date_posted) = 2023
   GROUP BY
   
   trim(upper(split_part(rst.stripe_transaction->'merchant_data'->>'category', '*', 1)))
