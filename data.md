@@ -116,5 +116,16 @@ This document serves as a collection of SQL queries that have been created (or n
   LIMIT 10000
   ```
 * A user's average receipt upload time
-  * side note: is this even possible?
+  ```sql
+  SELECT r.user_id, 
+  AVG(EXTRACT(EPOCH FROM (r.created_at - h.created_at))) / (24 * 60 * 60) AS days
+  FROM receipts r
+  JOIN hcb_codes h ON r.receiptable_id = h.id
+  WHERE EXTRACT(YEAR FROM r.created_at) = 2023
+  AND r.receiptable_type = 'HcbCode'
+  GROUP BY
+  r.user_id
+  order by avg(r.created_at - h.created_at) desc
+  LIMIT 10000
+  ```
 
