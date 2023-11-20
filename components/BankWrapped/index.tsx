@@ -2,205 +2,60 @@ import { WrappedData } from "@/lib/data";
 import $ from "@/utils/theme";
 import { useState } from "react";
 import { useRouter } from "next/router";
-
-let USDollarNoCents = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-  minimumFractionDigits: 0,
-});
-
-function HCBStat({
-  data,
-  label,
-  background,
-}: {
-  data: string | number;
-  label: string;
-  background?: string;
-}) {
-  return (
-    <div
-      {...$({
-        background: background || $.sunken,
-        borderRadius: "12px",
-        padding: `${$.s3} ${$.s4}`,
-        textTransform: "uppercase",
-        display: "flex",
-        flexDirection: "column",
-        textAlign: "center",
-        justifyContent: "center",
-        alignItems: "center",
-      })}
-    >
-      <h2 {...$.title({ fontWeight: 800 })}> {data}</h2>
-      <div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
-        <b
-          {...$({
-            fontSize: "0.7em",
-            fontWeight: 800,
-          })}
-        >
-          {label}
-        </b>
-      </div>
-    </div>
-  );
-}
+import { USDollarNoCents } from "./formatter";
+import Slides from "./slidesHelper";
 
 export default function BankWrapped({ data }: { data: WrappedData }) {
-  const router = useRouter();
-  const [slide, setSlide] = useState(
-    parseInt(router.query.slide as string) || 0,
-  );
-  const slides: {
-    [key: number]: {
-      content: JSX.Element;
-      button?: JSX.Element | null;
-    };
-  } = {
-    0: {
-      content: (
-        <>
-          <h2 {...$.title({ marginBottom: $.s3 })}>🏦 🎁 🎉</h2>
-          <h1 {...$.title()}>
-            <span {...$({ color: "var(--red)" })}>HCB</span> Wrapped 2023
-          </h1>
-          <p {...$.lead()}>
-            Welcome {data.individual.firstName}; it was a big year on HCB for
-            you. You spent over{" "}
-            {USDollarNoCents.format(
-              Math.floor(
-                data.individual.totalMoneySpent /
-                  Math.pow(
-                    10,
-                    data.individual.totalMoneySpent.toString().length - 1,
-                  ),
-              ) *
-                Math.pow(
-                  10,
-                  data.individual.totalMoneySpent.toString().length - 1,
-                ),
-            )}
-            ! To celebrate, let's take a trip down memory lane and recap your
-            year on HCB.
-          </p>
-        </>
-      ),
-      button: (
-        <>
-          <span {...$({ textTransform: "uppercase" })}>
-            Click here to <i>unwrap</i> the year...
-          </span>
-        </>
-      ),
-    },
-    1: {
-      content: (
-        <>
-          <h1 {...$.headline({ fontSize: "2em" })}>
-            It was a BIG year for HCB.
-          </h1>
-          <div
-            {...$({
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "16px",
-            })}
-          >
-            <HCBStat
-              data={data.hcb.organizations.new}
-              label="new organizations"
-              background={$.orange}
-            />
-            <HCBStat
-              data={data.hcb.users.new}
-              label="new users"
-              background={$.yellow}
-            />
-            <HCBStat
-              data={USDollarNoCents.format(data.hcb.spent / 100)}
-              label="spent by organizations"
-              background={$.green}
-            />
-            <HCBStat
-              data={USDollarNoCents.format(data.hcb.raised / 100)}
-              label="raised on HCB"
-              background={$.cyan}
-            />
+    return (
+      <>
+        <div
+          {...$({
+            margin: "0px",
+            padding: "0px",
+            height: "100svh",
+            width: "100vw",
+            zIndex: "19",
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          })}
+        >
+          <div className="main">
+            <div className="content">
+              <Slides data={data} />
+            </div>
           </div>
-          <div {...$({ margin: `${$.s3} 0`, fontSize: "0.9em" })}>
-            All this... plus surviving two bank collapses and{" "}
-            <a
-              href="https://changelog.hcb.hackclub.com/hack-club-bank-is-now-hcb-273207"
-              target="_blank"
-            >
-              rebranding
-            </a>{" "}
-            (<i>what's Bank?</i>).
-          </div>
-        </>
-      ),
-      button: <>Continue {">>"}</>,
-    },
-    2: {
-      content: <>yo!</>,
-    },
-  };
-  return (
-    <>
-      <div
-        {...$({
-          margin: "0px",
-          padding: "0px",
-          height: "100svh",
-          width: "100vw",
-          zIndex: "19",
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        })}
-      >
-        <div className="main">
-          <div className="content">
-            {slides[slide]?.content || slides[0]?.content}
-            {slide < Object.keys(slides).length - 1 && (
-              <button onClick={() => setSlide(slide + 1)}>
-                {slides[slide]?.button || slides[0]?.button}
-              </button>
-            )}
+          <div className="footer">
+            <div className="inner-footer">
+              <p>
+                Bank Wrapped 2023<span style={{ whiteSpace: "pre" }}> | </span>
+                <a href="https://hackclub.com/hcb" target="_blank">
+                  Hack Club HCB
+                </a>
+                <span style={{ whiteSpace: "pre" }}> | </span>
+                <a
+                  href="https://github.com/hackclub/hcb-wrapped-2023"
+                  target="_blank"
+                >
+                  Source Code
+                </a>
+              </p>
+            </div>
           </div>
         </div>
-        <div className="footer">
-          <div className="inner-footer">
-            <p>
-              Bank Wrapped 2023<span style={{ whiteSpace: "pre" }}> | </span>
-              <a href="https://hackclub.com/hcb" target="_blank">
-                Hack Club HCB
-              </a>
-              <span style={{ whiteSpace: "pre" }}> | </span>
-              <a
-                href="https://github.com/hackclub/hcb-wrapped-2023"
-                target="_blank"
-              >
-                Source Code
-              </a>
-            </p>
-          </div>
+        <div className="bg-wrapper">
+          <div className="bg"></div>
         </div>
-      </div>
-      <div className="bg-wrapper">
-        <div className="bg"></div>
-      </div>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: css,
-        }}
-      />
-    </>
-  );
-}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: css,
+          }}
+        />
+      </>
+    );
+  }
+  
 
 const css = `
     * {
