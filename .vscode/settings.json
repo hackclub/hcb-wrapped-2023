@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["darkless"]
+  "cSpell.words": [
+    "darkless"
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#521C12",
+    "titleBar.activeBackground": "#732719",
+    "titleBar.activeForeground": "#FDF9F8"
+  }
 }

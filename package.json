@@ -10,6 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@hackclub/hcb-wrapped": "^1.0.0",
     "friendly-words": "^1.2.4",
     "next": "14.0.2",
     "prettier": "^3.1.0",

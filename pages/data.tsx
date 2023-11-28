@@ -1,5 +1,4 @@
-import BankWrapped from "@/components/BankWrapped";
-import data from "@/lib/data";
+import data from "@/hcb-wrapped/src/utils/data";
 import Debug, { syntaxHighlight } from "@/components/Debug";
 import { useState } from "react";
 

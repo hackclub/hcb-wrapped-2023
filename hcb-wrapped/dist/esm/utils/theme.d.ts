@@ -1,0 +1,53 @@
+import React, { CSSProperties } from "react";
+declare const themeUtils: {
+    s1: string;
+    s2: string;
+    s3: string;
+    s4: string;
+    s5: string;
+    s6: string;
+    s7: string;
+    s8: string;
+    darker: string;
+    dark: string;
+    darkless: string;
+    black: string;
+    steel: string;
+    slate: string;
+    muted: string;
+    smoke: string;
+    snow: string;
+    white: string;
+    red: string;
+    orange: string;
+    yellow: string;
+    green: string;
+    cyan: string;
+    blue: string;
+    purple: string;
+    text: string;
+    background: string;
+    elevated: string;
+    sheet: string;
+    sunken: string;
+    border: string;
+    primary: string;
+    secondary: string;
+    accent: string;
+    twitter: string;
+    facebook: string;
+    instagram: string;
+    createComponent(element: string, styles?: CSSProperties): ({ children, }: {
+        children: JSX.Element | JSX.Element[];
+    }) => JSX.Element;
+};
+type ThemeUtils = typeof themeUtils;
+type ThemeHelper = {
+    [key: string]: ThemeHelper;
+} & ThemeUtils & typeof fn;
+declare function fn(styles?: CSSProperties): {
+    className: any;
+    style: React.CSSProperties | undefined;
+};
+export declare const $: ThemeHelper;
+export default $;

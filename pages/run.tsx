@@ -1,6 +1,12 @@
-import BankWrapped from "@/components/BankWrapped";
-import { generateTestData } from "@/lib/data";
-import type { WrappedData } from "@/lib/data";
+import { BankWrapped } from "@hackclub/hcb-wrapped";
+import { generateTestData } from "@/hcb-wrapped/src/utils/data";
+import type { WrappedData } from "@/hcb-wrapped/src/utils/data";
+
+import dynamic from 'next/dynamic'
+ 
+const DynamicHeader = dynamic(() => import('@hackclub/hcb-wrapped'), {
+  ssr: false,
+})
 
 export default function Run({ data }: { data: WrappedData }) {
   return (

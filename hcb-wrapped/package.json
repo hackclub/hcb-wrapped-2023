@@ -1,0 +1,22 @@
+{
+  "name": "@hackclub/hcb-wrapped",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/esm/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.0.12",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "friendly-words": "^1.2.4",
+    "title": "^3.5.3"
+  }
+}
