@@ -2,10 +2,10 @@
 
 This document serves as a collection of SQL queries that have been created (or need to be created) for us to fetch the data needed to generate HCB Wrapped.
 
-* Spending by location
-  * By-user
-  * By-org
-  * Overall
+- Spending by location
+  - By-user
+  - By-org
+  - Overall
   ```sql
   SELECT
     CASE
@@ -50,28 +50,30 @@ This document serves as a collection of SQL queries that have been created (or n
   ORDER BY sum(amount_cents) * -1 DESC
   LIMIT 4000;
   ```
-* Spending by merchant
-  * By-user
-  * By-org
-  * Overall
+- Spending by merchant
+
+  - By-user
+  - By-org
+  - Overall
+
   ```sql
   -- forked from gary's old code, thanks gary!
-  
+
   SELECT
-  
+
   case
       when rst.stripe_transaction->'merchant_data'->>'name' similar to '(SQ|GOOGLE|TST|RAZ|INF|PayUp|IN|INT|\*)%'
           then trim(upper(rst.stripe_transaction->'merchant_data'->>'name'))
       else trim(upper(split_part(rst.stripe_transaction->'merchant_data'->>'name', '*', 1)))
   end
-  as merchant_name, 
+  as merchant_name,
       (sum(amount_cents) / 100) * -1 as dollars_spent
-  
+
   FROM "raw_stripe_transactions" rst
   WHERE
   EXTRACT(YEAR FROM date_posted) = 2023
   GROUP BY
-  
+
   case
       when rst.stripe_transaction->'merchant_data'->>'name' similar to '(SQ|GOOGLE|TST|RAZ|INF|PayUp|IN|INT|\*)%'
           then trim(upper(rst.stripe_transaction->'merchant_data'->>'name'))
@@ -80,30 +82,34 @@ This document serves as a collection of SQL queries that have been created (or n
   order by sum(amount_cents) * -1 desc
   LIMIT 100
   ```
-* Spending by category
-  * By-user
-  * By-org
-  * Overall
+
+- Spending by category
+
+  - By-user
+  - By-org
+  - Overall
+
   ```sql
   SELECT
 
   trim(upper(split_part(rst.stripe_transaction->'merchant_data'->>'category', '*', 1)))
-  as merchant_name, 
+  as merchant_name,
       (sum(amount_cents) / 100) * -1 as dollars_spent
-  
+
   FROM "raw_stripe_transactions" rst
   WHERE
   EXTRACT(YEAR FROM date_posted) = 2023
   GROUP BY
-  
+
   trim(upper(split_part(rst.stripe_transaction->'merchant_data'->>'category', '*', 1)))
   order by sum(amount_cents) * -1 desc
   LIMIT 10000
   ```
-* Spending by date
-  * By-user
-  * By-org
-  * Overall
+
+- Spending by date
+  - By-user
+  - By-org
+  - Overall
   ```sql
   SELECT
   date_posted, (sum(amount_cents) / 100) * -1 as dollars_spent
@@ -115,9 +121,9 @@ This document serves as a collection of SQL queries that have been created (or n
   order by date_posted desc
   LIMIT 10000
   ```
-* A user's average receipt upload time
+- A user's average receipt upload time
   ```sql
-  SELECT r.user_id, 
+  SELECT r.user_id,
   AVG(EXTRACT(EPOCH FROM (r.created_at - h.created_at))) / (24 * 60 * 60) AS days
   FROM receipts r
   JOIN hcb_codes h ON r.receiptable_id = h.id
@@ -128,4 +134,3 @@ This document serves as a collection of SQL queries that have been created (or n
   order by avg(r.created_at - h.created_at) desc
   LIMIT 10000
   ```
-

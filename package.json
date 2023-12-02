@@ -1,30 +1,30 @@
 {
-  "name": "bank-wrapped-2023",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write ."
-  },
-  "dependencies": {
-    "@hackclub/hcb-wrapped": "^1.0.0",
-    "friendly-words": "^1.2.4",
-    "next": "14.0.2",
-    "prettier": "^3.1.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "title": "^3.5.3"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^8.2.0",
-    "@types/friendly-words": "^1.2.2",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@types/title": "^3.4.3",
-    "typescript": "^5"
-  }
+    "name": "bank-wrapped-2023",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "format": "prettier --write ."
+    },
+    "dependencies": {
+        "friendly-words": "^1.2.4",
+        "next": "14.0.2",
+        "prettier": "^3.1.0",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-insta-stories": "^2.6.2",
+        "title": "^3.5.3"
+    },
+    "devDependencies": {
+        "@faker-js/faker": "^8.2.0",
+        "@types/friendly-words": "^1.2.2",
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@types/title": "^3.4.3",
+        "typescript": "^5"
+    }
 }

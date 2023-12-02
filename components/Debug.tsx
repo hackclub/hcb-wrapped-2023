@@ -26,7 +26,7 @@ export function syntaxHighlight(json: string, comment?: string) {
           cls = "null";
         }
         return '<span class="' + cls + '">' + match + "</span>";
-      },
+      }
     ) + (comment ? '<span class="comment"> // ' + comment + "</span>" : "")
   );
 }
@@ -83,7 +83,7 @@ export default function Debug({ data }: { data: any }) {
             `}</style>
       <pre
         dangerouslySetInnerHTML={{
-          __html: syntaxHighlight(JSON.stringify(value, undefined, 4), key),
+          __html: syntaxHighlight(JSON.stringify(value, undefined, 4), key)
         }}
       />
     </>

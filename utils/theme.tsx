@@ -43,7 +43,7 @@ const themeUtils = {
     const { classes } = this;
 
     return ({
-      children,
+      children
     }: {
       children: JSX.Element | JSX.Element[];
     }): JSX.Element => (
@@ -52,13 +52,13 @@ const themeUtils = {
           element,
           {
             className: classes.join(" "),
-            style: styles,
+            style: styles
           },
-          children,
+          children
         )}
       </>
     );
-  },
+  }
 };
 
 type ThemeUtils = typeof themeUtils;
@@ -74,7 +74,7 @@ function fn(styles?: CSSProperties) {
 
   return {
     className: classes.join(" "),
-    style: styles,
+    style: styles
   };
 }
 
@@ -85,7 +85,7 @@ function generateProxy(classes: string[] = []): ThemeHelper {
         return themeUtils[prop as keyof ThemeUtils];
 
       return generateProxy([...classes, prop as string]);
-    },
+    }
   }) as ThemeHelper;
 }
 

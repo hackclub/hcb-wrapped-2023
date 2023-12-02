@@ -4,7 +4,7 @@ const Heading = $.heading.createComponent("div", {
   background: $.sheet,
   textAlign: "center",
   paddingTop: $.s5,
-  paddingBottom: $.s4,
+  paddingBottom: $.s4
 });
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
       <Heading>
         <h1
           {...$.title({
-            color: $.primary,
+            color: $.primary
           })}
         >
           Bank Wrapped 2023
@@ -28,12 +28,12 @@ export default function Home() {
           flexDirection: "row",
           justifyContent: "flex-start",
           alignItems: "center",
-          gap: $.s3,
+          gap: $.s3
         })}
       >
         <h3
           {...$.eyebrow({
-            margin: "0px",
+            margin: "0px"
           })}
         >
           Actions

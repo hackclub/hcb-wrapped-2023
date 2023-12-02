@@ -8,7 +8,7 @@ export default function dataPage() {
     <>
       <Debug
         data={{
-          data,
+          data
         }}
       />
       <div
@@ -25,14 +25,14 @@ export default function dataPage() {
           justifyContent: "flex-start",
           alignItems: "center",
           borderTop: "1px solid #ddd",
-          background: "white",
+          background: "white"
         }}
       >
         <div
           style={{
             cursor: "text",
             flex: "1",
-            height: "100%",
+            height: "100%"
           }}
         >
           <input
@@ -45,7 +45,7 @@ export default function dataPage() {
               borderRadius: "0px",
               fontSize: "14px",
               fontFamily:
-                "Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace",
+                "Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace"
             }}
             placeholder="Enter a query"
             value={query}
@@ -69,7 +69,7 @@ export default function dataPage() {
                                 })();
                             `),
                     null,
-                    4,
+                    4
                   );
                 } catch (err) {
                   console.error(err);
@@ -78,13 +78,13 @@ export default function dataPage() {
               }
 
               return syntaxHighlight(evaluateQuery(data, query));
-            })(),
+            })()
           }}
           style={{
             padding: "0px 8px",
             border: "none",
             maxHeight: "96px",
-            overflowX: "hidden",
+            overflowX: "hidden"
           }}
         />
       </div>

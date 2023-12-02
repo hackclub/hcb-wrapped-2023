@@ -1,17 +1,13 @@
-import { BankWrapped } from "@hackclub/hcb-wrapped";
-import { generateTestData } from "@/hcb-wrapped/src/utils/data";
-import type { WrappedData } from "@/hcb-wrapped/src/utils/data";
+import { Wrapped } from "@/components/Wrapped";
+import { generateTestData } from "@/components/Wrapped/utils/data";
+import type { WrappedData } from "@/components/Wrapped/utils/data";
 
-import dynamic from 'next/dynamic'
- 
-const DynamicHeader = dynamic(() => import('@hackclub/hcb-wrapped'), {
-  ssr: false,
-})
+import dynamic from "next/dynamic";
 
 export default function Run({ data }: { data: WrappedData }) {
   return (
     <>
-      <BankWrapped data={data} />
+      <Wrapped data={data} />
     </>
   );
 }
@@ -21,7 +17,7 @@ export default function Run({ data }: { data: WrappedData }) {
 export async function getServerSideProps() {
   return {
     props: {
-      data: generateTestData(),
-    },
+      data: generateTestData()
+    }
   };
 }
