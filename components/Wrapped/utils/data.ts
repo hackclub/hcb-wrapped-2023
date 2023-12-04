@@ -232,7 +232,7 @@ export function generateTestOrganizations() {
             spendingByLocation: generateSpendingByLocation(spent),
             spendingByCategory: generateSpendingByCategory(spent),
             spendingByMerchant: generateSpendingByMerchant(spent),
-            spendingByUser: {} // todo
+            spendingByUser: generateSpendingByMerchant(spent),
         } as OrgData;
     }
     return organizations;
@@ -309,6 +309,29 @@ export function generateSpendingByMerchant(max: number): SpendingByMerchant {
         }
     }
     return spendingByMerchant;
+}
+
+
+export function generateSpendingByUser(max: number): SpendingByUser {
+    const names = Array(getRandomArbitrary(2, 20))
+        .fill(0)
+        .map(() => `${faker.person.firstName()} ${faker.person.lastName()}`);
+    const spendingByUser: SpendingByUser = {};
+    let totalSpent = 0;
+    for (let i = 0; i < names.length; i++) {
+        const name = names[i];
+        if (i === names.length - 1) {
+            spendingByUser[name] = max - totalSpent;
+        } else if (Math.random() < 0.8) {
+            const amount = getRandomArbitrary(
+                1,
+                max - totalSpent - (names.length - i - 1)
+            );
+            spendingByUser[name] = amount;
+            totalSpent += amount;
+        }
+    }
+    return spendingByUser;
 }
 
 const countries = {
