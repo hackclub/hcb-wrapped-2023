@@ -1,5 +1,5 @@
 import $ from "@/utils/theme";
-import type { SlideProps } from "../internals/slidesHelper";
+import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 import HCBStat from "../components/HCBStat";
 
@@ -50,3 +50,7 @@ export default function HCB({ data }: SlideProps) {
     </>
   );
 }
+
+HCB.config = {
+  bg: $.blue
+} satisfies SlideOptions
