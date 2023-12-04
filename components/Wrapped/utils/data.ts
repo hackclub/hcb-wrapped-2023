@@ -22,12 +22,7 @@ export type orgCategory =
     | "ai";
 
 export interface SpendingByLocation {
-    [key: string]:
-        | {
-              amount: moneyCents;
-              [key: string]: string | moneyCents;
-          }[]
-        | moneyCents;
+    [key: string]: number;
 }
 
 export interface PlatinumCard {
@@ -49,12 +44,7 @@ export interface IndividualData {
     spendingByDate: {
         [key: date]: moneyCents;
     };
-    ranking: {
-        overall: number | null;
-        mutuals: number | null;
-        teenagers: number | null;
-        adults: number | null;
-    };
+    ranking: number;
     averageReceiptUploadTime: number;
     lostReceiptCount: number;
     spendingByLocation: SpendingByLocation;
@@ -126,19 +116,8 @@ export default {
         },
         words: ["legal", "safe", "not fraud", "approved", "approved by @zrl"],
         spendingByLocation: {
-            "United States of America": [
-                {
-                    postal: "90069",
-                    amount: 0
-                }
-            ],
-            Singapore: 0,
-            India: [
-                {
-                    city: "Gurgaon",
-                    amount: 0
-                }
-            ]
+            "United States of America - West Hollywood - 90069": 0,
+            "Singapore - 000000": 0
         },
         spendingByCategory: {
             "fast food": 9,
@@ -160,19 +139,8 @@ export default {
                 "01-01-2023": 0
             },
             spendingByLocation: {
-                "United States of America": [
-                    {
-                        postal: "90069",
-                        amount: 0
-                    }
-                ],
-                Singapore: 0,
-                India: [
-                    {
-                        city: "Gurgaon",
-                        amount: 0
-                    }
-                ]
+                "United States of America - West Hollywood - 90069": 0,
+                "Singapore - 000000": 0
             },
             spendingByCategory: {
                 "fast food": 9,
@@ -197,19 +165,8 @@ export default {
             new: 99
         },
         spendingByLocation: {
-            "United States of America": [
-                {
-                    postal: "90069",
-                    amount: 0
-                }
-            ],
-            Singapore: 0,
-            India: [
-                {
-                    city: "Gurgaon",
-                    amount: 0
-                }
-            ]
+            "United States of America - West Hollywood - 90069": 0,
+            "Singapore - 000000": 0
         },
         spendingByCategory: {
             "fast food": 9,
@@ -408,13 +365,13 @@ export function generateSpendingByLocation(
     for (let i = 0; i < locations.length; i++) {
         const location = locations[i];
         if (i === locations.length - 1) {
-            spendingByLocation[location] = max - totalSpent;
+            spendingByLocation[`${location} - 000000`] = max - totalSpent;
         } else if (Math.random() < 0.2) {
             const amount = getRandomArbitrary(
                 1,
                 max - totalSpent - (locations.length - i - 1)
             );
-            spendingByLocation[location] = amount;
+            spendingByLocation[`${location} - 000000`] = amount;
         } else if (Math.random() < 0.8) {
             let amount = getRandomArbitrary(
                 1,
@@ -430,20 +387,31 @@ export function generateSpendingByLocation(
                 let randomLocation = "";
                 if (type == "postal") {
                     randomLocation = localFaker.location.zipCode();
+                    const spendingData = {
+                        amount: getRandomArbitrary(1, amount),
+                        [type]: randomLocation
+                    };
+                    amount = amount - spendingData.amount;
+                    spendingByLocation[`${location} - ${randomLocation}`] = spendingData.amount;
                 } else if (type == "city") {
                     randomLocation = localFaker.location.city();
+                    const spendingData = {
+                        amount: getRandomArbitrary(1, amount),
+                        [type]: randomLocation
+                    };
+                    amount = amount - spendingData.amount;
+                    spendingByLocation[`${location} - ${randomLocation} - 000000`] = spendingData.amount;
                 } else if (type == "state") {
                     randomLocation = localFaker.location.state();
+                    const spendingData = {
+                        amount: getRandomArbitrary(1, amount),
+                        [type]: randomLocation
+                    };
+                    amount = amount - spendingData.amount;
+                    spendingByLocation[`${location} - ${randomLocation} - 000000`] = spendingData.amount;
                 }
-                const spendingData = {
-                    amount: getRandomArbitrary(1, amount),
-                    [type]: randomLocation
-                };
-                amount = amount - spendingData.amount;
-                subdivisions.push(spendingData);
             }
             totalSpent += amount;
-            spendingByLocation[location] = subdivisions;
         }
     }
     return spendingByLocation;
