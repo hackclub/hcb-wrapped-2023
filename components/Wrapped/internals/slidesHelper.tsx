@@ -10,11 +10,14 @@ export interface SlideProps {
   data: WrappedData;
 }
 
-export interface OptionalSlideOptions {
+export interface SlideOptions {
   bg?: string;
+  duration?: number;
 }
 
-export type WrappedSlide = ((props: SlideProps) => JSX.Element) & OptionalSlideOptions;
+type WrappedSlideComponent = (props: SlideProps) => JSX.Element;
+
+export type WrappedSlide = WrappedSlideComponent & { config?: SlideOptions };
 
 
 export default function Slides({ data }: { data: WrappedData }) {
@@ -33,18 +36,23 @@ export default function Slides({ data }: { data: WrappedData }) {
     // />
 
 		<Stories
-      stories={slides.map((Slide: WrappedSlide) => ({
-        content: ({ action, isPaused, config }) => (
-          <div style={{
-            background: Slide.bg || "white",
-            width: "100%",
-            height: "100%",
-          }}>
-            <Slide data={data} />
-          </div>
-        )
-      }))}
-      defaultInterval={3_000}
+      stories={slides.map((Slide: WrappedSlide) => {
+        const { config } = Slide;
+
+        return {
+          content: ({ action, isPaused, config: storyConfig }) => (
+            <div style={{
+              background: Slide.config?.bg || "white",
+              width: "100%",
+              height: "100%",
+            }}>
+              <Slide data={data} />
+            </div>
+          ),
+          duration: config?.duration
+        }
+      })}
+      defaultInterval={8_000}
       width={432}
       height={768}
       keyboardNavigation
