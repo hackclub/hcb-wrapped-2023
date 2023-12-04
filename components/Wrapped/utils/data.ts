@@ -38,6 +38,10 @@ export interface SpendingByMerchant {
     [key: string]: number;
 }
 
+export interface SpendingByUser {
+    [key: string]: number;
+}
+
 export interface IndividualData {
     firstName: string;
     totalMoneySpent: number;
@@ -55,7 +59,6 @@ export interface IndividualData {
 }
 
 export interface OrgData {
-    individualSpent: moneyCents;
     spent: moneyCents;
     raised: moneyCents;
     spendingByDate: {
@@ -64,7 +67,8 @@ export interface OrgData {
     spendingByLocation: SpendingByLocation;
     spendingByCategory: SpendingByCategory;
     spendingByMerchant: SpendingByMerchant;
-    category: orgCategory;
+    spendingByUser: SpendingByUser;
+    category: orgCategory | null;
 }
 
 export interface HCBGrowthStat {
@@ -102,12 +106,7 @@ export default {
         spendingByDate: {
             "01-01-2023": 0
         },
-        ranking: {
-            overall: 0.05,
-            mutuals: 0.01,
-            teenagers: 0.01,
-            adults: null
-        },
+        ranking: 0.05,
         averageReceiptUploadTime: 55, // in seconds
         lostReceiptCount: 9999999,
         platinumCard: {
@@ -131,7 +130,6 @@ export default {
     },
     organizations: {
         hq: {
-            individualSpent: 0,
             category: "hack club hq",
             spent: 0,
             raised: 0,
@@ -150,7 +148,8 @@ export default {
             spendingByMerchant: {
                 "AMAZON.COM": 99990,
                 "Covenant Hills Christian Campground": 1
-            }
+            },
+            spendingByUser: {}
         }
     },
     hcb: {
@@ -229,11 +228,11 @@ export function generateTestOrganizations() {
             category,
             spent,
             raised,
-            individualSpent,
             spendingByDate: generateSpendingByDate(spent),
             spendingByLocation: generateSpendingByLocation(spent),
             spendingByCategory: generateSpendingByCategory(spent),
-            spendingByMerchant: generateSpendingByMerchant(spent)
+            spendingByMerchant: generateSpendingByMerchant(spent),
+            spendingByUser: {} // todo
         } as OrgData;
     }
     return organizations;
@@ -449,16 +448,7 @@ export function generateTestData() {
     let individual = {
         firstName: faker.person.firstName(),
         totalMoneySpent,
-        ranking: {
-            overall: overallRankingBracket / 20,
-            mutuals: getRandomArbitrary(1, overallRankingBracket) / 20,
-            teenagers: teenager
-                ? getRandomArbitrary(1, overallRankingBracket) / 20
-                : null,
-            adults: adult
-                ? getRandomArbitrary(1, overallRankingBracket) / 20
-                : null
-        },
+        ranking: overallRankingBracket / 20,
         averageReceiptUploadTime: getRandomArbitrary(60, 63072000), // in seconds
         lostReceiptCount: getRandomArbitrary(0, 300),
         platinumCard:
