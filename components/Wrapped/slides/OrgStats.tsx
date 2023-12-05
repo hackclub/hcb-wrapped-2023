@@ -3,26 +3,20 @@ import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
 import { USDollarNoCents } from "../utils/formatter";
 
-interface OrganizationData {
-  category: string;
-  raised: number;
-  spent: number;
-  spendingByDate: { [key: string]: number };
-  spendingByUser: string;
-}
 
-interface DataProps {
-  organizations: { [key: string]: OrganizationData };
-  individual: any;
-  hcb?: any;
-}
+type OrganizationData = {
+    category: string;
+    raised: number;
+    spent: number;
+    spendingByDate?: Record<string, number>; 
+    spendingByUser?: Record<string, number>; 
+  };
+  
+  type Data = {
+    organizations: Record<string, OrganizationData>;
+  };
 
-//@ts-ignore
-interface TemplateSlideProps extends SlideProps {
-  data: DataProps;
-}
-
-export default function TemplateSlide({ data }: TemplateSlideProps) {
+  export default function TemplateSlide({ data }: { data: Data }) {
     if (!data.organizations || Object.keys(data.organizations).length === 0) {
       return <div>No org available...</div>;
     }
