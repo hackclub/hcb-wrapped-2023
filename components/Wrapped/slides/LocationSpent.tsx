@@ -11,10 +11,10 @@ export default function TemplateSlide({ data }: SlideProps) {
   };
   const SpendingByLocation = sortBySpending(
     Object.entries(data.hcb.spendingByLocation) as SpendingData[]
-  ).slice(0, 2);
+  ).slice(0, 1);
   return (
     <>
-      <h1 {...$.title({})}>Location Spent</h1>
+      <h1 {...$.title({})}>Spending Town</h1>
 
       <div>
         {SpendingByLocation.map(([location, spending]: SpendingData) => (
