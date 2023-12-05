@@ -52,5 +52,5 @@ export default function HCB({ data }: SlideProps) {
 }
 
 HCB.config = {
-  bg: $.blue
+  bg: $.red
 } satisfies SlideOptions

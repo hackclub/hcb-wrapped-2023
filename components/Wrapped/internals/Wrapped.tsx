@@ -31,23 +31,6 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
             <Slides data={data} />
           </div>
         </div>
-        <div className="footer">
-          <div className="inner-footer">
-            <p>
-              Bank Wrapped 2023<span style={{ whiteSpace: "pre" }}> | </span>
-              <a href="https://hackclub.com/hcb" target="_blank">
-                Hack Club HCB
-              </a>
-              <span style={{ whiteSpace: "pre" }}> | </span>
-              <a
-                href="https://github.com/hackclub/hcb-wrapped-2023"
-                target="_blank"
-              >
-                Source Code
-              </a>
-            </p>
-          </div>
-        </div>
       </div>
       <div className="bg-wrapper">
         <div className="bg"></div>

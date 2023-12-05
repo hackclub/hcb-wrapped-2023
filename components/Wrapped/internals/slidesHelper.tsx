@@ -8,11 +8,15 @@ import { Action, Story } from "react-insta-stories/dist/interfaces";
 
 export interface SlideProps {
   data: WrappedData;
+  action?: Action;
+  isPaused?: boolean;
+  config?: Story;
 }
 
 export interface SlideOptions {
   bg?: string;
   duration?: number;
+  skipSlide?: (data: WrappedData) => boolean;
 }
 
 type WrappedSlideComponent = (props: SlideProps) => JSX.Element;
@@ -21,22 +25,9 @@ export type WrappedSlide = WrappedSlideComponent & { config?: SlideOptions };
 
 
 export default function Slides({ data }: { data: WrappedData }) {
-  console.log("HERE!", React);
-  debugger;
-  const [slide, setSlide] = React.useState(0);
-
-  const CurrentSlide = slides[slide];
-
   return (
-    // <CurrentSlide
-    //   data={data}
-    //   Continue={function () {
-    //     return <>hi</>
-    //   }}
-    // />
-
 		<Stories
-      stories={slides.map((Slide: WrappedSlide) => {
+      stories={slides.filter(({ config }: WrappedSlide) => !config?.skipSlide?.(data)).map((Slide: WrappedSlide) => {
         const { config } = Slide;
 
         return {
@@ -46,7 +37,7 @@ export default function Slides({ data }: { data: WrappedData }) {
               width: "100%",
               height: "100%",
             }}>
-              <Slide data={data} />
+              <Slide data={data} action={action} isPaused={isPaused} config={storyConfig as any} />
             </div>
           ),
           duration: config?.duration

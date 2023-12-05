@@ -1,5 +1,5 @@
 import $ from "@/utils/theme";
-import type { SlideProps } from "../internals/slidesHelper";
+import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 
 export default function HelloWorld({ data }: SlideProps) {
@@ -12,3 +12,7 @@ export default function HelloWorld({ data }: SlideProps) {
     </>
   );
 }
+
+HelloWorld.config = {
+    bg: $.red
+} satisfies SlideOptions;

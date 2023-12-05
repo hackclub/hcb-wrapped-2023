@@ -31,5 +31,6 @@ TemplateSlide.config = {
  * using the config object
  */
   bg: $.blue,
-  duration: 5_000 // 5 seconds
+  duration: 5_000, // 5 seconds
+  skipSlide: () => false
 } satisfies SlideOptions

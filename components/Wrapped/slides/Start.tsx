@@ -1,5 +1,5 @@
 import $ from "@/utils/theme";
-import type { SlideProps } from "../internals/slidesHelper";
+import type { SlideOptions, SlideProps } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 
 export default function Start({ data }: SlideProps) {
@@ -28,3 +28,7 @@ export default function Start({ data }: SlideProps) {
     </>
   );
 }
+
+Start.config = {
+  bg: $.red
+} satisfies SlideOptions;
