@@ -8,7 +8,7 @@ export default function HelloWorld({ data }: SlideProps) {
     <>
       <h2 {...$.title({ marginBottom: $.s3 })}>🏦 🎁 🎉</h2>
       <h1 {...$.title()}>
-        <span {...$({ color: "var(--red)" })}>Hello</span>, World!
+        Hello, World!
       </h1>
       <Background />
     </>
@@ -16,5 +16,5 @@ export default function HelloWorld({ data }: SlideProps) {
 }
 
 HelloWorld.config = {
-    bg: $.red
+    bg: $.primary
 } satisfies SlideOptions;
