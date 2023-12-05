@@ -19,11 +19,3 @@ body:
       placeholder: Please try to be thorough and include info like the stats used, the content of the slide, and the design you have in mind
     validations:
       required: true
-  - type: checkboxes
-    id: conduct
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow Hack Club's [Code of Conduct](https://hackclub.com/conduct)
-      options:
-        - label: I agree to follow Hack Club's Code of Conduct
-          required: true
