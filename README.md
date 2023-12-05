@@ -3,7 +3,7 @@
 
 # `@hackclub/hcb-wrapped-2023`
 
-This repository houses the React component used to generate [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped). It also contains a Next.js site used for testing.
+This repository houses the React component that will be used to generate this year's [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped). It also contains a Next.js site used for testing (currently deployed at [hcb-wrapped-2023.hackclub.dev](https://hcb-wrapped-2023.hackclub.dev)).
 
 ## Directory
 
