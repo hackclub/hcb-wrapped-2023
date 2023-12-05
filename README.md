@@ -1,3 +1,6 @@
+# Note: This project hasn't launched quite yet! Stay tuned in the #hcb channel.
+
+
 # `@hackclub/hcb-wrapped-2023`
 
 This repository houses the React component used to generate [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped). It also contains a Next.js site used for testing.
