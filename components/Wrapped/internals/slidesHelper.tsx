@@ -26,14 +26,6 @@ export type WrappedSlide = WrappedSlideComponent & { config?: SlideOptions };
 
 
 export default function Slides({ data }: { data: WrappedData }) {
-  const { width, height } = useViewport(true);
-  const padding = 32;
-
-  const aspectRatio = 432 / 768;
-
-  const slideWidth = Math.min((width - padding * 2), (height - padding * 2) * aspectRatio);
-  const slideHeight = slideWidth / aspectRatio;
-
   return (
 		<Stories
       stories={slides.filter(({ config }: WrappedSlide) => !config?.skipSlide?.(data)).map((Slide: WrappedSlide) => {
@@ -56,8 +48,8 @@ export default function Slides({ data }: { data: WrappedData }) {
         }
       })}
       defaultInterval={8_000}
-      width={slideWidth}
-      height={slideHeight}
+			width={432}
+			height={768}
       keyboardNavigation
     />
   );
