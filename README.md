@@ -7,7 +7,7 @@ This repository houses the React component used to generate [hcb.hackclub.com/wr
 
 ## Directory
 
-- [`/components/BankWrapped/`](/components/BankWrapped/): directory with all code associated with the React component. This code is running in production on [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped).
+- [`/components/BankWrapped/`](/components/BankWrapped/): directory with all code associated with the React component. This code will run in production on [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped).
 
 - [`/lib/data.ts`](/lib/data.ts): helper file used to generate test data / define the data schema.
 
@@ -28,7 +28,7 @@ To create a slide:
 * Add your slide to the array exported by `components/Wrapped/slides.ts`.
 * Start designing! You can take inspiration from [last year's Wrapped](https://hcb.hackclub.com/wrapped).
   * You'll have access to the entire `data` object in your component. It'll conform to the type defined in `components/Wrapped/utils/data.ts`.
-  * We're using the `$` theme utlity; it provides shorthands for including classes and variables from [hackclub.css](https://css.hackclub.com)/
+  * We're using the `$` theme utility; it provides shorthands for including classes and variables from [hackclub.css](https://css.hackclub.com)/
     * Here's an example where the `.title` and `.eyebrow` classes are applied to the element as well as some additional styling
       ```js
       <h2 {...$.title.eyebrow({ fontWeight: 800 })}>{data}</h2>
