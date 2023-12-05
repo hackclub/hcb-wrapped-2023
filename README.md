@@ -7,9 +7,9 @@ This repository houses the React component that will be used to generate this ye
 
 ## Directory
 
-- [`/components/BankWrapped/`](/components/BankWrapped/): directory with all code associated with the React component. This code will run in production on [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped).
+- [`/components/Wrapped/`](/components/Wrapped/): directory with all code associated with the React component. This code will run in production on [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped).
 
-- [`/lib/data.ts`](/lib/data.ts): helper file used to generate test data / define the data schema.
+- [`/components/Wrapped/utils/data.ts`](/components/Wrapped/utils/data.ts): helper file used to generate test data / define the data schema.
 
 - [`/pages/`](/pages): Next.js site used for testing.
 
