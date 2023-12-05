@@ -31,7 +31,7 @@ export default function TemplateSlide({ data }: SlideProps) {
       <div>
         {SpendingByLocation.map(([location, spending]: SpendingData) => (
           <p key={location}>{`${location} - ${USDollarNoCents.format(
-            spending
+            spending / 100
           )}`}</p>
         ))}
       </div>
@@ -39,7 +39,7 @@ export default function TemplateSlide({ data }: SlideProps) {
       <div>
         {SpendingByMerchant.map(([merchant, spending]: SpendingData) => (
           <p key={merchant}>{`${merchant} - ${USDollarNoCents.format(
-            spending
+            spending / 100
           )}`}</p>
         ))}
       </div>
