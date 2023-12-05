@@ -8,6 +8,7 @@ import $ from "@/utils/theme";
 // 
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
+import Background from "../components/Background";
 
 export default function TemplateSlide({ data }: SlideProps) {
   return (
@@ -21,6 +22,7 @@ export default function TemplateSlide({ data }: SlideProps) {
           // normally would inside of this object
         })}
       >Template Slide</h1>
+      <Background />
     </>
   );
 }

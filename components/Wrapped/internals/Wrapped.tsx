@@ -104,20 +104,6 @@ const css = `
         max-width: 100%;
     }
 
-    div.bg {
-        background: url("https://cloud-ppjsbwxdm-hack-club-bot.vercel.app/0secretfreeze.svg");
-        background-repeat: space;
-        background-size: 80px 80px;
-        color: white;
-        z-index: 5;
-        position: absolute;
-        top: 0px;
-        width: 800vw;
-        height: 800vh;
-        left: 0px;
-        transform: rotate(20deg) translate(-25%, -25%);
-    }
-
     div.footer {
         position: absolute;
         bottom: 0px;

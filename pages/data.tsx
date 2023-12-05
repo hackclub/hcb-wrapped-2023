@@ -1,4 +1,4 @@
-import data from "@/hcb-wrapped/src/utils/data";
+import data from "@/components/Wrapped/utils/data";
 import Debug, { syntaxHighlight } from "@/components/Debug";
 import { useState } from "react";
 

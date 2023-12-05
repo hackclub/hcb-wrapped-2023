@@ -1,5 +1,6 @@
 import $ from "@/utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
+import Background from "../components/Background";
 import { USDollarNoCents } from "../utils/formatter";
 import HCBStat from "../components/HCBStat";
 
@@ -7,11 +8,11 @@ export default function HCB({ data }: SlideProps) {
   return (
     <>
       <>
-        <h1 {...$.headline({ fontSize: "2em" })}>It was a BIG year for HCB.</h1>
+        <h1 {...$.headline({ fontSize: "2em", marginTop: '0px' })}>It was a BIG year.</h1>
         <div
           {...$({
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "1fr",
             gap: "16px"
           })}
         >
@@ -46,11 +47,12 @@ export default function HCB({ data }: SlideProps) {
           </a>{" "}
           (<i>what's Bank?</i>).
         </div>
+        <Background />
       </>
     </>
   );
 }
 
 HCB.config = {
-  bg: $.red
+  bg: $.white
 } satisfies SlideOptions

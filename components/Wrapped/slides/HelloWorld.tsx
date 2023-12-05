@@ -1,6 +1,7 @@
 import $ from "@/utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
+import Background from "../components/Background";
 
 export default function HelloWorld({ data }: SlideProps) {
   return (
@@ -9,6 +10,7 @@ export default function HelloWorld({ data }: SlideProps) {
       <h1 {...$.title()}>
         <span {...$({ color: "var(--red)" })}>Hello</span>, World!
       </h1>
+      <Background />
     </>
   );
 }
