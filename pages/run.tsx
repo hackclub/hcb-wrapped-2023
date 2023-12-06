@@ -18,7 +18,7 @@ export default function Run({ data }: { data: WrappedData }) {
 
 export async function getServerSideProps() {
   try {
-    // Attempt to load data from data.json
+    // Attempt to load data from test.json
     const filePath = path.join(process.cwd(), 'test.json');
     const jsonData = await fs.readFile(filePath, 'utf-8');
     const data = JSON.parse(jsonData);
@@ -28,12 +28,24 @@ export async function getServerSideProps() {
       }
     };
   } catch (error) {
-    // Default to test data
-    return {
-      props: {
-        data: generateTestData()
-      }
-    };
+    try {
+      // Attempt to load data from wrapped.json
+      const filePath = path.join(process.cwd(), 'wrapped.json');
+      const jsonData = await fs.readFile(filePath, 'utf-8');
+      const data = JSON.parse(jsonData);
+      return {
+        props: {
+          data
+        }
+      };
+    } catch (error) {
+      // Default to test data
+      return {
+        props: {
+          data: generateTestData()
+        }
+      };
+    }
   }
 }
 
