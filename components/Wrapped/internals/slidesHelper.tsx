@@ -28,6 +28,7 @@ export type WrappedSlide = WrappedSlideComponent & { config?: SlideOptions };
 export default function Slides({ data }: { data: WrappedData }) {
   return (
 		<Stories
+    //@ts-ignore
       stories={slides.filter(({ config }: WrappedSlide) => !config?.skipSlide?.(data)).map((Slide: WrappedSlide) => {
         const { config } = Slide;
         return {
