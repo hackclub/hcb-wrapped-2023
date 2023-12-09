@@ -39,7 +39,7 @@ export function generateSlidesOrder(data: WrappedData) {
 
   // this is temp coz we don't have the designs yet.
   
-  orgSlides = [orgSlides[0]]
+  orgSlides = orgSlides.length > 0 ? [orgSlides[0]] : []
   
-  return [Start, HCB, Spender, ...orgSlides];
+  return [Start, HCB, Spender];
 }
