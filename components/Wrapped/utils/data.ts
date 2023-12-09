@@ -234,7 +234,7 @@ export function generateTestOrganizations() {
             spendingByLocation: generateSpendingByLocation(spent),
             spendingByCategory: generateSpendingByCategory(spent),
             spendingByMerchant: generateSpendingByMerchant(spent),
-            spendingByUser: generateSpendingByMerchant(spent),
+            spendingByUser: generateSpendingByUser(spent)
         } as OrgData;
     }
     return organizations;
@@ -313,11 +313,13 @@ export function generateSpendingByMerchant(max: number): SpendingByMerchant {
     return spendingByMerchant;
 }
 
-
 export function generateSpendingByUser(max: number): SpendingByUser {
-    const names = [1, ...Array(getRandomArbitrary(2, 20))
-        .fill(0)
-        .map(() => getRandomArbitrary(2, 20000))];
+    const names = [
+        1,
+        ...Array(getRandomArbitrary(2, 20))
+            .fill(0)
+            .map(() => getRandomArbitrary(2, 20000))
+    ];
     const spendingByUser: SpendingByUser = {};
     let totalSpent = 0;
     for (let i = 0; i < names.length; i++) {
@@ -416,7 +418,8 @@ export function generateSpendingByLocation(
                         [type]: randomLocation
                     };
                     amount = amount - spendingData.amount;
-                    spendingByLocation[`${location} - ${randomLocation}`] = spendingData.amount;
+                    spendingByLocation[`${location} - ${randomLocation}`] =
+                        spendingData.amount;
                 } else if (type == "city") {
                     randomLocation = localFaker.location.city();
                     const spendingData = {
@@ -424,7 +427,9 @@ export function generateSpendingByLocation(
                         [type]: randomLocation
                     };
                     amount = amount - spendingData.amount;
-                    spendingByLocation[`${location} - ${randomLocation} - 000000`] = spendingData.amount;
+                    spendingByLocation[
+                        `${location} - ${randomLocation} - 000000`
+                    ] = spendingData.amount;
                 } else if (type == "state") {
                     randomLocation = localFaker.location.state();
                     const spendingData = {
@@ -432,7 +437,9 @@ export function generateSpendingByLocation(
                         [type]: randomLocation
                     };
                     amount = amount - spendingData.amount;
-                    spendingByLocation[`${location} - ${randomLocation} - 000000`] = spendingData.amount;
+                    spendingByLocation[
+                        `${location} - ${randomLocation} - 000000`
+                    ] = spendingData.amount;
                 }
             }
             totalSpent += amount;

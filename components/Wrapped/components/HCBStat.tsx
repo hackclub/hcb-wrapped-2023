@@ -13,7 +13,7 @@ export default function HCBStat({
   label: string;
   background?: string;
   isNumber?: boolean;
-  prefix?:string
+  prefix?: string;
 }) {
   return (
     <div

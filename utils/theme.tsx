@@ -69,8 +69,8 @@ type StyleUtilProperties = {
     name: string;
     duration: string;
     iterationCount: string;
-  }
-}
+  };
+};
 
 type ThemeHelper = {
   [key: string]: ThemeHelper;
@@ -90,7 +90,7 @@ function fn(styles: CSSProperties & StyleUtilProperties = {}) {
       animationDuration: duration,
       animationIterationCount: iterationCount,
       ...styles
-    }
+    };
     delete styles.$animate;
   }
 

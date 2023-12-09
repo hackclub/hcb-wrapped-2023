@@ -41,13 +41,21 @@ function useTimedValue<T>(
     const interval = setInterval(() => {
       setTimes((times) => {
         const updated = [...times, Date.now()];
-        console.log(updated);
-        setState(callback(updated.reduce((previousValue, currentValue, currentIndex, array) => {
-          if (currentIndex % 2 == 1) {
-              return previousValue + (currentValue - array[currentIndex - 1]);
-          }
-          return previousValue;
-        }, 0)));
+        setState(
+          callback(
+            updated.reduce(
+              (previousValue, currentValue, currentIndex, array) => {
+                if (currentIndex % 2 == 1) {
+                  return (
+                    previousValue + (currentValue - array[currentIndex - 1])
+                  );
+                }
+                return previousValue;
+              },
+              0
+            )
+          )
+        );
         return times;
       });
     }, frequency);
@@ -55,8 +63,7 @@ function useTimedValue<T>(
   }, []);
 
   useEffect(() => {
-    setTimes(times => [...times, Date.now()]);
-    console.log('hi')
+    setTimes((times) => [...times, Date.now()]);
   }, [paused]);
 
   return state;
@@ -84,13 +91,7 @@ export default function Start({ data, isPaused }: SlideProps) {
     !!isPaused
   );
 
-
-  const test = useTimedValue(
-    (x) => x,
-    0 as number,
-    500,
-    !!isPaused
-  );
+  const test = useTimedValue((x) => x, 0 as number, 500, !!isPaused);
 
   return (
     <div

@@ -1,7 +1,7 @@
 import { WrappedData } from "../utils/data";
 import $ from "@/utils/theme";
 import React, { useCallback, useState } from "react";
-import {generateSlidesOrder} from "../slides";
+import { generateSlidesOrder } from "../slides";
 import Stories from "react-insta-stories";
 import { Action, Story } from "react-insta-stories/dist/interfaces";
 import useViewport from "../hooks/useViewport";
@@ -59,8 +59,7 @@ export default function Slides({ data }: { data: WrappedData }) {
         <div className="content"></div>
         <Stories
           currentIndex={index}
-          stories={
-            generateSlidesOrder(data)
+          stories={generateSlidesOrder(data)
             .filter(({ config }: WrappedSlide) => !config?.skipSlide?.(data))
             .map((Slide: WrappedSlide) => {
               const { config } = Slide;

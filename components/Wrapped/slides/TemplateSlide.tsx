@@ -5,7 +5,7 @@
  */
 
 import $ from "@/utils/theme";
-// 
+//
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
@@ -21,18 +21,20 @@ export default function TemplateSlide({ data }: SlideProps) {
           // You can then add CSS properties like you
           // normally would inside of this object
         })}
-      >Template Slide</h1>
+      >
+        Template Slide
+      </h1>
       <Background />
     </>
   );
 }
 
 TemplateSlide.config = {
-/**
- * You can configure the background, slide duration, and more
- * using the config object
- */
+  /**
+   * You can configure the background, slide duration, and more
+   * using the config object
+   */
   bg: $.blue,
   duration: 5_000, // 5 seconds
   skipSlide: () => false
-} satisfies SlideOptions
+} satisfies SlideOptions;

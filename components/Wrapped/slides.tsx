@@ -1,28 +1,27 @@
 import React from "react";
+import $ from "@/utils/theme";
 import HCB from "./slides/HCB";
 import OrgIntro from "./slides/OrgIntro";
+import OrgDetails from "./slides/OrgDetails";
 import Start from "./slides/Start";
 import Spender from "./slides/spender";
 import type { WrappedData, OrgData } from "@/components/Wrapped/utils/data";
-
-const OrgDetails = ({ data, slug }: { data: OrgData; slug: string }) => (
-  <>{slug}</>
-);
+import type { SlideProps, SlideOptions } from "./internals/slidesHelper";
 
 export function generateSlidesOrder(data: WrappedData) {
   let orgSlides: any[] = [];
-  if (Object.keys(data.organizations)
-  .filter((org) => data.organizations[org].spent > 0)
-  .filter(
-    (org) =>
-      data.organizations[org].spendingByUser[data.individual.id]
-  ).length > 0) {
+  if (
+    Object.keys(data.organizations)
+      .filter((org) => data.organizations[org].spent > 0)
+      .filter(
+        (org) => data.organizations[org].spendingByUser[data.individual.id]
+      ).length > 0
+  ) {
     orgSlides.push(OrgIntro);
     Object.keys(data.organizations)
       .filter((org) => data.organizations[org].spent > 0)
       .filter(
-        (org) =>
-          data.organizations[org].spendingByUser[data.individual.id]
+        (org) => data.organizations[org].spendingByUser[data.individual.id]
       )
       .sort(
         (a, b) =>
@@ -31,15 +30,21 @@ export function generateSlidesOrder(data: WrappedData) {
       )
       .slice(0, 3)
       .map((org) => {
-        orgSlides.push(({ data }: { data: WrappedData }) => (
-          <OrgDetails data={data.organizations[org]} slug={org} />
-        ));
+        function OrgSlide({ data }: SlideProps) {
+          return (
+            <OrgDetails
+              data={data}
+              organization={{ name: org, ...data.organizations[org] }}
+            />
+          );
+        }
+        OrgSlide.config = {
+          bg: $.green,
+          duration: 10000
+        } satisfies SlideOptions;
+        orgSlides.push(OrgSlide);
       });
   }
 
-  // this is temp coz we don't have the designs yet.
-  
-  orgSlides = orgSlides.length > 0 ? [orgSlides[0]] : []
-  
-  return [Start, HCB, Spender];
+  return [Start, HCB, Spender, ...orgSlides];
 }
