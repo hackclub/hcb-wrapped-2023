@@ -26,11 +26,7 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
           alignItems: "center"
         })}
       >
-        <div className="main">
-          <div className="content">
-            <Slides data={data} />
-          </div>
-        </div>
+        <Slides data={data} />
       </div>
       <div className="bg-wrapper">
         <div className="bg"></div>

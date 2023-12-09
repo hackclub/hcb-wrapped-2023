@@ -1,12 +1,17 @@
-import { Wrapped } from "@/components/Wrapped";
 import { generateTestData } from "@/components/Wrapped/utils/data";
 import type { WrappedData } from "@/components/Wrapped/utils/data";
 import fs from 'fs/promises';
 import path from 'path';
-
 import dynamic from "next/dynamic";
 
 export default function Run({ data }: { data: WrappedData }) {
+
+  const Wrapped = dynamic(() =>
+    import('@/components/Wrapped').then((mod) => mod.Wrapped), {
+      ssr: false
+    }
+  )
+
   return (
     <>
       <Wrapped data={data} />

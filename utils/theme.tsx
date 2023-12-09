@@ -63,14 +63,36 @@ const themeUtils = {
 
 type ThemeUtils = typeof themeUtils;
 
+type StyleUtilProperties = {
+  $animate?: {
+    paused: boolean;
+    name: string;
+    duration: string;
+    iterationCount: string;
+  }
+}
+
 type ThemeHelper = {
   [key: string]: ThemeHelper;
 } & ThemeUtils &
   typeof fn;
 
-function fn(styles?: CSSProperties) {
+function fn(styles: CSSProperties & StyleUtilProperties = {}) {
   // @ts-ignore
   const { classes } = this;
+
+  const { $animate } = styles;
+  if ($animate) {
+    const { paused, name, duration, iterationCount } = $animate;
+    styles = {
+      animationPlayState: paused ? "paused" : "running",
+      animationName: name,
+      animationDuration: duration,
+      animationIterationCount: iterationCount,
+      ...styles
+    }
+    delete styles.$animate;
+  }
 
   return {
     className: classes.join(" "),

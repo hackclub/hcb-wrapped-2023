@@ -757,3 +757,9 @@ td {
         max-width: var(--size-narrow-plus);
     }
 }
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

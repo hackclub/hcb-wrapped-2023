@@ -43,7 +43,8 @@ export interface SpendingByUser {
 }
 
 export interface IndividualData {
-    firstName: string;
+    name: string;
+    id: number;
     totalMoneySpent: number;
     spendingByDate: {
         [key: date]: moneyCents;
@@ -101,7 +102,8 @@ export interface WrappedData {
 
 export default {
     individual: {
-        firstName: "Orpheus",
+        name: "Orpheus",
+        id: 1,
         totalMoneySpent: 0.0,
         spendingByDate: {
             "01-01-2023": 0
@@ -313,9 +315,9 @@ export function generateSpendingByMerchant(max: number): SpendingByMerchant {
 
 
 export function generateSpendingByUser(max: number): SpendingByUser {
-    const names = Array(getRandomArbitrary(2, 20))
+    const names = [1, ...Array(getRandomArbitrary(2, 20))
         .fill(0)
-        .map(() => `${faker.person.firstName()} ${faker.person.lastName()}`);
+        .map(() => getRandomArbitrary(2, 20000))];
     const spendingByUser: SpendingByUser = {};
     let totalSpent = 0;
     for (let i = 0; i < names.length; i++) {
@@ -469,7 +471,8 @@ export function generateTestData() {
     let newOrganizations = getRandomArbitrary(40, 1000);
     let newUsers = getRandomArbitrary(newOrganizations, 1500);
     let individual = {
-        firstName: faker.person.firstName(),
+        name: faker.person.firstName(),
+        id: 1,
         totalMoneySpent,
         ranking: overallRankingBracket / 20,
         averageReceiptUploadTime: getRandomArbitrary(60, 63072000), // in seconds
