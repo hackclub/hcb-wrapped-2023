@@ -7,52 +7,74 @@ import HCBStat from "../components/HCBStat";
 export default function HCB({ data }: SlideProps) {
   return (
     <>
-      <>
-        <h1 {...$.headline({ fontSize: "2em", marginTop: '0px' })}>It was a BIG year.</h1>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          paddingBottom: "30px"
+        }}
+      >
+        <h1
+          {...$.headline({ fontSize: "2em", marginTop: "0px", color: "white" })}
+        >
+          It was a BIG year.
+        </h1>
         <div
           {...$({
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: "16px"
+            gap: "16px",
+            width: "100%"
           })}
         >
           <HCBStat
             data={data.hcb.organizations.new}
             label="new organizations"
-            background={$.orange}
+            background={$.yellow}
+            isNumber
           />
           <HCBStat
             data={data.hcb.users.new}
             label="new users"
-            background={$.yellow}
+            background={$.cyan}
+            isNumber
           />
           <HCBStat
-            data={USDollarNoCents.format(data.hcb.spent / 100)}
+            data={USDollarNoCents.format(Math.abs(data.hcb.spent / 100))}
             label="spent by organizations"
             background={$.green}
+            isNumber
+            prefix="$"
           />
           <HCBStat
             data={USDollarNoCents.format(data.hcb.raised / 100)}
             label="raised on HCB"
-            background={$.cyan}
+            background={$.orange}
+            isNumber
+            prefix="$"
           />
         </div>
-        <div {...$({ margin: `${$.s3} 0`, fontSize: "0.9em" })}>
-          All this... plus surviving two bank collapses and{" "}
-          <a
-            href="https://changelog.hcb.hackclub.com/hack-club-bank-is-now-hcb-273207"
-            target="_blank"
-          >
-            rebranding
-          </a>{" "}
-          (<i>what's Bank?</i>).
+        <div
+          {...$({
+            margin: `${$.s3} auto`,
+            fontSize: "0.9em",
+            width: "80%",
+            color: "white",
+            textAlign: "center"
+          })}
+        >
+          All this... plus surviving two bank collapses and rebranding (
+          <i>what's Bank?</i>).
         </div>
         <Background />
-      </>
+      </div>
     </>
   );
 }
 
 HCB.config = {
-  bg: $.white
-} satisfies SlideOptions
+  bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg)`
+} satisfies SlideOptions;

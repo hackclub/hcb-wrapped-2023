@@ -10,8 +10,14 @@ export default function Background({
   desktopCss?: string;
   desktopPatternImage?: string;
 }) {
-  desktopCss = desktopCss || `
-    background: url("${desktopPatternImage ? desktopPatternImage : "https://cloud-ppjsbwxdm-hack-club-bot.vercel.app/0secretfreeze.svg"}");
+  desktopCss =
+    desktopCss ||
+    `
+    background: url("${
+      desktopPatternImage
+        ? desktopPatternImage
+        : "https://cloud-ppjsbwxdm-hack-club-bot.vercel.app/0secretfreeze.svg"
+    }"), linear-gradient(rgba(5,0,0,0.10), rgba(5,0,0,0.10));
     background-repeat: space;
     background-size: 80px 80px;
     color: white;
@@ -22,15 +28,15 @@ export default function Background({
     height: 800vh;
     left: 0px;
     transform: rotate(20deg) translate(-25%, -25%);
-  `
+  `;
   return (
     <style
-        dangerouslySetInnerHTML={{
-          __html: `
+      dangerouslySetInnerHTML={{
+        __html: `
           div.bg {
             ${desktopCss}
           }`
-        }}
-      />
+      }}
+    />
   );
 }
