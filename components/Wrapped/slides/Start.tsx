@@ -132,7 +132,6 @@ export default function Start({ data, isPaused }: SlideProps) {
         To celebrate, let's take a trip down memory lane and recap your year on
         HCB.
       </p>
-      <p>{snowflakeSpeed}</p>
       <Background />
       <Snowfall
         images={images}
