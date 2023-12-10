@@ -23,7 +23,7 @@ export default function Spender({ data }: SlideProps) {
                 Object.entries(data.individual.spendingByMerchant)
                   .sort(([, a], [, b]) => b - a)
                   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-              )[0] / 100
+              )[0] as number / 100
             )
           )}, you kept`}
           data={
@@ -33,7 +33,7 @@ export default function Spender({ data }: SlideProps) {
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
             )[0]
           }
-          label="in buisness this year."
+          label="in business this year."
           background={$.orange}
         />
         <HCBStat
@@ -45,13 +45,13 @@ export default function Spender({ data }: SlideProps) {
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
             )[0]
           }
-          label={`buisnesses. You spent ${USDollarNoCents.format(
+          label={`businesses. You spent ${USDollarNoCents.format(
             Math.abs(
               Object.values(
                 Object.entries(data.individual.spendingByCategory)
                   .sort(([, a], [, b]) => b - a)
                   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-              )[0] / 100
+              )[0] as number / 100
             )
           )} with them.`}
           background={$.blue}
