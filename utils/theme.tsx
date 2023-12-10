@@ -64,12 +64,17 @@ const themeUtils = {
 type ThemeUtils = typeof themeUtils;
 
 type StyleUtilProperties = {
-  $animate?: {
-    paused: boolean;
-    name: string;
-    duration: string;
-    iterationCount: string;
-  };
+  [key: `animate$${string}`]:
+    | {
+        paused?: boolean;
+
+        duration?: string;
+        iterationCount?: string;
+        delay?: string;
+
+        args?: string[];
+      }
+    | string[];
 };
 
 type ThemeHelper = {
@@ -79,19 +84,39 @@ type ThemeHelper = {
 
 function fn(styles: CSSProperties & StyleUtilProperties = {}) {
   // @ts-ignore
-  const { classes } = this;
+  let { classes } = this;
 
-  const { $animate } = styles;
-  if ($animate) {
-    const { paused, name, duration, iterationCount } = $animate;
+  const animationName = (Object.keys(styles) as (keyof typeof styles)[])
+    .filter((key) => key.startsWith("animate$"))
+    .map((key) => key.replace("animate$", ""))[0] as string | undefined;
+  const animation = styles[`animate$${animationName}`];
+  if (animation) {
+    const { paused, duration, iterationCount, args, delay } =
+      animation instanceof Array
+        ? {
+            args: animation,
+            paused: undefined,
+            duration: undefined,
+            iterationCount: undefined,
+            delay: undefined
+          }
+        : animation;
+
+    const keyframe = `_${animationName}${
+      args?.map((arg) => "_" + arg).join("") ?? ""
+    }`;
+
     styles = {
       animationPlayState: paused ? "paused" : "running",
-      animationName: name,
-      animationDuration: duration,
+      animationName: keyframe,
+      animationDuration: duration ?? "1s",
       animationIterationCount: iterationCount,
+      animationDelay: delay,
+      animationFillMode: "forwards",
       ...styles
     };
-    delete styles.$animate;
+    classes.push(keyframe);
+    delete styles[`animate$${animationName}`];
   }
 
   return {

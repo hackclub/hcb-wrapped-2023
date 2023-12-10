@@ -103,12 +103,23 @@ export default function Start({ data, isPaused }: SlideProps) {
         height: "100%",
         paddingBottom: "80px",
         color: "white",
-        textAlign: "center"
+        textAlign: "center",
+        padding: "16px"
       }}
     >
-      <h2 {...$.title({ marginBottom: $.s3 })}>🏦 🎁 🎉</h2>
-      <h1 {...$.title()}>Wrapped 2023</h1>
-      <p {...$.lead({ color: $.white, width: "90%", marginBottom: $.s1 })}>
+      <h2 {...$.title({ animate$fadeIn: [], marginBottom: $.s3 })}>🏦 🎁 🎉</h2>
+      <h1 {...$.title({ animate$fadeIn: [] })}>Wrapped 2023</h1>
+      <p
+        {...$.lead({
+          animate$fadeIn: {
+            args: ["fromBottom"],
+            delay: "0.5s"
+          },
+          color: $.white,
+          width: "90%",
+          marginBottom: $.s1
+        })}
+      >
         Welcome {data.individual.name}; 2023 was a big year on HCB for you.
         <b>
           You spent over{" "}
@@ -129,7 +140,17 @@ export default function Start({ data, isPaused }: SlideProps) {
           !
         </b>
       </p>
-      <p {...$.lead({ color: $.white, width: "90%", marginTop: $.s1 })}>
+      <p
+        {...$.lead({
+          animate$fadeIn: {
+            args: ["fromBottom"],
+            delay: "0.5s"
+          },
+          color: $.white,
+          width: "90%",
+          marginTop: $.s1
+        })}
+      >
         To celebrate, let's take a trip down memory lane and recap your year on
         HCB.
       </p>

@@ -4,6 +4,12 @@ import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
 
 export default function OrgIntro({ data }: SlideProps) {
+  const orgCount = Object.keys(data.organizations)
+    .filter((org) => data.organizations[org].spent > 0)
+    .filter(
+      (org) => data.organizations[org].spendingByUser[data.individual.id]
+    ).length;
+
   return (
     <div
       style={{
@@ -17,46 +23,31 @@ export default function OrgIntro({ data }: SlideProps) {
         textAlign: "center"
       }}
     >
-      {Object.keys(data.organizations)
-        .filter((org) => data.organizations[org].spent > 0)
-        .filter(
-          (org) => data.organizations[org].spendingByUser[data.individual.id]
-        ).length > 3 ? (
-        <>
-          <h1 {...$.title({ animation: "fadeIn 1s" })}>
+      <h1 {...$.title({ animate$spinIn: [] })}>
+        {orgCount > 3 ? (
+          <>
             This year, you've been working on a lot of projects,{" "}
             {Object.keys(data.organizations).length} to be exact.
-          </h1>
-          <h2
-            {...$.headline({
-              marginBottom: $.s3,
-              marginTop: $.s3,
-              fontWeight: 400,
-              width: "80%",
-              animation: "fadeIn 2s"
-            })}
-          >
-            Let's take a look back at the three that meant the most.
-          </h2>
-        </>
-      ) : (
-        <>
-          <h1 {...$.title({ animation: "fadeIn 1s" })}>
-            You've been busy on HCB this year.
-          </h1>
-          <h2
-            {...$.headline({
-              marginBottom: $.s3,
-              marginTop: $.s3,
-              fontWeight: 400,
-              width: "80%",
-              animation: "fadeIn 2s"
-            })}
-          >
-            Let's take a look back at the projects you worked on.
-          </h2>
-        </>
-      )}
+          </>
+        ) : (
+          <>You've been busy on HCB this year.</>
+        )}
+      </h1>
+      <h2
+        {...$.headline({
+          marginBottom: $.s3,
+          marginTop: $.s3,
+          fontWeight: 400,
+          width: "80%",
+          animate$fadeIn: {
+            duration: "4s"
+          }
+        })}
+      >
+        {orgCount > 3
+          ? "Let's take a look back at the three that meant the most."
+          : "Let's take a look back at the projects you worked on."}
+      </h2>
 
       <Background />
     </div>
@@ -65,5 +56,5 @@ export default function OrgIntro({ data }: SlideProps) {
 
 OrgIntro.config = {
   bg: $.blue,
-  duration: 3000
+  duration: 30_000
 } satisfies SlideOptions;

@@ -43,14 +43,14 @@ export default function HCB({ data }: SlideProps) {
             isNumber
           />
           <HCBStat
-            data={USDollarNoCents.format(Math.abs(data.hcb.spent / 100))}
+            data={Math.abs(data.hcb.spent / 100)}
             label="spent by organizations"
             background={$.green}
             isNumber
             prefix="$"
           />
           <HCBStat
-            data={USDollarNoCents.format(data.hcb.raised / 100)}
+            data={data.hcb.raised / 100}
             label="raised on HCB"
             background={$.orange}
             isNumber
