@@ -1,4 +1,4 @@
-import $ from "@/utils/theme"
+import $ from "@/utils/theme";
 
 const Heading = $.heading.createComponent("div", {
   background: $.sheet,
