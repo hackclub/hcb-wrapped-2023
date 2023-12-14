@@ -17,6 +17,7 @@ export default function WordCloud({ data }: SlideProps) {
       <div
         style={{
           marginTop: -22,
+          marginBottom: 8
           textAlign: "center"
         }}
       >
