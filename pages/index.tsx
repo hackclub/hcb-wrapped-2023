@@ -43,7 +43,7 @@ export default function Home() {
             window.open("/run", "HCB Wrapped 2023");
           }}
         >
-          Run Bank Wrapped 2023 →
+          Run HCB Wrapped 2023 →
         </button>
         <button
           onClick={() => {

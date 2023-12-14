@@ -4,6 +4,7 @@ import CountUp from "react-countup";
 
 export default function HCBStat({
   data,
+  topLabel,
   label,
   background,
   isNumber = false,
@@ -11,6 +12,7 @@ export default function HCBStat({
 }: {
   data: string | number;
   label: string;
+  topLabel?: string;
   background?: string;
   isNumber?: boolean;
   prefix?: string;
@@ -29,6 +31,18 @@ export default function HCBStat({
         alignItems: "center"
       })}
     >
+      {topLabel && (
+        <div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
+          <b
+            {...$({
+              fontSize: "0.7em",
+              fontWeight: 800
+            })}
+          >
+            {topLabel}
+          </b>
+        </div>
+      )}
       {isNumber ? (
         <CountUp
           end={Number(data.toString().replace("$", "").replace(",", ""))}

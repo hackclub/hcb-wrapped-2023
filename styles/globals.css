@@ -758,11 +758,158 @@ td {
     }
 }
 
-@keyframes fadeIn {
+@keyframes _fadeIn {
     0% {
         opacity: 0;
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes _fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes _fadeIn_fromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes _fadeOut_toBottom {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes _fadeIn_fromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes _fadeOut_toTop {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes _fadeIn_fromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes _fadeOut_toLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes _fadeIn_fromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes _fadeOut_toRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes _zoomIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes _zoomOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes _spinIn {
+    0% {
+        transform: rotate(0deg) scale(0.25);
+        opacity: 0;
+        animation-timing-function: linear;
+    }
+    25% {
+        transform: rotate(180deg) scale(0.4375);
+        opacity: 0.25;
+        animation-timing-function: linear;
+    }
+    50% {
+        transform: rotate(360deg) scale(0.625);
+        opacity: 0.5;
+        animation-timing-function: linear;
+    }
+    75% {
+        transform: rotate(540deg) scale(0.8125);
+        opacity: 0.75;
+        animation-timing-function: linear;
+    }
+    100% {
+        transform: rotate(720deg) scale(1);
+        opacity: 1;
+        animation-timing-function: linear;
     }
 }

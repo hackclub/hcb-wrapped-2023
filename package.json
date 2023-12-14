@@ -10,6 +10,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "confetti-js": "^0.0.18",
         "friendly-words": "^1.2.4",
         "next": "14.0.2",
         "prettier": "^3.1.0",

@@ -4,7 +4,10 @@ import HCB from "./slides/HCB";
 import OrgIntro from "./slides/OrgIntro";
 import OrgDetails from "./slides/OrgDetails";
 import Start from "./slides/Start";
-import Spender from "./slides/spender";
+import Spender from "./slides/Spender";
+import WordCloud from "./slides/WordCloud";
+import Hometown from "./slides/HomeTown";
+import Ending from "./slides/Ending";
 import type { WrappedData, OrgData } from "@/components/Wrapped/utils/data";
 import type { SlideProps, SlideOptions } from "./internals/slidesHelper";
 
@@ -46,5 +49,5 @@ export function generateSlidesOrder(data: WrappedData) {
       });
   }
 
-  return [Start, HCB, Spender, ...orgSlides];
+  return [Start, HCB, Spender, WordCloud, Hometown, ...orgSlides, Ending];
 }
