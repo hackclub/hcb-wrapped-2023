@@ -5,17 +5,30 @@ import Background from "../components/Background";
 export default function WordCloud({ data }: SlideProps) {
   return (
     <>
-      <h2 {...$.headline({ marginBottom: $.s3 })} id="input">
+      <h2
+        {...$.headline({
+          textAlign: "center",
+          fontSize: 25
+        })}
+        id="input"
+      >
         You used lots of
       </h2>
-      <h1>
-        <span {...$.title({ color: $.red })}>w</span>
-        <span {...$.title({ color: $.orange })}>o</span>
-        <span {...$.title({ color: $.yellow })}>r</span>
-        <span {...$.title({ color: $.green })}>d</span>
-        <span {...$.title({ color: $.blue })}>s</span>
-        <span {...$.title({ color: $.purple })}>!</span>
-      </h1>
+      <div
+        style={{
+          marginTop: -22,
+          textAlign: "center"
+        }}
+      >
+        <h1>
+          <span {...$.title({ color: $.red, fontSize: 65 })}>w</span>
+          <span {...$.title({ color: $.orange, fontSize: 65 })}>o</span>
+          <span {...$.title({ color: $.yellow, fontSize: 65 })}>r</span>
+          <span {...$.title({ color: $.green, fontSize: 65 })}>d</span>
+          <span {...$.title({ color: $.blue, fontSize: 65 })}>s</span>
+          <span {...$.title({ color: $.purple, fontSize: 65 })}>!</span>
+        </h1>
+      </div>
       <img
         src={
           "https://quickchart.io/wordcloud" +
