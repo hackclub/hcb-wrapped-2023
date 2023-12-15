@@ -84,12 +84,12 @@ export default function HCBTopMerchants({ data }: SlideProps) {
         >
           {
             Object.entries({...data.hcb.spendingByMerchant, "AMAZON": data.hcb.spendingByMerchant["AMZN MKTP US"] + data.hcb.spendingByMerchant["AMAZON.COM"], "AMZN MKTP US": 0, "AMAZON.COM": 0}).sort((a,b) => b[1]-a[1]).slice(0, 5).map(merchant => (
-              <div {...$({display: 'flex', borderRadius: '8px', background: additionalData[merchant[0] as any].color, animate$fadeIn: {
+              <div {...$({display: 'flex', borderRadius: '8px', background: additionalData[merchant[0]]?.color || $.blue, animate$fadeIn: {
                 args: ["fromLeft"]
               },})}>
                 <
                   img 
-                  src={additionalData[merchant[0]].image}
+                  src={additionalData[merchant[0]]?.image || "https://cdn-icons-png.flaticon.com/512/2697/2697432.png"}
                   style={{ background: 'white', borderTopLeftRadius: '8px', borderBottomLeftRadius: '8px', height: '72px', width: '72px', objectFit: 'contain', padding: '12px'}}
                 />
                 <div style={{padding: '12px', color: $.white}}>
