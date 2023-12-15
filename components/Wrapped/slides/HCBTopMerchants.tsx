@@ -37,7 +37,7 @@ const additionalData: {
   }
 };
 
-function prettifyCategory(c: string) {
+export function prettifyCategory(c: string) {
   c = c.toLowerCase();
   c = c.replaceAll("_", " ");
   switch (c) {

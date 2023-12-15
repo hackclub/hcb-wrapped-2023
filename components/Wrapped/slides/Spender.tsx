@@ -4,6 +4,7 @@ import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
 import HCBStat from "../components/HCBStat";
 import CountUp from "react-countup";
+import { prettifyCategory } from "./HCBTopMerchants";
 
 export default function Spender({ data }: SlideProps) {
   return (
@@ -39,11 +40,11 @@ export default function Spender({ data }: SlideProps) {
         <HCBStat
           topLabel="Your favourite type of business were"
           data={
-            Object.keys(
+            prettifyCategory(Object.keys(
               Object.entries(data.individual.spendingByCategory)
                 .sort(([, a], [, b]) => b - a)
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-            )[0]
+            )[0])
           }
           label={`businesses. You spent ${USDollarNoCents.format(
             Math.abs(

@@ -151,8 +151,7 @@ export default function Start({ data, isPaused }: SlideProps) {
           marginTop: $.s1
         })}
       >
-        To celebrate, let's take a trip down memory lane and recap your year on
-        HCB.
+        To celebrate, let's take a trip down memory lane and recap the year.
       </p>
       <Background />
       <Snowfall
