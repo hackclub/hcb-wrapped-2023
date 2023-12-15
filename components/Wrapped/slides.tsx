@@ -50,5 +50,14 @@ export function generateSlidesOrder(data: WrappedData) {
       });
   }
 
-  return [Start, HCB, HCBTopMerchants, Spender, WordCloud, Hometown, ...orgSlides, Ending];
+  return [
+    Start,
+    HCB,
+    HCBTopMerchants,
+    Spender,
+    WordCloud,
+    Hometown,
+    ...orgSlides,
+    Ending
+  ];
 }

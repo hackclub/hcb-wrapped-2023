@@ -19,11 +19,11 @@ export default function Spender({ data }: SlideProps) {
         <HCBStat
           topLabel={`By spending ${USDollarNoCents.format(
             Math.abs(
-              Object.values(
+              (Object.values(
                 Object.entries(data.individual.spendingByMerchant)
                   .sort(([, a], [, b]) => b - a)
                   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-              )[0] as number / 100
+              )[0] as number) / 100
             )
           )}, you kept`}
           data={
@@ -47,11 +47,11 @@ export default function Spender({ data }: SlideProps) {
           }
           label={`businesses. You spent ${USDollarNoCents.format(
             Math.abs(
-              Object.values(
+              (Object.values(
                 Object.entries(data.individual.spendingByCategory)
                   .sort(([, a], [, b]) => b - a)
                   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-              )[0] as number / 100
+              )[0] as number) / 100
             )
           )} with them.`}
           background={$.blue}
