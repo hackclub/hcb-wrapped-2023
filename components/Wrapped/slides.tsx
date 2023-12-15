@@ -1,6 +1,7 @@
 import React from "react";
 import $ from "@/utils/theme";
 import HCB from "./slides/HCB";
+import HCBTopMerchants from "./slides/HCBTopMerchants";
 import OrgIntro from "./slides/OrgIntro";
 import OrgDetails from "./slides/OrgDetails";
 import Start from "./slides/Start";
@@ -49,5 +50,5 @@ export function generateSlidesOrder(data: WrappedData) {
       });
   }
 
-  return [Start, HCB, Spender, WordCloud, Hometown, ...orgSlides, Ending];
+  return [Start, HCB, HCBTopMerchants, Spender, WordCloud, Hometown, ...orgSlides, Ending];
 }
