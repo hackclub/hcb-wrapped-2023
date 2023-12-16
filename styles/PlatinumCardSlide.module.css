@@ -1,7 +1,7 @@
 .platinumCard {
     margin: 0 auto;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-direction: column;
     width: 100%;
     width: 22.75rem;
@@ -9,7 +9,7 @@
     padding: 1.5rem;
     position: relative;
     background-repeat: no-repeat;
-   /* 120% to account for z-axis perspective */
+    /* 120% to account for z-axis perspective */
     background-size: 120%;
     font-size: 1.25rem;
     text-align: left;
@@ -19,11 +19,11 @@
     transform: scale(1);
     transform-style: preserve-3d;
     background: linear-gradient(
-      to bottom right,
-      #808080,
-      #FFFFFF 80%,
-      #808080
+        to bottom right,
+        #808080,
+        #ffffff 80%,
+        #808080
     ) !important;
     color: rgba(0, 0, 0, 0.4);
-    font-family: 'SF Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+    font-family: sans-serif;
 }
