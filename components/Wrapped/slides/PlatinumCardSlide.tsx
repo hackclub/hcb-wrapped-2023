@@ -64,9 +64,6 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
               PLATINUM
             </p>
           </div>
-          {/* <p className="absolute m0" style={{right: 0, marginRight: "1.5rem", marginLeft: "3.5rem"}}>
-      card name
-    </p> */}
           <p className="stripe-card__number fs-mask">
             •••• •••• •••• {data.individual.platinumCard?.lastFourDigits}
           </p>
