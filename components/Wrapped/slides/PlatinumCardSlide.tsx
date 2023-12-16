@@ -17,9 +17,6 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
     >
       <h1
         {...$.title({
-          // You can apply classes by daisy-chaining them after the $
-          // You can then add CSS properties like you
-          // normally would inside of this object
           color: "white",
           alignSelf: "start",
           justifySelf: "flex-start"
