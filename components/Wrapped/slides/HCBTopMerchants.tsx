@@ -47,6 +47,10 @@ export function prettifyCategory(c: string) {
       return "restaurants";
     case "hotels motels and resorts":
       return "hotels";
+    case "airlines air carriers":
+      return "airlines";
+    case "stationary office supplies printing and writing paper":
+      return "stationary";
     default:
       return c;
   }

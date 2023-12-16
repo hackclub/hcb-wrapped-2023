@@ -8,13 +8,15 @@ export default function HCBStat({
   label,
   background,
   isNumber = false,
+  fontSize = "",
   prefix = ""
 }: {
   data: string | number;
-  label: string;
+  label?: string;
   topLabel?: string;
   background?: string;
   isNumber?: boolean;
+  fontSize?: string;
   prefix?: string;
 }) {
   return (
@@ -26,6 +28,7 @@ export default function HCBStat({
         textTransform: "uppercase",
         display: "flex",
         flexDirection: "column",
+        width: '100%',
         textAlign: "center",
         justifyContent: "center",
         alignItems: "center"
@@ -51,9 +54,9 @@ export default function HCBStat({
           prefix={prefix}
         />
       ) : (
-        <h2 {...$.title({ fontWeight: 800 })}>{data}</h2>
+        <h2 {...$.title({ fontWeight: 800, fontSize})}>{data}</h2>
       )}
-      <div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
+      {label && (<div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
         <b
           {...$({
             fontSize: "0.7em",
@@ -62,7 +65,7 @@ export default function HCBStat({
         >
           {label}
         </b>
-      </div>
+      </div>)}
     </div>
   );
 }

@@ -11,14 +11,18 @@
     },
     "dependencies": {
         "confetti-js": "^0.0.18",
+        "d3-scale": "^4.0.2",
         "friendly-words": "^1.2.4",
+        "jwa": "^2.0.0",
         "next": "14.0.2",
         "prettier": "^3.1.0",
+        "prop-types": "^15.8.1",
         "react": "^18",
         "react-countup": "^6.5.0",
         "react-dom": "^18",
         "react-error-boundary": "^4.0.11",
         "react-insta-stories": "^2.6.2",
+        "react-simple-maps": "^3.0.0",
         "react-snowfall": "^1.2.1",
         "title": "^3.5.3"
     },
