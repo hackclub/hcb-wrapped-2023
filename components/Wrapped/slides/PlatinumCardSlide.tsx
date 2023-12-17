@@ -81,11 +81,47 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
           </p>
         </div>
       </div>
-
+      <style
+        dangerouslySetInnerHTML={{
+          __html: css
+        }}
+      />
       <Background />
     </div>
   );
 }
+
+const css = `
+  .platinumCard {
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 100%;
+    width: 22.75rem;
+    height: 14rem;
+    padding: 1.5rem;
+    position: relative;
+    background-repeat: no-repeat;
+    /* 120% to account for z-axis perspective */
+    background-size: 120%;
+    font-size: 1.25rem;
+    text-align: left;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+    transition: 0.25s ease-out transform;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    background: linear-gradient(
+        to bottom right,
+        #808080,
+        #ffffff 80%,
+        #808080
+    ) !important;
+    color: rgba(0, 0, 0, 0.4);
+    font-family: sans-serif;
+  }
+`
 
 PlatinumCardSlide.config = {
   bg: $.blue,
