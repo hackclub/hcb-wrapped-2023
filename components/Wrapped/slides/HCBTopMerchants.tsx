@@ -18,22 +18,20 @@ const additionalData: {
   },
   AMAZON: {
     image: "https://wisdom-stone.com/wp-content/uploads/amazon-logo.png",
-    color: $.orange
+    color: $.steel
   },
   "STICKER MULE": {
     image:
       "https://cdn.icon-icons.com/icons2/2699/PNG/512/stickermule_logo_icon_169715.png",
+    color: $.stickermule
+  },
+  "FIRST FOR INSPIRATION & R": {
+    image: "https://cloud-6ik9jo5u6-hack-club-bot.vercel.app/0image.png",
     color: $.red
   },
-  "KIT LENDER": {
-    image:
-      "https://cloud-4jlvg7r0t-hack-club-bot.vercel.app/0screenshot_2023-12-15_at_12.40.20___am.png",
-    color: $.green
-  },
-  "PREMIER COACH COMPANY INC": {
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Bus-logo.svg/2048px-Bus-logo.svg.png",
-    color: $.muted
+  "REVROBOTICS": {
+    image: "https://cloud-161bscnw9-hack-club-bot.vercel.app/0image.png",
+    color: $.orange
   }
 };
 
