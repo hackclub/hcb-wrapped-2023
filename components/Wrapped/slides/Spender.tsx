@@ -70,5 +70,6 @@ export default function Spender({ data }: SlideProps) {
 }
 
 Spender.config = {
-  bg: $.primary
+  bg: $.primary,
+  duration: 10_000,
 } satisfies SlideOptions;

@@ -171,5 +171,5 @@ export default function Start({ data, isPaused }: SlideProps) {
 
 Start.config = {
   bg: $.red,
-  duration: 10_000
+  duration: 15_000,
 } satisfies SlideOptions;

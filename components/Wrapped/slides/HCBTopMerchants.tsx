@@ -164,5 +164,6 @@ export default function HCBTopMerchants({ data }: SlideProps) {
 }
 
 HCBTopMerchants.config = {
-  bg: $.purple
+  bg: $.purple,
+  duration: 15_000,
 } satisfies SlideOptions;
