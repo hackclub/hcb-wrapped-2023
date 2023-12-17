@@ -122,6 +122,6 @@ const css = `
 
 PlatinumCardSlide.config = {
   bg: $.blue,
-  duration: 5000, // 5 seconds
+  duration: 5_000, // 5 seconds
   skipSlide: (data) => data.individual.platinumCard == undefined
 } satisfies SlideOptions;

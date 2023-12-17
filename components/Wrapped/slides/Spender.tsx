@@ -7,6 +7,11 @@ import CountUp from "react-countup";
 import { prettifyCategory } from "./HCBTopMerchants";
 
 export default function Spender({ data }: SlideProps) {
+  const roundTo2 = (decimal: number) =>
+    (Math.round((decimal + Number.EPSILON) * 100 * 100) / 100);
+  const percentile = roundTo2(1 - data.individual.ranking);
+  const ranking = roundTo2(data.individual.ranking);
+
   return (
     <>
       <h2 {...$.title({ marginBottom: $.s3 })}>💳</h2>
@@ -57,12 +62,21 @@ export default function Spender({ data }: SlideProps) {
           )} with them.`}
           background={$.blue}
         />
-        <HCBStat
-          topLabel="You spent more than"
-          data={100 - data.individual.ranking + "%"}
-          label="of other HCB users!"
-          background={$.green}
-        />
+        {data.individual.ranking <= 0.07 ? ( // Top 7% of spenders
+          <HCBStat
+            topLabel="Congrats! You're one of the top"
+            data={ranking + "%"}
+            label="of spenders!"
+            background={$.green}
+          />
+        ) : (
+          <HCBStat
+            topLabel="You spent more than"
+            data={percentile + "%"}
+            label="of other HCB users!"
+            background={$.green}
+          />
+        )}
       </div>
       <Background />
     </>
@@ -70,5 +84,6 @@ export default function Spender({ data }: SlideProps) {
 }
 
 Spender.config = {
-  bg: $.primary
+  bg: $.primary,
+  duration: 10_000,
 } satisfies SlideOptions;
