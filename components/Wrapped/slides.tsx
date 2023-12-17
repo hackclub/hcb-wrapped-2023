@@ -5,6 +5,7 @@ import HCBTopMerchants from "./slides/HCBTopMerchants";
 import HCBMapped from "./slides/HCBMapped";
 import OrgIntro from "./slides/OrgIntro";
 import OrgDetails from "./slides/OrgDetails";
+import PlatinumCardSlide from "./slides/PlatinumCardSlide";
 import Start from "./slides/Start";
 import Spender from "./slides/Spender";
 import WordCloud from "./slides/WordCloud";
@@ -60,6 +61,7 @@ export function generateSlidesOrder(data: WrappedData) {
     WordCloud,
     Hometown,
     ...orgSlides,
+    PlatinumCardSlide,
     Ending
   ];
 }
