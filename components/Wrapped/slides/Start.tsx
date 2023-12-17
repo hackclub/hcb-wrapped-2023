@@ -122,7 +122,7 @@ export default function Start({ data, isPaused }: SlideProps) {
           marginBottom: $.s1
         })}
       >
-        Welcome {firstName}; 2023 was a big year on HCB for you.
+        Welcome {firstName}; 2023 was a big year on HCB for you.{" "}
         <b>
           You spent over{" "}
           {USDollarNoCents.format(
