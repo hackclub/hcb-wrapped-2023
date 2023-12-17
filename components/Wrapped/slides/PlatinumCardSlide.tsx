@@ -1,7 +1,6 @@
 import $ from "@/utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
-import styles from "@/styles/PlatinumCardSlide.module.css";
 
 export default function PlatinumCardSlide({ data }: SlideProps) {
   return (
@@ -11,31 +10,29 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
         flexDirection: "column",
         flexGrow: 1,
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
+        paddingLeft: $.s2,
         height: "100%"
       }}
     >
       <h1
         {...$.title({
           color: "white",
-          alignSelf: "start",
-          justifySelf: "flex-start"
+          marginBottom: $.s4
         })}
       >
-        On the first day of April, you  earned yourself a one-of-a-kind exclusive HCB Platinum Card. April Fools? 
+        On the first day of April, you  earned yourself a one-of-a-kind exclusive HCB Platinum Card. <i>April Fools?</i>
       </h1>
 
       <div
         style={{
           display: "flex",
-          flexGrow: 1,
-          height: "100%",
           justifyContent: "center",
           flexDirection: "column",
           overflow: "auto"
         }}
       >
-        <div className={styles.platinumCard}>
+        <div className="platinum-card">
           <div
             style={{
               opacity: "50%",
@@ -92,7 +89,7 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
 }
 
 const css = `
-  .platinumCard {
+  .platinum-card {
     margin: 0 auto;
     display: flex;
     justify-content: flex-end;
@@ -125,6 +122,6 @@ const css = `
 
 PlatinumCardSlide.config = {
   bg: $.blue,
-  duration: 5_000, // 5 seconds
+  duration: 5000, // 5 seconds
   skipSlide: (data) => data.individual.platinumCard == undefined
 } satisfies SlideOptions;
