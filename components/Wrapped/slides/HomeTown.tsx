@@ -5,7 +5,7 @@ import Background from "../components/Background";
 import HCBStat from "../components/HCBStat";
 import CountUp from "react-countup";
 
-export default function Spender({ data }: SlideProps) {
+export default function Hometown({ data }: SlideProps) {
   let location = Object.keys(
     Object.entries(data.individual.spendingByLocation)
       .sort(([, a], [, b]) => b - a)
@@ -69,6 +69,12 @@ export default function Spender({ data }: SlideProps) {
   );
 }
 
-Spender.config = {
-  bg: $.yellow
+Hometown.config = {
+  bg: $.yellow,
+  skipSlide: (data) => Math.abs(
+  (Object.values(
+    Object.entries(data.individual.spendingByLocation)
+      .sort(([, a], [, b]) => b - a)
+      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+  )[0] as number) / 100) < 200
 } satisfies SlideOptions;
