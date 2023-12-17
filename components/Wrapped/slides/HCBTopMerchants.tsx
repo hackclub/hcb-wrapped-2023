@@ -42,15 +42,61 @@ export function prettifyCategory(c: string) {
   c = c.replaceAll("_", " ");
   switch (c) {
     case "travel agencies tour operators":
-      return "airlines";
+      return "travel";
     case "eating places restaurants":
       return "restaurants";
     case "hotels motels and resorts":
       return "hotels";
     case "airlines air carriers":
       return "airlines";
+    case "stationery_stores_office_and_school_supply_stores":
     case "stationary office supplies printing and writing paper":
       return "stationary";
+    case "direct marketing combination catalog and retail merchant":
+      return "marketing";
+    case "miscellaneous publishing and printing":
+      return "printing and publishing"
+    case "charitable and social service organizations fundraising":
+      return "charitable fundraising"
+    case "cable satellite and other pay television and radio":
+      return "cable and television"
+    case "wires money order":
+      return "money wires";
+    case "miscellaneous specialty retail":
+    case "miscellaneous business services":
+      return "miscellaneous";
+    case "photographic_photocopy_microfilm_equipment_and_supplies":
+    case "commercial photography art and graphics":
+      return "photography and art";
+    case "miscellaneous apparel and accessory shops":
+      return "apparel and accessory";
+    case "postal services government only":
+      return "postal services";
+    case "miscellaneous_home_furnishing_specialty_stores":
+    case "furniture home furnishings and equipment stores except appliances":
+      return "home furnishings";
+    case "gift_card_novelty_and_souvenir_shops":
+      return "gifts";
+    case "truck_utility_trailer_rentals":
+      return "truck rentals";
+    case "music_stores_musical_instruments_pianos_and_sheet_music":
+      return "music stores";
+    case "medical_dental_ophthalmic_and_hospital_equipment_and_supplies":
+      return "medical equipment";
+    case "medical_dental_ophthalmic_and_hospital_equipment_and_supplies":
+      return "medical equipment";
+    case "precious_stones_and_metals_watches_and_jewelry":
+    case "jewelry_stores_watches_clocks_and_silverware_stores":
+      return "jewelry stores";
+    case "telecommunication_equipment_and_telephone_sales":
+      return "telecommunication";
+    case "sewing_needlework_fabric_and_piece_goods_stores":
+      return "sewing and fabrics";
+    case "sewing_needlework_fabric_and_piece_goods_stores":
+      return "sewing and fabrics";
+    case "miscellaneous_apparel_and_accessory_shops":
+    case "mens_and_boys_clothing_and_accessories_stores":
+      return "clothing stores";
     default:
       return c;
   }
