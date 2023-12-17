@@ -30,18 +30,27 @@ export default function HCB({ data }: SlideProps) {
             width: "100%"
           })}
         >
-          <HCBStat
-            data={data.hcb.organizations.new}
-            label="new organizations"
-            background={$.yellow}
-            isNumber
-          />
-          <HCBStat
-            data={data.hcb.users.new}
-            label="new users"
-            background={$.cyan}
-            isNumber
-          />
+          <div
+            {...$({
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "16px",
+              width: "100%"
+            })}
+          >
+            <HCBStat
+              data={data.hcb.organizations.new}
+              label="new organizations"
+              background={$.yellow}
+              isNumber
+            />
+            <HCBStat
+              data={data.hcb.users.new}
+              label="new users"
+              background={$.cyan}
+              isNumber
+            />
+          </div>
           <HCBStat
             data={Math.abs(data.hcb.spent / 100)}
             label="spent by organizations"
@@ -56,10 +65,12 @@ export default function HCB({ data }: SlideProps) {
             isNumber
             prefix="$"
           />
+          <img src="https://cloud-q1u33t4vk-hack-club-bot.vercel.app/0amount.png" style={{borderRadius: '12px'}} />
         </div>
         <div
           {...$({
             margin: `${$.s3} auto`,
+            marginBottom: '0px',
             fontSize: "0.9em",
             width: "80%",
             color: "white",
@@ -76,5 +87,6 @@ export default function HCB({ data }: SlideProps) {
 }
 
 HCB.config = {
-  bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg)`
+  bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg)`,
+  duration: 100000
 } satisfies SlideOptions;
