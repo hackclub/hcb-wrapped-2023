@@ -9,6 +9,7 @@ const additionalData: {
   [key: string]: {
     image: string;
     color: string;
+    name?: string;
   };
 } = {
   PAYPAL: {
