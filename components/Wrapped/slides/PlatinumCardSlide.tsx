@@ -22,7 +22,7 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
           justifySelf: "flex-start"
         })}
       >
-        April Fools!
+        On the first day of April, you  earned yourself a one-of-a-kind exclusive HCB Platinum Card. April Fools? 
       </h1>
 
       <div
