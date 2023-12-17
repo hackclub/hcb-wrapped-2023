@@ -10,6 +10,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@types/d3-scale": "^4.0.8",
         "confetti-js": "^0.0.18",
         "d3-scale": "^4.0.2",
         "friendly-words": "^1.2.4",
