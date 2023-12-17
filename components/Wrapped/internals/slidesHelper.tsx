@@ -17,6 +17,7 @@ export interface SlideProps {
 export interface SlideOptions {
   bg?: string;
   bgImage?: string;
+  bgPattern?: string;
   duration?: number;
   skipSlide?: (data: WrappedData) => boolean;
 }
@@ -75,7 +76,12 @@ export default function Slides({ data }: { data: WrappedData }) {
                               backgroundSize: "cover",
                               backgroundPosition: "center bottom"
                             }
-                          : { background: "white" }),
+                          : Slide.config?.bgPattern
+                          ? {
+                              background: $.darkless,
+                              backgroundSize: '5px',
+                              backgroundImage: Slide.config?.bgPattern
+                            } : { background: "white" }),
                       width: "100%",
                       height: "100%",
                       paddingTop: $.s5,

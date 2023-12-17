@@ -2,7 +2,6 @@ import React from "react";
 import $ from "@/utils/theme";
 import HCB from "./slides/HCB";
 import HCBTopMerchants from "./slides/HCBTopMerchants";
-import HCBMapped from "./slides/HCBMapped";
 import OrgIntro from "./slides/OrgIntro";
 import OrgDetails from "./slides/OrgDetails";
 import PlatinumCardSlide from "./slides/PlatinumCardSlide";
@@ -45,7 +44,7 @@ export function generateSlidesOrder(data: WrappedData) {
           );
         }
         OrgSlide.config = {
-          bg: $.green,
+          bgPattern: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c0b8cd' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E")`,
           duration: 10000
         } satisfies SlideOptions;
         orgSlides.push(OrgSlide);
