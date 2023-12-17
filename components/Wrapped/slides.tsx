@@ -2,6 +2,7 @@ import React from "react";
 import $ from "@/utils/theme";
 import HCB from "./slides/HCB";
 import HCBTopMerchants from "./slides/HCBTopMerchants";
+import HCBMapped from "./slides/HCBMapped";
 import OrgIntro from "./slides/OrgIntro";
 import OrgDetails from "./slides/OrgDetails";
 import PlatinumCardSlide from "./slides/PlatinumCardSlide";
@@ -54,6 +55,7 @@ export function generateSlidesOrder(data: WrappedData) {
   return [
     Start,
     HCB,
+    HCBMapped,
     HCBTopMerchants,
     Spender,
     WordCloud,
