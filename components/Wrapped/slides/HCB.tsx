@@ -65,7 +65,12 @@ export default function HCB({ data }: SlideProps) {
             isNumber
             prefix="$"
           />
-          <img src="https://cloud-q1u33t4vk-hack-club-bot.vercel.app/0amount.png" style={{borderRadius: '12px'}} />
+          <div style={{position: "relative"}}>
+            <img src="https://cloud-q1u33t4vk-hack-club-bot.vercel.app/0amount.png" style={{borderRadius: '12px'}} />
+            <span style={{position: "absolute", bottom: "10px", right: "10px", textTransform: 'uppercase', color: $.muted, fontStyle: 'italic'}}>
+              Popular spending locations
+            </span>
+          </div>
         </div>
         <div
           {...$({
