@@ -88,5 +88,5 @@ export default function HCB({ data }: SlideProps) {
 
 HCB.config = {
   bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg)`,
-  duration: 100000
+  duration: 15_000,
 } satisfies SlideOptions;

@@ -71,6 +71,7 @@ export default function Hometown({ data }: SlideProps) {
 
 Hometown.config = {
   bg: $.yellow,
+  duration: 8_000,
   skipSlide: (data) => Math.abs(
   (Object.values(
     Object.entries(data.individual.spendingByLocation)

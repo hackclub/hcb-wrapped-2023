@@ -38,6 +38,7 @@ const themeUtils = {
   twitter: "#1da1f2",
   facebook: "#3b5998",
   instagram: "#e1306c",
+  stickermule: "#492A1A",
   createComponent(element: string, styles?: CSSProperties) {
     // @ts-ignore
     const { classes } = this;

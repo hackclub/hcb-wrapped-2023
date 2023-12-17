@@ -85,13 +85,15 @@ export default function Start({ data, isPaused }: SlideProps) {
   });
 
   const snowflakeSpeed = useTimedValue(
-    (x) => Math.round((1.6 ** (x / 430) / 550 + 3) * 100) / 100,
+    (x) => Math.round((1.6 ** (x / 1000) / 550 + 3) * 100) / 100,
     0 as number,
     50,
     !!isPaused
   );
 
   const test = useTimedValue((x) => x, 0 as number, 500, !!isPaused);
+
+  const firstName = data.individual.name.split(" ")[0]
 
   return (
     <div
@@ -120,7 +122,7 @@ export default function Start({ data, isPaused }: SlideProps) {
           marginBottom: $.s1
         })}
       >
-        Welcome {data.individual.name}; 2023 was a big year on HCB for you.
+        Welcome {firstName}; 2023 was a big year on HCB for you.{" "}
         <b>
           You spent over{" "}
           {USDollarNoCents.format(
@@ -169,5 +171,5 @@ export default function Start({ data, isPaused }: SlideProps) {
 
 Start.config = {
   bg: $.red,
-  duration: 10_000
+  duration: 15_000,
 } satisfies SlideOptions;
