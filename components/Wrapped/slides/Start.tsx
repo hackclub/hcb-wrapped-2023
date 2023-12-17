@@ -85,7 +85,7 @@ export default function Start({ data, isPaused }: SlideProps) {
   });
 
   const snowflakeSpeed = useTimedValue(
-    (x) => Math.round((1.6 ** (x / 430) / 550 + 3) * 100) / 100,
+    (x) => Math.round((1.6 ** (x / 1000) / 550 + 3) * 100) / 100,
     0 as number,
     50,
     !!isPaused
