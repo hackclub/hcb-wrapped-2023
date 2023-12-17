@@ -27,7 +27,7 @@ export default function HCBMapped({ data }: SlideProps) {
       "#be3d26",
       "#9a311f",
       "#782618",
-    ]);
+    ] as any);
   return (
     <>
       <div
@@ -55,9 +55,9 @@ export default function HCBMapped({ data }: SlideProps) {
                     key={geo.rsmKey}
                     geography={geo}
                     fill={
-                      cur
+                      (cur
                         ? colorScale(cur)
-                        : `#ececec`
+                        : `#ececec`) as any
                     }
                   />
                 );

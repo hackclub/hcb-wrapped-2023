@@ -10,6 +10,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@types/d3-scale": "^4.0.8",
         "confetti-js": "^0.0.18",
         "d3-scale": "^4.0.2",
         "friendly-words": "^1.2.4",
@@ -32,6 +33,7 @@
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "@types/react-simple-maps": "^3.0.4",
         "@types/title": "^3.4.3",
         "typescript": "^5"
     }
