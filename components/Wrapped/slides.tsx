@@ -10,7 +10,7 @@ import Spender from "./slides/Spender";
 import WordCloud from "./slides/WordCloud";
 import Hometown from "./slides/HomeTown";
 import Ending from "./slides/Ending";
-import HCBSection from "./slides/HcbSection";
+import HCBSection from "./slides/HCBSection";
 import type { WrappedData, OrgData } from "@/components/Wrapped/utils/data";
 import type { SlideProps, SlideOptions } from "./internals/slidesHelper";
 
