@@ -20,7 +20,7 @@ export default function HCB({ data }: SlideProps) {
         <h1
           {...$.headline({ fontSize: "2em", marginTop: "0px", color: "white" })}
         >
-          It was a BIG year.
+          And that's a wrap; what a year.
         </h1>
         <div
           {...$({

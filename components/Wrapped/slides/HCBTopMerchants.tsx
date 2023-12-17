@@ -128,7 +128,7 @@ export default function HCBTopMerchants({ data }: SlideProps) {
           <h1
             {...$.headline({ fontSize: "2em", margin: "0px", color: "white" })}
           >
-            Oh the places we spent at!
+            The far reaches of our dollar bills 💸
           </h1>
           <p {...$.lead({ color: "white", marginTop: $.s1 })}>
             HCB cards were used at{" "}
@@ -198,7 +198,7 @@ export default function HCBTopMerchants({ data }: SlideProps) {
             }
           })}
         >
-          Most money was spent at {categories[0]}, {categories[1]},{" "}
+          The most popular places were {categories[0]}, {categories[1]},{" "}
           {categories[2]}, {categories[3]}, and {categories[4]}.
         </div>
         <Background />
