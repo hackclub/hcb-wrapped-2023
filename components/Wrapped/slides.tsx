@@ -53,13 +53,13 @@ export function generateSlidesOrder(data: WrappedData) {
 
   return [
     Start,
-    HCB,
-    HCBTopMerchants,
     Spender,
     PlatinumCardSlide,
     WordCloud,
     Hometown,
     ...orgSlides,
+    HCB,
+    HCBTopMerchants,
     Ending
   ];
 }
