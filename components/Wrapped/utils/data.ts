@@ -44,6 +44,7 @@ export interface SpendingByUser {
 
 export interface IndividualData {
     name: string;
+    firstName: string;
     id: number;
     totalMoneySpent: number;
     spendingByDate: {
@@ -103,6 +104,7 @@ export interface WrappedData {
 export default {
     individual: {
         name: "Orpheus",
+        firstName: "Orpheus",
         id: 1,
         totalMoneySpent: 0.0,
         spendingByDate: {
@@ -477,8 +479,10 @@ export function generateTestData() {
     let organizations = generateTestOrganizations();
     let newOrganizations = getRandomArbitrary(40, 1000);
     let newUsers = getRandomArbitrary(newOrganizations, 1500);
+    let firstName = faker.person.firstName()
     let individual = {
-        name: faker.person.firstName(),
+        name: firstName + " " + faker.person.lastName(),
+        firstName,
         id: 1,
         totalMoneySpent,
         ranking: overallRankingBracket / 20,
