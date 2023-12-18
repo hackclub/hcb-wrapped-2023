@@ -15,7 +15,7 @@ export default function Spender({ data }: SlideProps) {
   return (
     <>
       <h2 {...$.title({ marginBottom: $.s3 })}>💳</h2>
-      <h1 {...$.title({ marginBottom: $.s4 })}>
+      <h1 {...$.title({ marginBottom: $.s4, fontSize: '2.8em' })}>
         And look at you big spender! You spent $
         <CountUp end={Math.abs(data.individual.totalMoneySpent / 100)} /> this
         year.
