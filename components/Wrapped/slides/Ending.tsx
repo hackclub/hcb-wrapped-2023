@@ -60,6 +60,6 @@ export default function Ending({ data }: SlideProps) {
 }
 
 Ending.config = {
-  bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-e7mx9x46z-hack-club-bot.vercel.app/0toast.jpg)`,
+  bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-qsamaseg5-hack-club-bot.vercel.app/0bmc_1372-min.jpg)`,
   duration: 3000
 } satisfies SlideOptions;
