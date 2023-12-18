@@ -8,14 +8,14 @@ import { prettifyCategory } from "./HCBTopMerchants";
 
 export default function Spender({ data }: SlideProps) {
   const roundTo2 = (decimal: number) =>
-    (Math.round((decimal + Number.EPSILON) * 100 * 100) / 100);
+    Math.round((decimal + Number.EPSILON) * 100 * 100) / 100;
   const percentile = roundTo2(1 - data.individual.ranking);
   const ranking = roundTo2(data.individual.ranking);
 
   return (
     <>
       <h2 {...$.title({ marginBottom: $.s3 })}>💳</h2>
-      <h1 {...$.title({ marginBottom: $.s4, fontSize: '2.8em' })}>
+      <h1 {...$.title({ marginBottom: $.s4, fontSize: "2.8em" })}>
         And look at you big spender! You spent $
         <CountUp end={Math.abs(data.individual.totalMoneySpent / 100)} /> this
         year.
@@ -44,13 +44,13 @@ export default function Spender({ data }: SlideProps) {
         />
         <HCBStat
           topLabel="Your favourite type of business were"
-          data={
-            prettifyCategory(Object.keys(
+          data={prettifyCategory(
+            Object.keys(
               Object.entries(data.individual.spendingByCategory)
                 .sort(([, a], [, b]) => b - a)
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-            )[0])
-          }
+            )[0]
+          )}
           label={`businesses. You spent ${USDollarNoCents.format(
             Math.abs(
               (Object.values(
@@ -85,5 +85,5 @@ export default function Spender({ data }: SlideProps) {
 
 Spender.config = {
   bg: $.primary,
-  duration: 10_000,
+  duration: 10_000
 } satisfies SlideOptions;

@@ -20,7 +20,7 @@ export default function HCB({ data }: SlideProps) {
         <h1
           {...$.headline({ fontSize: "2em", marginTop: "0px", color: "white" })}
         >
-          And that's a wrap; what a year.
+          That's a wrap; what a year.
         </h1>
         <div
           {...$({
@@ -65,9 +65,21 @@ export default function HCB({ data }: SlideProps) {
             isNumber
             prefix="$"
           />
-          <div style={{position: "relative"}}>
-            <img src="https://cloud-q1u33t4vk-hack-club-bot.vercel.app/0amount.png" style={{borderRadius: '12px'}} />
-            <span style={{position: "absolute", bottom: "10px", right: "10px", textTransform: 'uppercase', color: $.muted, fontStyle: 'italic'}}>
+          <div style={{ position: "relative" }}>
+            <img
+              src="https://cloud-q1u33t4vk-hack-club-bot.vercel.app/0amount.png"
+              style={{ borderRadius: "12px" }}
+            />
+            <span
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                right: "10px",
+                textTransform: "uppercase",
+                color: $.muted,
+                fontStyle: "italic"
+              }}
+            >
               Popular spending locations
             </span>
           </div>
@@ -75,7 +87,7 @@ export default function HCB({ data }: SlideProps) {
         <div
           {...$({
             margin: `${$.s3} auto`,
-            marginBottom: '0px',
+            marginBottom: "0px",
             fontSize: "0.9em",
             width: "80%",
             color: "white",
@@ -93,5 +105,5 @@ export default function HCB({ data }: SlideProps) {
 
 HCB.config = {
   bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg)`,
-  duration: 15_000,
+  duration: 15_000
 } satisfies SlideOptions;

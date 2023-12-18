@@ -93,7 +93,7 @@ export default function Start({ data, isPaused }: SlideProps) {
 
   const test = useTimedValue((x) => x, 0 as number, 500, !!isPaused);
 
-  const firstName = data.individual.name.split(" ")[0]
+  const firstName = data.individual.name.split(" ")[0];
 
   return (
     <div
@@ -171,5 +171,5 @@ export default function Start({ data, isPaused }: SlideProps) {
 
 Start.config = {
   bg: $.red,
-  duration: 15_000,
+  duration: 15_000
 } satisfies SlideOptions;

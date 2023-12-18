@@ -28,7 +28,7 @@ export default function HCBStat({
         textTransform: "uppercase",
         display: "flex",
         flexDirection: "column",
-        width: '100%',
+        width: "100%",
         textAlign: "center",
         justifyContent: "center",
         alignItems: "center"
@@ -54,18 +54,28 @@ export default function HCBStat({
           prefix={prefix}
         />
       ) : (
-        <h2 {...$.title({ fontWeight: 800, fontSize})}>{data}</h2>
-      )}
-      {label && (<div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
-        <b
-          {...$({
-            fontSize: "0.7em",
-            fontWeight: 800
+        <h2
+          {...$.title({
+            fontWeight: 800,
+            fontSize,
+            overflowWrap: "break-word"
           })}
         >
-          {label}
-        </b>
-      </div>)}
+          {data}
+        </h2>
+      )}
+      {label && (
+        <div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
+          <b
+            {...$({
+              fontSize: "0.7em",
+              fontWeight: 800
+            })}
+          >
+            {label}
+          </b>
+        </div>
+      )}
     </div>
   );
 }

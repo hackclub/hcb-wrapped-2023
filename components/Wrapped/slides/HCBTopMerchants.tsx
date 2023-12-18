@@ -29,9 +29,9 @@ const additionalData: {
   "FIRST FOR INSPIRATION & R": {
     image: "https://cloud-6ik9jo5u6-hack-club-bot.vercel.app/0image.png",
     color: $.red,
-    name: 'FIRST Robotics'
+    name: "FIRST Robotics"
   },
-  "REVROBOTICS": {
+  REVROBOTICS: {
     image: "https://cloud-161bscnw9-hack-club-bot.vercel.app/0image.png",
     color: $.orange
   }
@@ -55,11 +55,11 @@ export function prettifyCategory(c: string) {
     case "direct marketing combination catalog and retail merchant":
       return "marketing";
     case "miscellaneous publishing and printing":
-      return "printing and publishing"
+      return "printing and publishing";
     case "charitable and social service organizations fundraising":
-      return "charitable fundraising"
+      return "charitable fundraising";
     case "cable satellite and other pay television and radio":
-      return "cable and television"
+      return "cable and television";
     case "wires money order":
       return "money wires";
     case "miscellaneous specialty retail":
@@ -183,7 +183,9 @@ export default function HCBTopMerchants({ data }: SlideProps) {
                   }}
                 />
                 <div style={{ padding: "12px", color: $.white }}>
-                  <b>{title(additionalData[merchant[0]]?.name || merchant[0])}</b>
+                  <b>
+                    {title(additionalData[merchant[0]]?.name || merchant[0])}
+                  </b>
                   <br /> {USDollarNoCents.format(merchant[1] / 100)}
                 </div>
               </div>
@@ -211,5 +213,5 @@ export default function HCBTopMerchants({ data }: SlideProps) {
 
 HCBTopMerchants.config = {
   bg: $.purple,
-  duration: 15_000,
+  duration: 15_000
 } satisfies SlideOptions;

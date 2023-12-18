@@ -33,8 +33,8 @@ export default function HCBSection({ data }: SlideProps) {
           end={data.hcb.users.total}
           duration={1.5}
           {...$.title({ fontWeight: 800 })}
-        />
-        {" "}users
+        />{" "}
+        users
       </h1>
       {/* <HCBStat
         data={data.hcb.users.total}

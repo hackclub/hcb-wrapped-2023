@@ -4,7 +4,7 @@ import type {
   OrgData,
   WrappedData,
   SpendingByDate,
-  date,
+  date
 } from "@/components/Wrapped/utils/data";
 import { prettifyCategory } from "./HCBTopMerchants";
 import { USDollarNoCents } from "../utils/formatter";
@@ -23,16 +23,16 @@ function findMonthWithMaxAbsoluteSum(data: SpendingByDate) {
     }
   }
   let maxMonth = Object.keys(monthSums).reduce((a, b) =>
-    monthSums[a] > monthSums[b] ? a : b,
+    monthSums[a] > monthSums[b] ? a : b
   );
   return new Date(maxMonth + "-01").toLocaleString("default", {
-    month: "long",
+    month: "long"
   });
 }
 
 export default function OrgDetails({
   data,
-  organization,
+  organization
 }: {
   data: WrappedData;
   organization: OrgData & { name: string };
@@ -40,31 +40,31 @@ export default function OrgDetails({
   let location = Object.keys(
     Object.entries(organization.spendingByLocation)
       .sort(([, a], [, b]) => b - a)
-      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {}),
+      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
   )[0].split(" - ");
-  
-  const backgrounds = [$.blue, $.green, $.orange, $.red]
-  
+
+  const backgrounds = [$.blue, $.green, $.orange, $.red];
+
   const shuffledBackgrounds = backgrounds.sort(() => Math.random() - 0.5);
-  
+
   const gridItems = [
     <HCBStat
       data={
         Object.keys(
           Object.entries(organization.spendingByMerchant)
             .sort(([, a], [, b]) => b - a)
-            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {}),
+            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
         )[0]
       }
       label={`raked in a lot of cash (${USDollarNoCents.format(
-          Math.abs(
-            (Object.values(
-              Object.entries(organization.spendingByMerchant)
-                .sort(([, a], [, b]) => b - a)
-                .reduce((r, [k, v]) => ({ ...r, [k]: v }), {}),
-            )[0] as number) / 100,
-          ),
-        )}) from ${organization.name}`}
+        Math.abs(
+          (Object.values(
+            Object.entries(organization.spendingByMerchant)
+              .sort(([, a], [, b]) => b - a)
+              .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+          )[0] as number) / 100
+        )
+      )}) from ${organization.name}`}
       background={shuffledBackgrounds[0]}
     />,
     <HCBStat
@@ -73,17 +73,17 @@ export default function OrgDetails({
         Object.keys(
           Object.entries(organization.spendingByCategory)
             .sort(([, a], [, b]) => b - a)
-            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {}),
-        )[0],
+            .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+        )[0]
       )}
       label={`... but they're wrong. Those ${USDollarNoCents.format(
         Math.abs(
           (Object.values(
             Object.entries(organization.spendingByCategory)
               .sort(([, a], [, b]) => b - a)
-              .reduce((r, [k, v]) => ({ ...r, [k]: v }), {}),
-          )[0] as number) / 100,
-        ),
+              .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+          )[0] as number) / 100
+        )
       )} were justified.`}
       background={shuffledBackgrounds[1]}
     />,
@@ -92,7 +92,7 @@ export default function OrgDetails({
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         gap: 10,
-        width: "100%",
+        width: "100%"
       }}
     >
       <HCBStat
@@ -106,7 +106,7 @@ export default function OrgDetails({
       />
       <HCBStat
         data={USDollarNoCents.format(
-          organization.spendingByUser[data.individual.id] / 100,
+          organization.spendingByUser[data.individual.id] / 100
         )}
         label={`...you spent a fair bit for ${organization.name}`}
         background={shuffledBackgrounds[3]}
@@ -115,13 +115,15 @@ export default function OrgDetails({
     </div>,
     <div
       style={{
-        backgroundImage: `url(https://wrapped-maps.hackclub.dev/api/maps?location=${encodeURIComponent(JSON.stringify(location))})`,
+        backgroundImage: `url(https://wrapped-maps.hackclub.dev/api/maps?location=${encodeURIComponent(
+          JSON.stringify(location)
+        )})`,
         backgroundSize: "cover",
         minHeight: "120px",
         backgroundPosition: "center",
         width: "100%",
         borderRadius: "12px",
-        position: "relative",
+        position: "relative"
       }}
     >
       <div
@@ -134,16 +136,16 @@ export default function OrgDetails({
           left: 8,
           padding: "4px 8px",
           fontSize: "0.8em",
-          fontWeight: 800,
+          fontWeight: 800
         }}
       >
         {organization.name}'s Spending Town
       </div>
     </div>
-  ]
-  
+  ];
+
   const shuffledGridItems = gridItems.sort(() => Math.random() - 0.5);
-  
+
   return (
     <div
       style={{
@@ -156,10 +158,18 @@ export default function OrgDetails({
         color: "black",
         textAlign: "center",
         gap: 10,
-        width: "100%",
+        width: "100%"
       }}
     >
-      <h1 {...$.title({ animation: "fadeIn 1s", width: "100%", marginTop: '24px', color: 'white', marginBottom: $.s2 })}>
+      <h1
+        {...$.title({
+          animation: "fadeIn 1s",
+          width: "100%",
+          marginTop: "24px",
+          color: "white",
+          marginBottom: $.s2
+        })}
+      >
         {organization.name}
       </h1>
       {shuffledGridItems}

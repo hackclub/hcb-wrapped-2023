@@ -72,10 +72,12 @@ export default function Hometown({ data }: SlideProps) {
 Hometown.config = {
   bg: $.yellow,
   duration: 8_000,
-  skipSlide: (data) => Math.abs(
-  (Object.values(
-    Object.entries(data.individual.spendingByLocation)
-      .sort(([, a], [, b]) => b - a)
-      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-  )[0] as number) / 100) < 200
+  skipSlide: (data) =>
+    Math.abs(
+      (Object.values(
+        Object.entries(data.individual.spendingByLocation)
+          .sort(([, a], [, b]) => b - a)
+          .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+      )[0] as number) / 100
+    ) < 200
 } satisfies SlideOptions;

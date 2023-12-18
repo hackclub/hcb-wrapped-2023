@@ -77,11 +77,12 @@ export default function Slides({ data }: { data: WrappedData }) {
                               backgroundPosition: "center bottom"
                             }
                           : Slide.config?.bgPattern
-                          ? {
-                              background: $.darkless,
-                              backgroundSize: '5px',
-                              backgroundImage: Slide.config?.bgPattern
-                            } : { background: "white" }),
+                            ? {
+                                background: $.darkless,
+                                backgroundSize: "5px",
+                                backgroundImage: Slide.config?.bgPattern
+                              }
+                            : { background: "white" }),
                       width: "100%",
                       height: "100%",
                       paddingTop: $.s5,
