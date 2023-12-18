@@ -43,16 +43,46 @@ function deterministicShuffle(seed: string, array: any[]) {
 
 export default function OrgDetails({
   data,
-  organization
+  organization,
+  position
 }: {
   data: WrappedData;
   organization: OrgData & { name: string };
+  position: number;
 }) {
   let location = Object.keys(
     Object.entries(organization.spendingByLocation)
       .sort(([, a], [, b]) => b - a)
       .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
   )[0].split(" - ");
+  
+  let copy = {
+    merchant: [
+      (amount: string) => `raked in a lot of cash (${amount}) from ${organization.name}`,
+      (amount: string) => `was ${organization.name}'s #1 merchant (${amount})`,
+      (amount: string) => `was your team's favorite store (${amount})`
+    ],
+    categoryTop: [
+      () => 'Your team spent a lot on',
+      () => 'Certain people might say you all spend too much on...',
+      () => `Your #1 spending category was:`
+    ],
+    categoryBottom: [
+      (amount: string) => `${amount} to be exact. Too much?`,
+      (amount: string) => `... but they're wrong. Those ${amount} were justified.`,
+      (amount: string) => `Your spent ${amount} with them!`
+    ],
+    month: [
+      (month: string) => organization.name + " was very busy in " + month,
+      (month: string) => `Your team spent & raised the most in ${month}.`,
+      (month: string) => `Everything was happening in ${month}, it was your busiest.`
+    ],
+    youSpent: [
+      () => `...you spent a fair bit for ${organization.name}`,
+      () => `That's the total you spent on ${organization.name} cards!`,
+      () => `All that spent by you for ${organization.name}.`
+    ]
+  }
 
   const backgrounds = [$.blue, $.green, $.orange, $.red];
 
@@ -67,7 +97,7 @@ export default function OrgDetails({
             .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
         )[0]
       }
-      label={`raked in a lot of cash (${USDollarNoCents.format(
+      label={copy.merchant[position](USDollarNoCents.format(
         Math.abs(
           (Object.values(
             Object.entries(organization.spendingByMerchant)
@@ -75,11 +105,11 @@ export default function OrgDetails({
               .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
           )[0] as number) / 100
         )
-      )}) from ${organization.name}`}
+      ))}
       background={shuffledBackgrounds[0]}
     />,
     <HCBStat
-      topLabel="Certain people might say you spend too much on..."
+      topLabel={copy.categoryTop[position]()}
       data={prettifyCategory(
         Object.keys(
           Object.entries(organization.spendingByCategory)
@@ -87,15 +117,15 @@ export default function OrgDetails({
             .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
         )[0]
       )}
-      label={`... but they're wrong. Those ${USDollarNoCents.format(
-        Math.abs(
-          (Object.values(
-            Object.entries(organization.spendingByCategory)
-              .sort(([, a], [, b]) => b - a)
-              .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-          )[0] as number) / 100
-        )
-      )} were justified.`}
+      label={copy.categoryBottom[position](USDollarNoCents.format(
+          Math.abs(
+            (Object.values(
+              Object.entries(organization.spendingByCategory)
+                .sort(([, a], [, b]) => b - a)
+                .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+            )[0] as number) / 100
+          )
+        ))}
       background={shuffledBackgrounds[1]}
     />,
     <div
@@ -107,11 +137,7 @@ export default function OrgDetails({
       }}
     >
       <HCBStat
-        data={
-          organization.name +
-          " was very busy in " +
-          findMonthWithMaxAbsoluteSum(organization.spendingByDate)
-        }
+        data={copy.month[position](findMonthWithMaxAbsoluteSum(organization.spendingByDate))}
         background={shuffledBackgrounds[2]}
         fontSize={"1.3em"}
       />
@@ -119,7 +145,7 @@ export default function OrgDetails({
         data={USDollarNoCents.format(
           organization.spendingByUser[data.individual.id] / 100
         )}
-        label={`...you spent a fair bit for ${organization.name}`}
+        label={copy.youSpent[position]()}
         background={shuffledBackgrounds[3]}
         fontSize={"2.4em"}
       />

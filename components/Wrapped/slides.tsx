@@ -35,11 +35,12 @@ export function generateSlidesOrder(data: WrappedData) {
           data.organizations[a].spendingByUser[data.individual.id]
       )
       .slice(0, 3)
-      .map((org) => {
+      .map((org, index) => {
         function OrgSlide({ data }: SlideProps) {
           return (
             <OrgDetails
               data={data}
+              position={index}
               organization={{ name: org, ...data.organizations[org] }}
             />
           );

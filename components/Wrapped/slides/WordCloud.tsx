@@ -18,7 +18,8 @@ export default function WordCloud({ data }: SlideProps) {
         style={{
           marginTop: -22,
           marginBottom: 8,
-          textAlign: "center"
+          textAlign: "center",
+          textTransform: 'uppercase'
         }}
       >
         <h1>
