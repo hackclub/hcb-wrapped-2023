@@ -13,6 +13,7 @@
         "@types/d3-scale": "^4.0.8",
         "confetti-js": "^0.0.18",
         "d3-scale": "^4.0.2",
+        "fast-shuffle": "^6.0.1",
         "friendly-words": "^1.2.4",
         "jwa": "^2.0.0",
         "next": "14.0.2",
@@ -25,6 +26,7 @@
         "react-insta-stories": "^2.6.2",
         "react-simple-maps": "^3.0.0",
         "react-snowfall": "^1.2.1",
+        "seed-shuffle": "^1.0.0",
         "title": "^3.5.3"
     },
     "devDependencies": {

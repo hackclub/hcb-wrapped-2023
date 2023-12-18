@@ -10,6 +10,7 @@ import { prettifyCategory } from "./HCBTopMerchants";
 import { USDollarNoCents } from "../utils/formatter";
 import HCBStat from "../components/HCBStat";
 import Background from "../components/Background";
+import shuffle from "fast-shuffle";
 
 function findMonthWithMaxAbsoluteSum(data: SpendingByDate) {
   let monthSums: { [key: string]: number } = {};
@@ -30,6 +31,16 @@ function findMonthWithMaxAbsoluteSum(data: SpendingByDate) {
   });
 }
 
+function deterministicShuffle(seed: string, array: any[]) {
+  let intSeed = 0;
+  for (let i = 0; i < seed.length; i++) {
+    intSeed += seed.charCodeAt(i);
+  }
+
+  const shuffler = shuffle(intSeed);
+  return shuffler(array);
+}
+
 export default function OrgDetails({
   data,
   organization
@@ -45,7 +56,7 @@ export default function OrgDetails({
 
   const backgrounds = [$.blue, $.green, $.orange, $.red];
 
-  const shuffledBackgrounds = backgrounds.sort(() => Math.random() - 0.5);
+  const shuffledBackgrounds = deterministicShuffle(organization.name, backgrounds);
 
   const gridItems = [
     <HCBStat
@@ -144,7 +155,7 @@ export default function OrgDetails({
     </div>
   ];
 
-  const shuffledGridItems = gridItems.sort(() => Math.random() - 0.5);
+  const shuffledGridItems = deterministicShuffle(organization.name, gridItems);
 
   return (
     <div
