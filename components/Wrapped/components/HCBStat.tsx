@@ -58,7 +58,7 @@ export default function HCBStat({
           {...$.title({
             fontWeight: 800,
             fontSize,
-            overflowWrap: "break-word"
+            overflowWrap: "anywhere"
           })}
         >
           {data}
