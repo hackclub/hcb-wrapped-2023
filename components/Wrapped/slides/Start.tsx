@@ -85,8 +85,6 @@ export default function Start({ data, isPaused }: SlideProps) {
     !!isPaused
   );
 
-  const test = useTimedValue((x) => x, 0 as number, 500, !!isPaused);
-
   const firstName = data.individual.firstName || data.individual.name.split(" ")[0];
 
   return (
