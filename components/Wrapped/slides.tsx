@@ -29,7 +29,15 @@ export function generateSlidesOrder(data: WrappedData) {
     Object.keys(data.organizations)
       .filter((org) => data.organizations[org].spent > 0)
       .filter(
-        (org) => data.organizations[org].spendingByUser[data.individual.id]
+        (org) => {
+          const orgData = data.organizations[org]
+          const isNotEmpty = (obj: Object) => Object.keys(obj).length !== 0
+          return orgData.spendingByUser[data.individual.id] &&
+          isNotEmpty(orgData.spendingByCategory) &&
+          isNotEmpty(orgData.spendingByDate) &&
+          isNotEmpty(orgData.spendingByLocation) &&
+          isNotEmpty(orgData.spendingByMerchant)
+        }
       )
       .sort(
         (a, b) =>
