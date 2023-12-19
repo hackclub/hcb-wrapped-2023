@@ -56,14 +56,7 @@ export default function Hometown({ data }: SlideProps) {
           )
         )}{" "}
         there, you've became a bit of a local hero in{" "}
-        {location[2]
-          ? location[2] == "000000"
-            ? location.slice(0, 2).reverse().join(", ")
-            : location.reverse().join(", ")
-          : location[1] == "000000"
-            ? location.slice(0, 1).reverse().join(", ")
-            : location.reverse().join(", ")}
-        .
+        {location.reverse()[0]}.
       </h1>
       <Background />
     </div>
