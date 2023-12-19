@@ -60,7 +60,7 @@ export default function HCB({ data }: SlideProps) {
             prefix="$"
           />
           <HCBStat
-            data={data.hcb.raised / 100}
+            data={3_370_711_34}
             label="raised on HCB"
             background={$.orange}
             isNumber
