@@ -1,1 +1,3 @@
-This package will get published to npm using the code in the @/components/Wrapped folder. Please see @/compilation/run.js for more info
+# @hackclub/hcb-wrapped
+
+Wrapped for HCB! https://hackclub.com/hcb
