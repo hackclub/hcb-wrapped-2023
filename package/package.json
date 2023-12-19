@@ -22,6 +22,16 @@
     },
     "peerDependencies": {
       "react": "^18.2.0"
+    },
+    "dependencies": {
+      "confetti-js": "^0.0.18",
+      "fast-shuffle": "^6.0.1",
+      "react-countup": "^6.5.0",
+      "react-insta-stories": "^2.6.2",
+      "react-simple-maps": "^3.0.0",
+      "react-snowfall": "^1.2.1",
+      "seed-shuffle": "^1.0.0",
+      "title": "^3.5.3"
     }
   }
   

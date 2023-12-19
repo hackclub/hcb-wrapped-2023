@@ -5,7 +5,6 @@ import { generateSlidesOrder } from "../slides";
 import Stories from "react-insta-stories";
 import { Action, Story } from "react-insta-stories/dist/interfaces";
 import useViewport from "../hooks/useViewport";
-import { ErrorBoundary } from "react-error-boundary";
 
 export interface SlideProps {
   data: WrappedData;
@@ -91,16 +90,12 @@ export default function Slides({ data }: { data: WrappedData }) {
                       paddingRight: $.s3
                     }}
                   >
-                    <ErrorBoundary
-                      fallbackRender={({ error }) => <p>{error.message}</p>}
-                    >
-                      <Slide
-                        data={data}
-                        action={action}
-                        isPaused={isPaused}
-                        config={storyConfig as any}
-                      />
-                    </ErrorBoundary>
+                    <Slide
+                      data={data}
+                      action={action}
+                      isPaused={isPaused}
+                      config={storyConfig as any}
+                    />
                   </div>
                 ),
                 duration: config?.duration
