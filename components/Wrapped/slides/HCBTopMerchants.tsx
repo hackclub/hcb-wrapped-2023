@@ -159,6 +159,7 @@ export default function HCBTopMerchants({ data }: SlideProps) {
             .slice(0, 5)
             .map((merchant, i) => (
               <div
+                key={`top-merchant-${i}`}
                 {...$({
                   display: "flex",
                   borderRadius: "8px",

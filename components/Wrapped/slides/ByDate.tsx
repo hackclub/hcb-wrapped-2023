@@ -88,7 +88,7 @@ export default function ByDate({ data }: SlideProps) {
         {shape.map((month, i) => {
           const passed = shape.slice(0, i).map(x => x.length).reduce((a, b) => a + b, 0)
           return (
-            <div>
+            <div key={month.month}>
               <b style={{marginBottom: '8px'}}>{month.month}</b>
               <div className="grid-container mb3">
                 {[...Array(month.start)].map((_, buffer) => (

@@ -98,6 +98,7 @@ export default function OrgDetails({
 
   const gridItems: GridItem[] = [
     (edges, rand, i) => <HCBStat
+      key="top-merchant"
       data={
         Object.keys(
           Object.entries(organization.spendingByMerchant)
@@ -124,6 +125,7 @@ export default function OrgDetails({
       }}
     />,
     (edges, rand, i) => <HCBStat
+      key="top-category"
       topLabel={copy.categoryTop[position]()}
       data={prettifyCategory(
         Object.keys(
@@ -151,6 +153,7 @@ export default function OrgDetails({
       }}
     />,
     (edges, rand, i) => <div
+      key="top-month"
       style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -187,6 +190,7 @@ export default function OrgDetails({
       />
     </div>,
     (edges, rand, i) => <div
+      key="spending-town"
       style={{
         backgroundImage: `url(https://wrapped-maps.hackclub.dev/api/maps?location=${encodeURIComponent(
           JSON.stringify(location)
