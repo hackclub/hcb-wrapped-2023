@@ -1,4 +1,4 @@
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
