@@ -1,5 +1,5 @@
 import React from "react";
-import $ from "@/utils/theme";
+import $ from "./utils/theme";
 import HCB from "./slides/HCB";
 import HCBTopMerchants from "./slides/HCBTopMerchants";
 import OrgIntro from "./slides/OrgIntro";
@@ -12,7 +12,7 @@ import WordCloud from "./slides/WordCloud";
 import Hometown from "./slides/HomeTown";
 import Ending from "./slides/Ending";
 import HCBSection from "./slides/HCBSection";
-import type { WrappedData, OrgData } from "@/components/Wrapped/utils/data";
+import type { WrappedData, OrgData } from "./utils/data";
 import type { SlideProps, SlideOptions } from "./internals/slidesHelper";
 
 export function generateSlidesOrder(data: WrappedData) {

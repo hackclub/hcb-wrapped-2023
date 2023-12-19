@@ -1,9 +1,9 @@
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import type { SlideOptions, SlideProps } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
 import Snowfall from "react-snowfall";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function useTimeout(callback: { [key: number]: () => void }) {
   useEffect(() => {

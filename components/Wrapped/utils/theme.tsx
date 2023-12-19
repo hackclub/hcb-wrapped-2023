@@ -1,4 +1,4 @@
-import { CSSProperties, createElement } from "react";
+import React, { CSSProperties, createElement } from "react";
 
 const themeUtils = {
   s1: "var(--spacing-1)",

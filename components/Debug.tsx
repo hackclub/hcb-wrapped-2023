@@ -1,6 +1,6 @@
 // sourced from https://github.com/hackathon-zip/hackathon.zip/blob/main/components/Debug.tsx
 
-import $ from "@/utils/theme";
+import $ from "./Wrapped/utils/theme";
 
 export function syntaxHighlight(json: string, comment?: string) {
   if (!json) return ""; //no JSON from response

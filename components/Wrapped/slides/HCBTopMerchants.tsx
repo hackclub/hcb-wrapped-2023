@@ -1,9 +1,10 @@
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
 import { USDollarNoCents } from "../utils/formatter";
 import HCBStat from "../components/HCBStat";
 import title from "title";
+import React from "react";
 
 const additionalData: {
   [key: string]: {

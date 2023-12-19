@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 
 export default function useViewport(update?: boolean) {
     const [width, setWidth] = useState(0);

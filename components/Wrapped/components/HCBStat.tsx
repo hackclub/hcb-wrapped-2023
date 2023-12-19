@@ -1,4 +1,4 @@
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import React from "react";
 import CountUp from "react-countup";
 

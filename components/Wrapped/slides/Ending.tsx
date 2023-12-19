@@ -1,11 +1,11 @@
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
 import { USDollarNoCents } from "../utils/formatter";
 import HCBStat from "../components/HCBStat";
 // @ts-ignore
 import ConfettiGenerator from "confetti-js";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function Ending({ data }: SlideProps) {
   useEffect(() => {

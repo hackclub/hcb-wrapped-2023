@@ -1,10 +1,11 @@
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
 import HCBStat from "../components/HCBStat";
 import CountUp from "react-countup";
 import { prettifyCategory } from "./HCBTopMerchants";
+import React from "react";
 
 export default function Spender({ data }: SlideProps) {
   const roundTo2 = (decimal: number) =>
