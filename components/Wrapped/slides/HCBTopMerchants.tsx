@@ -157,14 +157,15 @@ export default function HCBTopMerchants({ data }: SlideProps) {
           })
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5)
-            .map((merchant) => (
+            .map((merchant, i) => (
               <div
                 {...$({
                   display: "flex",
                   borderRadius: "8px",
                   background: additionalData[merchant[0]]?.color || $.blue,
                   animate$fadeIn: {
-                    args: ["fromLeft"]
+                    args: ["fromLeft"],
+                    delay: `${i * 100}ms`
                   }
                 })}
               >
