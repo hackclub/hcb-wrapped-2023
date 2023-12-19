@@ -37,7 +37,7 @@ export default function Ending({ data }: SlideProps) {
             marginBottom: $.s2
           })}
         >
-          That was fun, thank you for joining us!
+          That was fun, thank you for joining us, {data.individual.firstName}!
         </h1>
         <p
           {...$.subtitle({
