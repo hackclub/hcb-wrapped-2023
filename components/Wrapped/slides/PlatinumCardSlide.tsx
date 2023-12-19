@@ -1,4 +1,5 @@
 import $ from "../utils/theme";
+import React from "react";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
 
