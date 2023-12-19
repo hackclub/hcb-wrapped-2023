@@ -73,7 +73,7 @@ export default function Slides({ data }: { data: WrappedData }) {
 
   return (
     <>
-      {padding ? <button style={{ marginRight: 10 }} onClick={handlePrev}>
+      {padding ? <button style={{ marginRight: 10, height: '50px', width: '50px' }} onClick={handlePrev}>
         &#x25C0;
       </button> : null}
       <div
@@ -153,7 +153,7 @@ export default function Slides({ data }: { data: WrappedData }) {
             }}
           />}
       </div>
-      {padding ? <button style={{ marginLeft: 10 }} onClick={handleNext}>
+      {padding ? <button style={{ marginLeft: 10, height: '50px', width: '50px' }} onClick={handleNext}>
         &#x25B6;
       </button> : null}
     </>
