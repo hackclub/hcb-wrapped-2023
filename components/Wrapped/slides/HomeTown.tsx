@@ -56,7 +56,7 @@ export default function Hometown({ data }: SlideProps) {
             )[0] as number) / 100
           )
         )}{" "}
-        there, you've became a bit of a local hero with company located in{" "}
+        there, you've became a bit of a local hero with companies located in{" "}
         {location[2]
           ? location[2] == "000000"
             ? location.slice(0, 2).reverse().join(", ")
