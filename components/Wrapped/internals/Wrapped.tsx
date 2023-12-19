@@ -1178,4 +1178,21 @@ td {
     }
 }
 
+.grid-container {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   grid-template-rows: repeat(6, 1fr);
+   gap: 2px;
+   max-width: 100%;
+}
+
+.grid-item {
+   border: 0.2px solid #222;
+   border-radius: 1px;
+   padding-left: 0px!important;
+   padding-right: 0px!important;
+   padding-bottom: 0px!important;
+   padding-top: calc(100% - 1px)!important;
+}
+
 `;

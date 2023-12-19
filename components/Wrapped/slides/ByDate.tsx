@@ -101,7 +101,7 @@ export default function ByDate({ data }: SlideProps) {
                     return (<>{entry > 0 ? (
                       <div
                         key={`${month.month}-${x}`}
-                        className="grid-item tooltipped tooltipped--s"
+                        className="grid-item"
                         title={label}
                         style={{ backgroundColor: bg }}
                       />
