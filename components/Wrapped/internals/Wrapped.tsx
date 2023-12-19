@@ -8,9 +8,30 @@
 import { WrappedData } from "../utils/data";
 import $ from "../utils/theme";
 import Slides from "./slidesHelper";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function HcbWrapped({ data }: { data: WrappedData }) {
+  const [started, setStarted] = useState(false);
+
+  const start = () => setStarted(true);
+
+  useEffect(() => {
+    if (started == true) {
+      // @ts-ignore
+      if (window?.__wrapped_audio_playing) return;
+
+      // @ts-ignore
+      window.__wrapped_audio_playing = true;
+
+      const audio = new Audio('https://cloud-pvz2o3jpg-hack-club-bot.vercel.app/0bg-music__1__audio.mp4');
+
+      audio.loop = true;
+      audio.currentTime = 500;
+      audio.volume = 0.4;
+      audio.play();
+    }
+  }, [started]);
+
   return (
     <>
       <div
@@ -26,7 +47,9 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
           alignItems: "center"
         })}
       >
-        <Slides data={data} />
+        {started ? <Slides data={data} /> : <div>
+          <button onClick={start}>Start</button>
+        </div>}
       </div>
       <div className="bg-wrapper">
         <div className="bg"></div>
