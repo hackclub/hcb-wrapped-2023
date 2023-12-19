@@ -1,37 +1,36 @@
 {
     "name": "@hackclub/hcb-wrapped",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "",
     "main": "dist/index.js",
     "files": [
-      "dist"
+        "dist"
     ],
     "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
     },
     "scripts": {
-      "build": "tsc --jsx react"
+        "build": "tsc --jsx react"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
-      "typescript": "^5.1.6"
+        "typescript": "^5.1.6"
     },
     "peerDependencies": {
-      "react": "^18.2.0"
+        "react": "^18.2.0"
     },
     "dependencies": {
-      "confetti-js": "^0.0.18",
-      "fast-shuffle": "^6.0.1",
-      "react-countup": "^6.5.0",
-      "react-insta-stories": "^2.6.2",
-      "react-simple-maps": "^3.0.0",
-      "react-snowfall": "^1.2.1",
-      "seed-shuffle": "^1.0.0",
-      "title": "^3.5.3"
+        "confetti-js": "^0.0.18",
+        "fast-shuffle": "^6.0.1",
+        "react-countup": "^6.5.0",
+        "react-insta-stories": "^2.6.2",
+        "react-simple-maps": "^3.0.0",
+        "react-snowfall": "^1.2.1",
+        "seed-shuffle": "^1.0.0",
+        "title": "^3.5.3"
     }
-  }
-  
+}
