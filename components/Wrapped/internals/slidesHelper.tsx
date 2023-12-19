@@ -126,6 +126,11 @@ export default function Slides({ data }: { data: WrappedData }) {
           height={768}
           keyboardNavigation
         />
+        {mobile && <style
+            dangerouslySetInnerHTML={{
+              __html: bgCSSMobile
+            }}
+          />}
       </div>
       {padding ? <button style={{ marginLeft: 10 }} onClick={handleNext}>
         &#x25B6;
@@ -133,3 +138,11 @@ export default function Slides({ data }: { data: WrappedData }) {
     </>
   );
 }
+
+let bgCSSMobile = `
+.bg-wrapper {
+   display: none!important;
+}
+#main-wrapped-part {
+   background: black!important;
+}`
