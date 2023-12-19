@@ -91,8 +91,11 @@ export default function OrgDetails({
 
   const shuffledBackgrounds = deterministicShuffle(organization.name, backgrounds);
 
-  const gridItems = [
-    <HCBStat
+  type Edge = "top" | "bottom";
+  type GridItem = (edges: Edge[]) => JSX.Element
+
+  const gridItems: GridItem[] = [
+    edges => <HCBStat
       data={
         Object.keys(
           Object.entries(organization.spendingByMerchant)
@@ -110,8 +113,15 @@ export default function OrgDetails({
         )
       ))}
       background={shuffledBackgrounds[0]}
+      style$={{
+        animate$fadeIn: {
+          args: edges.includes("bottom") ? ["fromBottom"] : ["fromRight"],
+          duration: "1s",
+          delay: "150ms"
+        }
+      }}
     />,
-    <HCBStat
+    edges => <HCBStat
       topLabel={copy.categoryTop[position]()}
       data={prettifyCategory(
         Object.keys(
@@ -130,8 +140,15 @@ export default function OrgDetails({
           )
         ))}
       background={shuffledBackgrounds[1]}
+      style$={{
+        animate$fadeIn: {
+          args: edges.includes("bottom") ? ["fromBottom"] : ["fromLeft"],
+          duration: "1s",
+          delay: "150ms"
+        }
+      }}
     />,
-    <div
+    (edges, rand) => <div
       style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -143,6 +160,13 @@ export default function OrgDetails({
         data={copy.month[position](findMonthWithMaxAbsoluteSum(organization.spendingByDate))}
         background={shuffledBackgrounds[2]}
         fontSize={"1.3em"}
+        style$={{
+          animate$fadeIn: {
+            args: (edges.includes("bottom") && rand > 0.5) ? ["fromBottom"] : ["fromLeft"],
+            duration: "1s",
+            delay: "150ms"
+          }
+        }}
       />
       <HCBStat
         data={USDollarNoCents.format(
@@ -151,9 +175,16 @@ export default function OrgDetails({
         label={copy.youSpent[position]()}
         background={shuffledBackgrounds[3]}
         fontSize={"2.2em"}
+        style$={{
+          animate$fadeIn: {
+            args: (edges.includes("bottom") && rand <= 0.5) ? ["fromBottom"] : ["fromRight"],
+            duration: "1s",
+            delay: "150ms"
+          }
+        }}
       />
     </div>,
-    <div
+    edges => <div
       style={{
         backgroundImage: `url(https://wrapped-maps.hackclub.dev/api/maps?location=${encodeURIComponent(
           JSON.stringify(location)
@@ -184,8 +215,14 @@ export default function OrgDetails({
     </div>
   ];
 
-  const shuffledGridItems = deterministicShuffle(organization.name, gridItems);
-
+  const shuffledGridFunctions = deterministicShuffle(organization.name, gridItems);
+  const shuffledGridItems = shuffledGridFunctions.map((item, i) => {
+    const edges = [];
+    if (i == 0) edges.push("top");
+    if (i == shuffledGridFunctions.length - 1) edges.push("bottom");
+    return item(edges, Math.random());
+  });
+  
   return (
     <div
       {...$({
@@ -198,11 +235,7 @@ export default function OrgDetails({
         color: "black",
         textAlign: "center",
         gap: 10,
-        width: "100%",
-        animate$fadeIn: {
-          args: position == 0 ? ["fromLeft"] : position == 1 ? ["fromBottom"] : ["fromTop"],
-          duration: "2s"
-        }
+        width: "100%"
       })}
     >
       <h1
@@ -210,7 +243,11 @@ export default function OrgDetails({
           width: "100%",
           marginTop: "24px",
           color: "white",
-          marginBottom: $.s2
+          marginBottom: $.s2,
+          animate$fadeIn: {
+            args: position == 0 ? ["fromLeft"] : position == 1 ? ["fromTop"] : ["fromRight"],
+            duration: "1500ms"
+          }
         })}
       >
         {organization.name}
