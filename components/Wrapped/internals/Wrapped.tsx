@@ -54,17 +54,22 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
   }, []);
 
   useEffect(() => {
+    // @ts-ignore
+    if (window?.__wrapped_audio) return;
+    // @ts-ignore
+    window.__wrapped_audio = new Audio('https://cloud-auzh6ioja-hack-club-bot.vercel.app/041857.mp3');
+    // @ts-ignore
+    window.__wrapped_audio.loop = true;
+    // @ts-ignore
+    window.__wrapped_audio.currentTime = 500;
+    // @ts-ignore
+    window.__wrapped_audio.volume = 0.4;
+  }, []);
+
+  useEffect(() => {
     if (started == true) {
       // @ts-ignore
-      if (window?.__wrapped_audio) return;
-      // @ts-ignore
-      window.__wrapped_audio = new Audio('https://cloud-pvz2o3jpg-hack-club-bot.vercel.app/0bg-music__1__audio.mp4');
-      // @ts-ignore
-      window.__wrapped_audio.loop = true;
-      // @ts-ignore
-      window.__wrapped_audio.currentTime = 500;
-      // @ts-ignore
-      window.__wrapped_audio.volume = 0.4;
+      if (window?.__wrapped_audio_started) return;
       // @ts-ignore
       window.__wrapped_audio.play();
     }
