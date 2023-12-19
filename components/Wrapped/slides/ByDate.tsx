@@ -77,7 +77,7 @@ export default function ByDate({ data }: SlideProps) {
   return (
     <>
       <h1 {...$.title({ marginBottom: $.s3, marginTop: '-8px', fontSize: "2.8em" })}>
-        You were spending all year round.
+        You painted the town red.
       </h1>
       <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px'}}>
         {shape.map((month, i) => {
@@ -92,7 +92,7 @@ export default function ByDate({ data }: SlideProps) {
                 {[...Array(month.length)].map((_, x) => {
                     const entry = changeByDate[passed + x][1];
                     const label = changeByDate[passed + x][0];
-                    const bg = `rgba(57, 211, 83, ${Math.log(entry) / Math.log(max)})`;
+                    const bg = `rgba(255, 0, 0, ${Math.log(entry) / Math.log(max)})`;
                     return (<>{entry > 0 ? (
                       <div
                         key={`${month.month}-${x}`}
