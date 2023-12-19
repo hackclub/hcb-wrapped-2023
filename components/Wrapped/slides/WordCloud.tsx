@@ -79,6 +79,6 @@ export default function WordCloud({ data }: SlideProps) {
 WordCloud.config = {
   bg: $.white,
   duration: 8_000, // 8 seconds
-  skipSlide: () => false,
+  skipSlide: (data) => data.individual.words.length === 0,
   cache: data => [generateWordsUrl(data)]
 } satisfies SlideOptions;
