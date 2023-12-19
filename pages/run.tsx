@@ -23,23 +23,19 @@ export default function Run({ data, filename }: { data: WrappedData, filename: s
 // prevents hydration errors
 
 export async function getServerSideProps() {
-  // The wrapped (1).json file is located in the downloads folder
-  const downloads = "/Users/garyhtou/Downloads/Hack Club Downloads"
+  const folder = process.cwd()
 
-  // The filename may change, so we need to find the latest one. For example:
-  // wrapped (2).json
-  // The higher the number, the more recent the file
-  const files = await fs.readdir(downloads);
+  const files = await fs.readdir(folder);
   const nums = files
     .map((file) => file.match(/wrapped \((\d+)\)\.json/)?.[1])
     .filter((num) => num !== undefined)
     .map((num) => parseInt(num as string));
 
   const num = Math.max(...nums);
-  const filename = `wrapped (${num}).json`;
+  const filename = num == -Infinity ? "wrapped.json" : `wrapped (${num}).json`;
 
   // Attempt to load data from wrapped.json
-  const filePath = path.join( "/Users/garyhtou/Downloads/Hack Club Downloads", filename);
+  const filePath = path.join(folder, filename);
   console.log({ filePath });
 
   const jsonData = await fs.readFile(filePath, "utf-8");
