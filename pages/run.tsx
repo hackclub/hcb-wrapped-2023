@@ -23,7 +23,7 @@ export default function Run({ data, filename }: { data: WrappedData, filename: s
 // prevents hydration errors
 
 export async function getServerSideProps() {
-  const folder = process.cwd()
+  const folder = process.cwd() // You can change this path to your downloads folder
 
   const files = await fs.readdir(folder);
   const nums = files
