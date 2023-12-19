@@ -931,3 +931,13 @@ td {
    padding-bottom: 0px!important;
    padding-top: calc(100% - 1px)!important;
 }
+
+@media only screen and (max-width: 460px) {
+  .bg-wrapper {
+     display: none!important;
+  }
+  #main-wrapped-part {
+     background: black!important;
+  }
+}
+
