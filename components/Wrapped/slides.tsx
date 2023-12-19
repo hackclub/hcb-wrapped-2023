@@ -9,6 +9,7 @@ import PlatinumCardSlide from "./slides/PlatinumCardSlide";
 import Start from "./slides/Start";
 import Spender from "./slides/Spender";
 import WordCloud from "./slides/WordCloud";
+import Receipts from "./slides/Receipts";
 import Hometown from "./slides/HomeTown";
 import Ending from "./slides/Ending";
 import HCBSection from "./slides/HCBSection";
@@ -59,6 +60,7 @@ export function generateSlidesOrder(data: WrappedData) {
     Spender,
     ByDate,
     PlatinumCardSlide,
+    Receipts,
     WordCloud,
     Hometown,
     ...orgSlides,

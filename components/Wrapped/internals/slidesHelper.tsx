@@ -15,6 +15,7 @@ export interface SlideProps {
 
 export interface SlideOptions {
   bg?: string;
+  conditionalBg?: (data: WrappedData) => string;
   bgImage?: string;
   bgPattern?: string;
   duration?: number;
@@ -81,7 +82,8 @@ export default function Slides({ data }: { data: WrappedData }) {
                                 backgroundSize: "5px",
                                 backgroundImage: Slide.config?.bgPattern
                               }
-                            : { background: "white" }),
+                            : Slide.config?.conditionalBg
+                            ? { background: Slide.config?.conditionalBg(data) } : { background: "white" }),
                       width: "100%",
                       height: "100%",
                       paddingTop: $.s5,

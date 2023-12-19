@@ -87,7 +87,7 @@ export default function ByDate({ data }: SlideProps) {
               <b style={{marginBottom: '8px'}}>{month.month}</b>
               <div className="grid-container mb3">
                 {[...Array(month.start)].map((_, buffer) => (
-                  <div key={`${month.month}-${buffer}-buffer`} className="grid-item card"></div>
+                  <div key={`${month.month}-${buffer}-buffer`} className="grid-item"></div>
                 ))}
                 {[...Array(month.length)].map((_, x) => {
                     const entry = changeByDate[passed + x][1];
@@ -101,7 +101,7 @@ export default function ByDate({ data }: SlideProps) {
                         style={{ backgroundColor: bg }}
                       />
                     ) : (
-                      <div key={`${month.month}-${x}`} className="grid-item card" title={label}></div>
+                      <div key={`${month.month}-${x}`} className="grid-item" title={label}></div>
                     )}</>)
                   })}
               </div>
