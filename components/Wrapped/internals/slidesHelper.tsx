@@ -13,13 +13,16 @@ export interface SlideProps {
   config?: Story;
 }
 
+type DataFunction<T> = (data: WrappedData) => T;
+
 export interface SlideOptions {
   bg?: string;
   conditionalBg?: (data: WrappedData) => string;
   bgImage?: string;
   bgPattern?: string;
   duration?: number;
-  skipSlide?: (data: WrappedData) => boolean;
+  cache?: DataFunction<string[]>
+  skipSlide?: DataFunction<boolean>;
 }
 
 type WrappedSlideComponent = (props: SlideProps) => JSX.Element;

@@ -18,17 +18,17 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
   useEffect(() => {
     if (started == true) {
       // @ts-ignore
-      if (window?.__wrapped_audio_playing) return;
-
+      if (window?.__wrapped_audio) return;
       // @ts-ignore
-      window.__wrapped_audio_playing = true;
-
-      const audio = new Audio('https://cloud-pvz2o3jpg-hack-club-bot.vercel.app/0bg-music__1__audio.mp4');
-
-      audio.loop = true;
-      audio.currentTime = 500;
-      audio.volume = 0.4;
-      audio.play();
+      window.__wrapped_audio = new Audio('https://cloud-pvz2o3jpg-hack-club-bot.vercel.app/0bg-music__1__audio.mp4');
+      // @ts-ignore
+      window.__wrapped_audio.loop = true;
+      // @ts-ignore
+      window.__wrapped_audio.currentTime = 500;
+      // @ts-ignore
+      window.__wrapped_audio.volume = 0.4;
+      // @ts-ignore
+      window.__wrapped_audio.play();
     }
   }, [started]);
 

@@ -2,7 +2,31 @@ import $ from "../utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
 import React from "react";
+import { WrappedData } from "../utils/data";
 
+function generateWordsUrl (data: WrappedData) {
+  return           "https://quickchart.io/wordcloud" +
+  "?text=" +
+  data.individual.words.join(",") +
+  "&colors=" +
+  encodeURIComponent(
+    JSON.stringify(
+      `#ec3750
+#ff8c37
+#f1c40f
+#33d6a6
+#5bc0de
+#338eda
+#a633d6`.split("\n")
+    )
+  ) +
+  "&useWordList=true" +
+  "&width=400" +
+  "&height=600" +
+  "&fontFamily=" + encodeURIComponent("system-ui, sans-serif") +
+  "&fontScale=50"
+;
+}
 export default function WordCloud({ data }: SlideProps) {
   return (
     <>
@@ -34,26 +58,7 @@ export default function WordCloud({ data }: SlideProps) {
       </div>
       <img
         src={
-          "https://quickchart.io/wordcloud" +
-          "?text=" +
-          data.individual.words.join(",") +
-          "&colors=" +
-          encodeURIComponent(
-            JSON.stringify(
-              `#ec3750
-#ff8c37
-#f1c40f
-#33d6a6
-#5bc0de
-#338eda
-#a633d6`.split("\n")
-            )
-          ) +
-          "&useWordList=true" +
-          "&width=400" +
-          "&height=600" +
-          "&fontFamily=sans-serif" +
-          "&fontScale=50"
+          generateWordsUrl(data)
         }
       />
       <Background />
@@ -64,5 +69,6 @@ export default function WordCloud({ data }: SlideProps) {
 WordCloud.config = {
   bg: $.white,
   duration: 8_000, // 8 seconds
-  skipSlide: () => false
+  skipSlide: () => false,
+  cache: data => [generateWordsUrl(data)]
 } satisfies SlideOptions;
