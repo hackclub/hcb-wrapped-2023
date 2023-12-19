@@ -29,20 +29,15 @@ export default function HCBSection({ data }: SlideProps) {
           }
         })}
       >
-        Now let's explore the impact of our{" "}
+        Now let's explore the impact of the{" "}
         <CountUp
           end={data.hcb.users.total}
           duration={1.5}
           {...$.title({ fontWeight: 800 })}
+          style={{fontSize: "2.5em"}}
         />{" "}
-        users
+        <span style={{whiteSpace: "nowrap"}}>users across HCB</span>
       </h1>
-      {/* <HCBStat
-        data={data.hcb.users.total}
-        label="users"
-        background={$.yellow}
-        isNumber
-      /> */}
       <h2
         {...$.title({
           marginBottom: $.s3,

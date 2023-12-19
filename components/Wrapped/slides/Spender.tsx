@@ -52,7 +52,7 @@ export default function Spender({ data }: SlideProps) {
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
             )[0]
           )}
-          label={`businesses. You spent ${USDollarNoCents.format(
+          label={`You spent ${USDollarNoCents.format(
             Math.abs(
               (Object.values(
                 Object.entries(data.individual.spendingByCategory)

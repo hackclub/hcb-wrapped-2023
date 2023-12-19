@@ -74,12 +74,14 @@ export default function ByDate({ data }: SlideProps) {
   const max = Math.max(
     ...Object.values(data.individual.spendingByDate)
   )
+  const maxDate = new Date(changeByDate.find(([_, v]) => v === max)?.[0] as string)
+
   return (
     <>
-      <h1 {...$.title({ marginBottom: $.s3, marginTop: '-8px', fontSize: "2.8em" })}>
+      <h1 {...$.title({ marginBottom: $.s2, marginTop: '-32px', fontSize: "2.8em" })}>
         You painted the town red.
       </h1>
-      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px'}}>
+      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px'}}>
         {shape.map((month, i) => {
           const passed = shape.slice(0, i).map(x => x.length).reduce((a, b) => a + b, 0)
           return (
@@ -109,6 +111,7 @@ export default function ByDate({ data }: SlideProps) {
           )
         })}
       </div>
+      <p>Your spending on {maxDate.toLocaleDateString('en-us', { day:"numeric", month:"long"})} skyrocketed to {USDollarNoCents.format(max)}</p>
       <Background />
     </>
   );
