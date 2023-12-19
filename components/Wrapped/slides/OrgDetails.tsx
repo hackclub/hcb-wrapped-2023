@@ -150,7 +150,7 @@ export default function OrgDetails({
         )}
         label={copy.youSpent[position]()}
         background={shuffledBackgrounds[3]}
-        fontSize={"2.4em"}
+        fontSize={"2.2em"}
       />
     </div>,
     <div
