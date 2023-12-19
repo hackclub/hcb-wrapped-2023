@@ -46,7 +46,7 @@ export default function Spender({ data }: SlideProps) {
           background={$.orange}
         />
         <HCBStat
-          topLabel="Your favourite type of business were"
+          topLabel="Your favorite type of business were"
           data={prettifyCategory(
             Object.keys(
               Object.entries(data.individual.spendingByCategory)
