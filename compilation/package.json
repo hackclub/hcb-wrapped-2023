@@ -2,5 +2,6 @@
     "type": "module",
     "scripts": {
         "compile": "node run.js"
-    }
+    },
+    "version": "0.0.1"
 }

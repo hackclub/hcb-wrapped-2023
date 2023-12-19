@@ -32,13 +32,27 @@ const _src = path("../package/src");
 const _dist = path("../package/dist");
 
 async function main () {
-    console.log('Removing', _src);
-    await wait$(3_000);
+    console.log('> Removing', _src);
+    await wait$(2_000);
 
     log$(await $`
         rm -rf ${_src}
+    `);
+
+    console.log('> Copying files');
+
+    log$(await $`
         cp -r ${_wrapped} ${_src}
     `);
+
+    console.log('> Building JavaScript');
+
+    log$(await $`
+        cd ${_package}
+        yarn build
+    `);
+
+    console.log('> Done!');
 }
 
 main();
