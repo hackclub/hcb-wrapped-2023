@@ -67,13 +67,13 @@ export default function OrgDetails({
     ],
     categoryTop: [
       () => 'Your team spent a lot on',
-      () => 'Certain people might say you all spend too much on...',
+      () => 'Certain people might say you all spend too much on',
       () => `Your #1 spending category was:`
     ],
     categoryBottom: [
       (amount: string) => `${amount} to be exact. Too much?`,
-      (amount: string) => `... but they're wrong. Those ${amount} were justified.`,
-      (amount: string) => `Your spent ${amount} with them!`
+      (amount: string) => `but they're wrong. Those ${amount} were justified.`,
+      (amount: string) => `Yall spent ${amount} with them!`
     ],
     month: [
       (month: string) => organization.name + " was very busy in " + month,
@@ -82,7 +82,7 @@ export default function OrgDetails({
     ],
     youSpent: [
       () => `...you spent a fair bit for ${organization.name}`,
-      () => `That's the total you spent on ${organization.name} cards!`,
+      () => `That's the total you spent on ${organization.name}!`,
       () => `All that spent by you for ${organization.name}.`
     ]
   }
