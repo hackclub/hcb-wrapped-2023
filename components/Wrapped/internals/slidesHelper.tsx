@@ -18,6 +18,7 @@ type DataFunction<T> = (data: WrappedData) => T;
 export interface SlideOptions {
   bg?: string;
   conditionalBg?: (data: WrappedData) => string;
+  conditionalBgImage?: (data: WrappedData) => string;
   bgImage?: string;
   bgPattern?: string;
   duration?: number;
@@ -59,6 +60,7 @@ export default function Slides({ data }: { data: WrappedData }) {
           slide.config.cache(data).map((src: any) => {
             return new Promise((resolve, reject) => {
               const img = new Image()
+              console.log(src)
               img.src = src
               img.onload = resolve
               img.onerror = reject
@@ -117,7 +119,9 @@ export default function Slides({ data }: { data: WrappedData }) {
                                   backgroundImage: Slide.config?.bgPattern
                                 }
                               : Slide.config?.conditionalBg
-                              ? { background: Slide.config?.conditionalBg(data) } : { background: "white" }),
+                              ? { background: Slide.config?.conditionalBg(data) } : Slide.config?.conditionalBgImage
+                              ? { background: Slide.config?.conditionalBgImage(data), backgroundSize: "cover",
+                                backgroundPosition: "center bottom" } : { background: "white" }),
                         width: "100%",
                         height: "100%",
                         paddingTop: $.s5,
