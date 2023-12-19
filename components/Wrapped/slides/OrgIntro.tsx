@@ -3,13 +3,21 @@ import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
 import React from "react";
+import { isNotEmpty } from "../slides";
 
 export default function OrgIntro({ data }: SlideProps) {
   const orgCount = Object.keys(data.organizations)
     .filter((org) => data.organizations[org].spent > 0)
-    .filter(
-      (org) => data.organizations[org].spendingByUser[data.individual.id]
-    ).length;
+    .filter((org) => {
+      const orgData = data.organizations[org];
+      return (
+        orgData.spendingByUser[data.individual.id] &&
+        isNotEmpty(orgData.spendingByCategory) &&
+        isNotEmpty(orgData.spendingByDate) &&
+        isNotEmpty(orgData.spendingByLocation) &&
+        isNotEmpty(orgData.spendingByMerchant)
+      );
+    }).length;
 
   return (
     <div

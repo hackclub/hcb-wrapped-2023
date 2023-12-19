@@ -16,6 +16,9 @@ import HCBSection from "./slides/HCBSection";
 import type { WrappedData, OrgData } from "./utils/data";
 import type { SlideProps, SlideOptions } from "./internals/slidesHelper";
 
+export const isEmpty = (obj: Object) => Object.keys(obj).length === 0
+export const isNotEmpty = (obj: Object) => !isEmpty(obj)
+
 export function generateSlidesOrder(data: WrappedData) {
   let orgSlides: any[] = [];
   if (
@@ -31,7 +34,6 @@ export function generateSlidesOrder(data: WrappedData) {
       .filter(
         (org) => {
           const orgData = data.organizations[org]
-          const isNotEmpty = (obj: Object) => Object.keys(obj).length !== 0
           return orgData.spendingByUser[data.individual.id] &&
           isNotEmpty(orgData.spendingByCategory) &&
           isNotEmpty(orgData.spendingByDate) &&

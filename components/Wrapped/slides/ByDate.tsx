@@ -122,5 +122,6 @@ export default function ByDate({ data }: SlideProps) {
 
 ByDate.config = {
   bg: $.white,
-  duration: 10_000
+  duration: 10_000,
+  skipSlide: (data) => Math.max(...Object.values(data.individual.spendingByDate)) === 0
 } satisfies SlideOptions;

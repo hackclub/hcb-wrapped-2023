@@ -6,6 +6,7 @@ import HCBStat from "../components/HCBStat";
 import CountUp from "react-countup";
 import { prettifyCategory } from "./HCBTopMerchants";
 import React from "react";
+import { isEmpty } from "../slides";
 
 export default function Spender({ data }: SlideProps) {
   const roundTo2 = (decimal: number) =>
@@ -109,5 +110,6 @@ export default function Spender({ data }: SlideProps) {
 
 Spender.config = {
   bg: $.primary,
-  duration: 10_000
+  duration: 10_000,
+  skipSlide: (data) => isEmpty(data.individual.spendingByMerchant) || isEmpty(data.individual.spendingByCategory)
 } satisfies SlideOptions;
