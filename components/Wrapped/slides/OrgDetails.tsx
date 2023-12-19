@@ -174,7 +174,7 @@ export default function OrgDetails({
         )}
         label={copy.youSpent[position]()}
         background={shuffledBackgrounds[3]}
-        fontSize={"2.2em"}
+        fontSize={"1.9em"}
         style$={{
           animate$fadeIn: {
             args: (edges.includes("bottom") && rand <= 0.5) ? ["fromBottom"] : ["fromRight"],
