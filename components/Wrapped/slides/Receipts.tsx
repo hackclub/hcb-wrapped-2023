@@ -57,6 +57,6 @@ export default function Receipts({ data }: SlideProps) {
 }
 
 Receipts.config = {
-  conditionalBg: (data) => data.individual.averageReceiptUploadTime > 604800 ? $.red : $.green,
+  conditionalBg: (data) => data.individual.averageReceiptUploadTime > 604800 || data.individual.lostReceiptCount > 50 ? $.red : $.green,
   duration: 10_000
 } satisfies SlideOptions;
