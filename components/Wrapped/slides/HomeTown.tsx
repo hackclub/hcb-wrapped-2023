@@ -29,7 +29,7 @@ export default function Hometown({ data }: SlideProps) {
         {...$.title({
           marginBottom: $.s3,
           animate$fadeIn: {
-            args: ["fromTop"],
+            args: ["fromLeft"],
             duration: "2s"
           }
         })}
@@ -40,7 +40,7 @@ export default function Hometown({ data }: SlideProps) {
         {...$.title({
           marginBottom: $.s4,
           animate$fadeIn: {
-            args: ["fromBottom"],
+            args: ["fromRight"],
             duration: "2s"
           }
         })}

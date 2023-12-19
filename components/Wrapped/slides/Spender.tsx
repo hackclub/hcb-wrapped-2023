@@ -22,7 +22,9 @@ export default function Spender({ data }: SlideProps) {
         year.
       </h1>
 
-      <div style={{ display: "flex", gap: 10, flexDirection: "column" }}>
+      <div {...$({ display: "flex", gap: 10, flexDirection: "column",animate$fadeIn: {
+        args: ["fromBottom"]
+      } })}>
         <HCBStat
           topLabel={`By spending ${USDollarNoCents.format(
             Math.abs(

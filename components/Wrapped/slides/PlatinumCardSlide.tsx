@@ -1,7 +1,6 @@
 import $ from "../utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
-import React from "react";
 
 export default function PlatinumCardSlide({ data }: SlideProps) {
   return (
@@ -22,17 +21,20 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
           marginBottom: $.s4
         })}
       >
-        On the first day of April, you earned yourself a one-of-a-kind exclusive
-        HCB Platinum Card. <i>April Fools?</i>
+        On the first day of April, you  earned yourself a one-of-a-kind exclusive HCB Platinum Card. <i>April Fools?</i>
       </h1>
 
       <div
-        style={{
+        {...$({
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
-          overflow: "auto"
-        }}
+          overflow: "auto",
+          animate$fadeIn: {
+            args: ["fromBottom"],
+            delay: "0.5s"
+          }
+        })}
       >
         <div className="platinum-card">
           <div
@@ -120,10 +122,10 @@ const css = `
     color: rgba(0, 0, 0, 0.4);
     font-family: sans-serif;
   }
-`;
+`
 
 PlatinumCardSlide.config = {
   bg: $.blue,
-  duration: 5_000, // 5 seconds
+  duration: 8000, // 8 seconds
   skipSlide: (data) => data.individual.platinumCard == undefined
 } satisfies SlideOptions;

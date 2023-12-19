@@ -77,7 +77,9 @@ export default function ByDate({ data }: SlideProps) {
   const maxDate = new Date(changeByDate.find(([_, v]) => v === max)?.[0] as string)
 
   return (
-    <>
+    <div {...$({animate$fadeIn: {
+        duration: "2s"
+      }})}>
       <h1 {...$.title({ marginBottom: $.s2, marginTop: '-32px', fontSize: "2.8em" })}>
         You painted the town red.
       </h1>
@@ -113,7 +115,7 @@ export default function ByDate({ data }: SlideProps) {
       </div>
       <p>Your spending on {maxDate.toLocaleDateString('en-us', { day:"numeric", month:"long"})} skyrocketed to {USDollarNoCents.format(max)}</p>
       <Background />
-    </>
+    </div>
   );
 }
 

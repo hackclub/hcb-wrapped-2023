@@ -188,7 +188,7 @@ export default function OrgDetails({
 
   return (
     <div
-      style={{
+      {...$({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -198,12 +198,15 @@ export default function OrgDetails({
         color: "black",
         textAlign: "center",
         gap: 10,
-        width: "100%"
-      }}
+        width: "100%",
+        animate$fadeIn: {
+          args: position == 0 ? ["fromLeft"] : position == 1 ? ["fromBottom"] : ["fromTop"],
+          duration: "2s"
+        }
+      })}
     >
       <h1
         {...$.title({
-          animation: "fadeIn 1s",
           width: "100%",
           marginTop: "24px",
           color: "white",

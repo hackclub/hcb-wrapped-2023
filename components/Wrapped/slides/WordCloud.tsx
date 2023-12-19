@@ -30,22 +30,29 @@ function generateWordsUrl (data: WrappedData) {
 export default function WordCloud({ data }: SlideProps) {
   return (
     <>
-      <h2
-        {...$.headline({
-          textAlign: "center",
-          fontSize: 25
-        })}
-        id="input"
-      >
-        You used lots of
-      </h2>
+      <div {...$({animate$fadeIn: {
+          args: ["fromTop"]
+        }})}>
+        <h2
+          {...$.headline({
+            textAlign: "center",
+            fontSize: 25
+          })}
+          id="input"
+        >
+          You used lots of
+        </h2>
+      </div>
       <div
-        style={{
+        {...$({
           marginTop: -22,
           marginBottom: 8,
           textAlign: "center",
-          textTransform: 'uppercase'
-        }}
+          textTransform: 'uppercase',
+          animate$fadeIn: {
+            args: ["fromBottom"]
+          }
+        })}
       >
         <h1>
           <span {...$.title({ color: $.red, fontSize: 65 })}>w</span>
@@ -60,6 +67,9 @@ export default function WordCloud({ data }: SlideProps) {
         src={
           generateWordsUrl(data)
         }
+        {...$({animate$fadeIn: {
+            args: ["fromBottom"]
+          }})}
       />
       <Background />
     </>

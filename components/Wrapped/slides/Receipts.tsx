@@ -47,7 +47,10 @@ export default function Receipts({ data }: SlideProps) {
         <span style={{color: "#095465", whiteSpace: "nowrap"}}>{formatDuration(data.individual.averageReceiptUploadTime)}</span>{" "}
         to upload them.
       </h1>
-      <h2 {...$.title({ marginTop: $.s3, color: 'white' })}><i>That's pretty {naughty ? "naughty" : "nice"} of you?</i></h2>
+      <h2 {...$.title({ marginTop: $.s3, color: 'white',animate$fadeIn: {
+        args: ["fromLeft"],
+        delay: "0.1s"
+      } })}><i>That's pretty {naughty ? "naughty" : "nice"} of you?</i></h2>
       <Background />
     </div>
   );
