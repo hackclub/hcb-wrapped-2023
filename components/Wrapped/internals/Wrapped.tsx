@@ -46,7 +46,6 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
           justifyContent: "center",
           alignItems: "center"
         })}
-        id="main-wrapped-part"
       >
         {started ? <Slides data={data} /> : <div>
           <button onClick={start}>Start</button>
