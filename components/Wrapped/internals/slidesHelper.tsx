@@ -51,6 +51,23 @@ export default function Slides({ data }: { data: WrappedData }) {
   }, [setIndex]);
 
   const slides = generateSlidesOrder(data).filter(({ config }: WrappedSlide) => !config?.skipSlide?.(data));
+  
+  useEffect(() => {
+    slides.map(async (slide) =>{
+      if(slide.config.cache){
+        await Promise.all(
+          slide.config.cache(data).map((src: any) => {
+            return new Promise((resolve, reject) => {
+              const img = new Image()
+              img.src = src
+              img.onload = resolve
+              img.onerror = reject
+            })
+          }),
+        )
+      }
+    })
+  }, []);
 
   return (
     <>
