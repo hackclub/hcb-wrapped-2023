@@ -1,6 +1,6 @@
 import { WrappedData } from "../utils/data";
 import $ from "../utils/theme";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { generateSlidesOrder } from "../slides";
 import Stories from "react-insta-stories";
 import { Action, Story } from "react-insta-stories/dist/interfaces";
@@ -32,7 +32,7 @@ export type WrappedSlide = WrappedSlideComponent & { config?: SlideOptions };
 export default function Slides({ data }: { data: WrappedData }) {
   let { width, height } = useViewport(true);
 
-  const padding = width * 3 > height ? 120 : 0;
+  const padding = (width * 3 > height) && (width > 500) ? 120 : 0;
   width -= padding;
   height -= padding;
   const ratio = width / height;
@@ -48,11 +48,13 @@ export default function Slides({ data }: { data: WrappedData }) {
     setIndex((i) => i + 1);
   }, [setIndex]);
 
+  const slides = generateSlidesOrder(data).filter(({ config }: WrappedSlide) => !config?.skipSlide?.(data));
+
   return (
     <>
-      <button style={{ marginRight: 10 }} onClick={handlePrev}>
+      {padding ? <button style={{ marginRight: 10 }} onClick={handlePrev}>
         &#x25C0;
-      </button>
+      </button> : null}
       <div
         className="main"
         style={{
@@ -63,46 +65,57 @@ export default function Slides({ data }: { data: WrappedData }) {
         <div className="content"></div>
         <Stories
           currentIndex={index}
-          stories={generateSlidesOrder(data)
-            .filter(({ config }: WrappedSlide) => !config?.skipSlide?.(data))
-            .map((Slide: WrappedSlide) => {
+          stories={slides
+            .map((Slide: WrappedSlide, i: number) => {
               const { config } = Slide;
               return {
-                content: ({ action, isPaused, config: storyConfig }) => (
-                  <div
-                    style={{
-                      ...(Slide.config?.bg
-                        ? { background: Slide.config?.bg }
-                        : Slide.config?.bgImage
-                          ? {
-                              backgroundImage: Slide.config?.bgImage,
-                              backgroundSize: "cover",
-                              backgroundPosition: "center bottom"
-                            }
-                          : Slide.config?.bgPattern
+                content: ({ action, isPaused, config: storyConfig, story: {} }) => {
+                  useEffect(() => {
+                    if (isPaused && i != slides.length - 1) {
+                      // @ts-ignore
+                      window.__wrapped_audio?.pause?.();
+                    } else {
+                      // @ts-ignore
+                      window.__wrapped_audio?.play?.();
+                    }
+                  }, [isPaused]);
+
+                  return (
+                    <div
+                      style={{
+                        ...(Slide.config?.bg
+                          ? { background: Slide.config?.bg }
+                          : Slide.config?.bgImage
                             ? {
-                                background: $.darkless,
-                                backgroundSize: "5px",
-                                backgroundImage: Slide.config?.bgPattern
+                                backgroundImage: Slide.config?.bgImage,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center bottom"
                               }
-                            : Slide.config?.conditionalBg
-                            ? { background: Slide.config?.conditionalBg(data) } : { background: "white" }),
-                      width: "100%",
-                      height: "100%",
-                      paddingTop: $.s5,
-                      paddingBottom: $.s4,
-                      paddingLeft: $.s3,
-                      paddingRight: $.s3
-                    }}
-                  >
-                    <Slide
-                      data={data}
-                      action={action}
-                      isPaused={isPaused}
-                      config={storyConfig as any}
-                    />
-                  </div>
-                ),
+                            : Slide.config?.bgPattern
+                              ? {
+                                  background: $.darkless,
+                                  backgroundSize: "5px",
+                                  backgroundImage: Slide.config?.bgPattern
+                                }
+                              : Slide.config?.conditionalBg
+                              ? { background: Slide.config?.conditionalBg(data) } : { background: "white" }),
+                        width: "100%",
+                        height: "100%",
+                        paddingTop: $.s5,
+                        paddingBottom: $.s4,
+                        paddingLeft: $.s3,
+                        paddingRight: $.s3
+                      }}
+                    >
+                      <Slide
+                        data={data}
+                        action={action}
+                        isPaused={isPaused}
+                        config={storyConfig as any}
+                      />
+                    </div>
+                  )
+                },
                 duration: config?.duration
               };
             })}
@@ -112,9 +125,9 @@ export default function Slides({ data }: { data: WrappedData }) {
           keyboardNavigation
         />
       </div>
-      <button style={{ marginLeft: 10 }} onClick={handleNext}>
+      {padding ? <button style={{ marginLeft: 10 }} onClick={handleNext}>
         &#x25B6;
-      </button>
+      </button> : null}
     </>
   );
 }
