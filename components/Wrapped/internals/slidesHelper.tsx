@@ -38,6 +38,8 @@ export default function Slides({ data }: { data: WrappedData }) {
   const ratio = width / height;
   const scale = ratio > 9 / 16 ? height / 768 : width / 432;
 
+  const mobile = padding == 0;
+
   const [index, setIndex] = useState(0);
 
   const handlePrev = useCallback(() => {
@@ -59,7 +61,7 @@ export default function Slides({ data }: { data: WrappedData }) {
         className="main"
         style={{
           transform: `scale(${scale})`,
-          overflow: "hidden"
+          overflow: mobile ? undefined : "hidden"
         }}
       >
         <div className="content"></div>
