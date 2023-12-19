@@ -1,4 +1,4 @@
-import $ from "../utils/theme";
+import $, { StyleProps } from "../utils/theme";
 import React from "react";
 import CountUp from "react-countup";
 
@@ -9,7 +9,8 @@ export default function HCBStat({
   background,
   isNumber = false,
   fontSize = "",
-  prefix = ""
+  prefix = "",
+  style$
 }: {
   data: string | number;
   label?: string;
@@ -18,6 +19,7 @@ export default function HCBStat({
   isNumber?: boolean;
   fontSize?: string;
   prefix?: string;
+  style$?: StyleProps;
 }) {
   return (
     <div
@@ -31,7 +33,8 @@ export default function HCBStat({
         width: "100%",
         textAlign: "center",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        ...(style$ ? style$ : {})
       })}
     >
       {topLabel && (

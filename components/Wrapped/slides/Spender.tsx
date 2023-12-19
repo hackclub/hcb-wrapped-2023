@@ -22,9 +22,7 @@ export default function Spender({ data }: SlideProps) {
         year.
       </h1>
 
-      <div {...$({ display: "flex", gap: 10, flexDirection: "column",animate$fadeIn: {
-        args: ["fromBottom"]
-      } })}>
+      <div {...$({ display: "flex", gap: 10, flexDirection: "column" })}>
         <HCBStat
           topLabel={`By spending ${USDollarNoCents.format(
             Math.abs(
@@ -44,6 +42,11 @@ export default function Spender({ data }: SlideProps) {
           }
           label="in business this year."
           background={$.orange}
+          style$={{
+            animate$fadeIn: {
+              args: ["fromBottom"]
+            }
+          }}
         />
         <HCBStat
           topLabel="Your favorite type of business were"
@@ -64,6 +67,12 @@ export default function Spender({ data }: SlideProps) {
             )
           )} with them.`}
           background={$.blue}
+          style$={{
+            animate$fadeIn: {
+              args: ["fromBottom"],
+              delay: '150ms'
+            }
+          }}
         />
         {data.individual.ranking <= 0.07 ? ( // Top 7% of spenders
           <HCBStat
@@ -71,6 +80,12 @@ export default function Spender({ data }: SlideProps) {
             data={ranking + "%"}
             label="of spenders!"
             background={$.green}
+            style$={{
+              animate$fadeIn: {
+                args: ["fromBottom"],
+                delay: '300ms'
+              }
+            }}
           />
         ) : (
           <HCBStat
@@ -78,6 +93,12 @@ export default function Spender({ data }: SlideProps) {
             data={percentile + "%"}
             label="of other HCB users!"
             background={$.green}
+            style$={{
+              animate$fadeIn: {
+                args: ["fromBottom"],
+                delay: '300ms'
+              }
+            }}
           />
         )}
       </div>

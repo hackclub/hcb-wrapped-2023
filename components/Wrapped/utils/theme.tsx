@@ -83,7 +83,9 @@ type ThemeHelper = {
 } & ThemeUtils &
   typeof fn;
 
-function fn(styles: CSSProperties & StyleUtilProperties = {}) {
+export type StyleProps = CSSProperties & StyleUtilProperties;
+
+function fn(styles: StyleProps = {}) {
   // @ts-ignore
   let { classes } = this;
   classes = [...classes]
