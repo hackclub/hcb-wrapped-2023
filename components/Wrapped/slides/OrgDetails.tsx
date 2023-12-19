@@ -220,7 +220,7 @@ export default function OrgDetails({
     const edges = [];
     if (i == 0) edges.push("top");
     if (i == shuffledGridFunctions.length - 1) edges.push("bottom");
-    return item(edges, Math.random());
+    return item(edges, Math.random(), i);
   });
   
   return (
