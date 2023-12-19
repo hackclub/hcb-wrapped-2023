@@ -4,6 +4,7 @@ import HCB from "./slides/HCB";
 import HCBTopMerchants from "./slides/HCBTopMerchants";
 import OrgIntro from "./slides/OrgIntro";
 import OrgDetails from "./slides/OrgDetails";
+import ByDate from "./slides/ByDate";
 import PlatinumCardSlide from "./slides/PlatinumCardSlide";
 import Start from "./slides/Start";
 import Spender from "./slides/Spender";
@@ -56,6 +57,7 @@ export function generateSlidesOrder(data: WrappedData) {
   return [
     Start,
     Spender,
+    ByDate,
     PlatinumCardSlide,
     WordCloud,
     Hometown,

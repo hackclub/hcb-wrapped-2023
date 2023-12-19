@@ -78,12 +78,6 @@ export default function Start({ data, isPaused }: SlideProps) {
     "https://cloud-ftrouxwcr-hack-club-bot.vercel.app/1group_2.png";
   const images = [snowflake1, snowflake2];
 
-  useTimeout({
-    1000: () => {
-      console.log("hi");
-    }
-  });
-
   const snowflakeSpeed = useTimedValue(
     (x) => Math.round((1.6 ** (x / 1000) / 550 + 3) * 100) / 100,
     0 as number,
