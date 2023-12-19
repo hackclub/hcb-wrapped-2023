@@ -982,6 +982,26 @@ td {
     }
 }
 
+._fadeIn {
+  opacity: 0;
+}
+
+._fadeIn_fromBottom {
+  transform: translateY(100%);
+}
+
+._fadeIn_fromTop {
+  transform: translateY(-100%);
+}
+
+._fadeIn_fromLeft {
+  transform: translateX(-100%);
+}
+
+._fadeIn_fromRight {
+  transform: translateX(100%);
+}
+
 @keyframes _fadeIn_fromBottom {
     0% {
         transform: translateY(100%);

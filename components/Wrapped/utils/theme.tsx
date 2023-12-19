@@ -86,6 +86,7 @@ type ThemeHelper = {
 function fn(styles: CSSProperties & StyleUtilProperties = {}) {
   // @ts-ignore
   let { classes } = this;
+  classes = [...classes]
 
   const animationName = (Object.keys(styles) as (keyof typeof styles)[])
     .filter((key) => key.startsWith("animate$"))
@@ -117,6 +118,7 @@ function fn(styles: CSSProperties & StyleUtilProperties = {}) {
       ...styles
     };
     classes.push(keyframe);
+    classes.push('_' + animationName);
     delete styles[`animate$${animationName}`];
   }
 
