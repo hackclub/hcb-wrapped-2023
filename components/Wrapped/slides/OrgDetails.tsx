@@ -92,10 +92,12 @@ export default function OrgDetails({
   const shuffledBackgrounds = deterministicShuffle(organization.name, backgrounds);
 
   type Edge = "top" | "bottom";
-  type GridItem = (edges: Edge[]) => JSX.Element
+  type GridItem = (edges: Edge[], rand: number, i: number) => JSX.Element
+
+  const zeroOrOne = position % 2;
 
   const gridItems: GridItem[] = [
-    edges => <HCBStat
+    (edges, rand, i) => <HCBStat
       data={
         Object.keys(
           Object.entries(organization.spendingByMerchant)
@@ -115,13 +117,13 @@ export default function OrgDetails({
       background={shuffledBackgrounds[0]}
       style$={{
         animate$fadeIn: {
-          args: edges.includes("bottom") ? ["fromBottom"] : ["fromRight"],
+          args: edges.includes("bottom") ? ["fromBottom"] : [i % 2 == zeroOrOne ? "fromRight" : "fromLeft"],
           duration: "1s",
           delay: "150ms"
         }
       }}
     />,
-    edges => <HCBStat
+    (edges, rand, i) => <HCBStat
       topLabel={copy.categoryTop[position]()}
       data={prettifyCategory(
         Object.keys(
@@ -142,13 +144,13 @@ export default function OrgDetails({
       background={shuffledBackgrounds[1]}
       style$={{
         animate$fadeIn: {
-          args: edges.includes("bottom") ? ["fromBottom"] : ["fromLeft"],
+          args: edges.includes("bottom") ? ["fromBottom"] : [i % 2 == zeroOrOne ? "fromRight" : "fromLeft"],
           duration: "1s",
           delay: "150ms"
         }
       }}
     />,
-    (edges, rand) => <div
+    (edges, rand, i) => <div
       style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -184,7 +186,7 @@ export default function OrgDetails({
         }}
       />
     </div>,
-    edges => <div
+    (edges, rand, i) => <div
       style={{
         backgroundImage: `url(https://wrapped-maps.hackclub.dev/api/maps?location=${encodeURIComponent(
           JSON.stringify(location)
