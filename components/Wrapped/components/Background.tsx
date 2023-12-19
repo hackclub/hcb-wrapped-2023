@@ -1,4 +1,3 @@
-import $ from "@/utils/theme";
 import React from "react";
 
 export default function Background({

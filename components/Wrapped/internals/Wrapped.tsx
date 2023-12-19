@@ -6,7 +6,7 @@
 \** === === === === === === === === === === === === **/
 
 import { WrappedData } from "../utils/data";
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import Slides from "./slidesHelper";
 import React from "react";
 

@@ -1,4 +1,4 @@
-import $ from "@/utils/theme";
+import $ from "@/components/Wrapped/utils/theme";
 
 const Heading = $.heading.createComponent("div", {
   background: $.sheet,

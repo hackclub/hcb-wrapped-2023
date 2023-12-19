@@ -1,5 +1,5 @@
 import { WrappedData } from "../utils/data";
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 import React, { useCallback, useState } from "react";
 import { generateSlidesOrder } from "../slides";
 import Stories from "react-insta-stories";

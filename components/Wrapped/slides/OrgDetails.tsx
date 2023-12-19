@@ -1,16 +1,19 @@
-import $ from "@/utils/theme";
+// @ts-nocheck
+
+import $ from "../utils/theme";
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import type {
   OrgData,
   WrappedData,
   SpendingByDate,
   date
-} from "@/components/Wrapped/utils/data";
+} from "../utils/data";
 import { prettifyCategory } from "./HCBTopMerchants";
 import { USDollarNoCents } from "../utils/formatter";
 import HCBStat from "../components/HCBStat";
 import Background from "../components/Background";
 import shuffle from "fast-shuffle";
+import React from "react";
 
 function findMonthWithMaxAbsoluteSum(data: SpendingByDate) {
   let monthSums: { [key: string]: number } = {};

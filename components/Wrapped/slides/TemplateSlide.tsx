@@ -4,11 +4,12 @@
  * all of the helpers and types imported
  */
 
-import $ from "@/utils/theme";
+import $ from "../utils/theme";
 //
 import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import { USDollarNoCents } from "../utils/formatter";
 import Background from "../components/Background";
+import React from "react";
 
 export default function TemplateSlide({ data }: SlideProps) {
   return (
