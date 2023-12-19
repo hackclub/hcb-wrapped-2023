@@ -66,38 +66,41 @@ export function prettifyCategory(c: string) {
     case "miscellaneous specialty retail":
     case "miscellaneous business services":
       return "miscellaneous";
-    case "photographic_photocopy_microfilm_equipment_and_supplies":
+    case "photographic photocopy microfilm equipment and supplies":
     case "commercial photography art and graphics":
       return "photography and art";
     case "miscellaneous apparel and accessory shops":
       return "apparel and accessory";
     case "postal services government only":
       return "postal services";
-    case "miscellaneous_home_furnishing_specialty_stores":
+    case "miscellaneous home furnishing specialty stores":
     case "furniture home furnishings and equipment stores except appliances":
       return "home furnishings";
-    case "gift_card_novelty_and_souvenir_shops":
+    case "gift card novelty and souvenir shops":
       return "gifts";
-    case "truck_utility_trailer_rentals":
+    case "truck utility trailer rentals":
       return "truck rentals";
-    case "music_stores_musical_instruments_pianos_and_sheet_music":
+    case "music stores musical instruments pianos and sheet music":
       return "music stores";
-    case "medical_dental_ophthalmic_and_hospital_equipment_and_supplies":
+    case "medical dental ophthalmic and hospital equipment and supplies":
       return "medical equipment";
-    case "medical_dental_ophthalmic_and_hospital_equipment_and_supplies":
+    case "medical dental ophthalmic and hospital equipment and supplies":
       return "medical equipment";
-    case "precious_stones_and_metals_watches_and_jewelry":
-    case "jewelry_stores_watches_clocks_and_silverware_stores":
+    case "precious stones and metals watches and jewelry":
+    case "jewelry stores watches clocks and silverware stores":
       return "jewelry stores";
-    case "telecommunication_equipment_and_telephone_sales":
+    case "telecommunication services":
+    case "telecommunication equipment and telephone sales":
       return "telecommunication";
-    case "sewing_needlework_fabric_and_piece_goods_stores":
+    case "sewing needlework fabric and piece goods stores":
       return "sewing and fabrics";
-    case "sewing_needlework_fabric_and_piece_goods_stores":
+    case "sewing needlework fabric and piece goods stores":
       return "sewing and fabrics";
-    case "miscellaneous_apparel_and_accessory_shops":
-    case "mens_and_boys_clothing_and_accessories_stores":
+    case "miscellaneous apparel and accessory shops":
+    case "mens and boys clothing and accessories stores":
       return "clothing stores";
+    case "legal services attorneys":
+      return "legal services";
     default:
       return c;
   }
@@ -157,14 +160,16 @@ export default function HCBTopMerchants({ data }: SlideProps) {
           })
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5)
-            .map((merchant) => (
+            .map((merchant, i) => (
               <div
+                key={`top-merchant-$`}
                 {...$({
                   display: "flex",
                   borderRadius: "8px",
                   background: additionalData[merchant[0]]?.color || $.blue,
                   animate$fadeIn: {
-                    args: ["fromLeft"]
+                    args: ["fromLeft"],
+                    delay: `${i * 100}ms`
                   }
                 })}
               >

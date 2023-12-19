@@ -25,7 +25,9 @@ function formatDuration(seconds: number) {
 }
 
 export default function Receipts({ data }: SlideProps) {
-  const naughty = data.individual.averageReceiptUploadTime > 604800 || data.individual.lostReceiptCount > 50;
+  const uploadTime = data.individual.averageReceiptUploadTime || 0;
+  const prettyLostReceiptCount = data.individual.lostReceiptCount == 0 ? "none" : data.individual.lostReceiptCount;
+  const naughty = uploadTime > 604800 || data.individual.lostReceiptCount > 50;
   return (
     <div
       {...$({
@@ -42,10 +44,14 @@ export default function Receipts({ data }: SlideProps) {
       <h2 {...$.title({ marginBottom: $.s3 })}>📃</h2>
       <h1 {...$.title({ marginBottom: $.s4, fontSize: "2.8em", color: 'white' })}>
         Receipts are important; you've got{" "}
-        <span style={{color: "#095465", whiteSpace: "nowrap"}}>{data.individual.lostReceiptCount} missing</span>{" "}
-        and take on average{" "}
-        <span style={{color: "#095465", whiteSpace: "nowrap"}}>{formatDuration(data.individual.averageReceiptUploadTime)}</span>{" "}
-        to upload them.
+        <span style={{color: naughty ? "#fcbec5" : "#095465", whiteSpace: "nowrap"}}>{prettyLostReceiptCount} missing</span>{" "}
+        {uploadTime == 0 ? null :
+          <>
+            and take on average{" "}
+            <span style={{color: naughty ? "#fcbec5" : "#095465", whiteSpace: "nowrap"}}>{formatDuration(data.individual.averageReceiptUploadTime)}</span>{" "}
+            to upload them.
+          </>
+        }
       </h1>
       <h2 {...$.title({ marginTop: $.s3, color: 'white',animate$fadeIn: {
         args: ["fromLeft"],

@@ -6,6 +6,7 @@ import HCBStat from "../components/HCBStat";
 import CountUp from "react-countup";
 import { prettifyCategory } from "./HCBTopMerchants";
 import React from "react";
+import { isEmpty } from "../slides";
 
 export default function Spender({ data }: SlideProps) {
   const roundTo2 = (decimal: number) =>
@@ -16,15 +17,13 @@ export default function Spender({ data }: SlideProps) {
   return (
     <>
       <h2 {...$.title({ marginBottom: $.s3 })}>💳</h2>
-      <h1 {...$.title({ marginBottom: $.s4, fontSize: "2.8em" })}>
+      <h1 {...$.title({ marginBottom: $.s4, fontSize: "2.6em" })}>
         Look at you big spender! You spent $
         <CountUp end={Math.abs(data.individual.totalMoneySpent / 100)} /> this
         year.
       </h1>
 
-      <div {...$({ display: "flex", gap: 10, flexDirection: "column",animate$fadeIn: {
-        args: ["fromBottom"]
-      } })}>
+      <div {...$({ display: "flex", gap: 10, flexDirection: "column" })}>
         <HCBStat
           topLabel={`By spending ${USDollarNoCents.format(
             Math.abs(
@@ -44,6 +43,11 @@ export default function Spender({ data }: SlideProps) {
           }
           label="in business this year."
           background={$.orange}
+          style$={{
+            animate$fadeIn: {
+              args: ["fromBottom"]
+            }
+          }}
         />
         <HCBStat
           topLabel="Your favorite type of business were"
@@ -64,6 +68,12 @@ export default function Spender({ data }: SlideProps) {
             )
           )} with them.`}
           background={$.blue}
+          style$={{
+            animate$fadeIn: {
+              args: ["fromBottom"],
+              delay: '150ms'
+            }
+          }}
         />
         {data.individual.ranking <= 0.07 ? ( // Top 7% of spenders
           <HCBStat
@@ -71,6 +81,12 @@ export default function Spender({ data }: SlideProps) {
             data={ranking + "%"}
             label="of spenders!"
             background={$.green}
+            style$={{
+              animate$fadeIn: {
+                args: ["fromBottom"],
+                delay: '300ms'
+              }
+            }}
           />
         ) : (
           <HCBStat
@@ -78,6 +94,12 @@ export default function Spender({ data }: SlideProps) {
             data={percentile + "%"}
             label="of other HCB users!"
             background={$.green}
+            style$={{
+              animate$fadeIn: {
+                args: ["fromBottom"],
+                delay: '300ms'
+              }
+            }}
           />
         )}
       </div>
@@ -88,5 +110,6 @@ export default function Spender({ data }: SlideProps) {
 
 Spender.config = {
   bg: $.primary,
-  duration: 10_000
+  duration: 10_000,
+  skipSlide: (data) => isEmpty(data.individual.spendingByMerchant) || isEmpty(data.individual.spendingByCategory)
 } satisfies SlideOptions;

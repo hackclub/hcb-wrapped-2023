@@ -5,6 +5,7 @@ import Background from "../components/Background";
 import HCBStat from "../components/HCBStat";
 import CountUp from "react-countup";
 import React from "react";
+import { isEmpty } from "../slides";
 
 export default function Hometown({ data }: SlideProps) {
   let location = Object.keys(
@@ -55,7 +56,7 @@ export default function Hometown({ data }: SlideProps) {
             )[0] as number) / 100
           )
         )}{" "}
-        there, you've became a bit of a local hero in{" "}
+        there, you've became a bit of a local hero with companies located in{" "}
         {location.reverse()[0]}.
       </h1>
       <Background />
@@ -86,6 +87,7 @@ Hometown.config = {
     )}`]
   },
   skipSlide: (data) =>
+    isEmpty(data.individual.spendingByLocation) ||
     Math.abs(
       (Object.values(
         Object.entries(data.individual.spendingByLocation)

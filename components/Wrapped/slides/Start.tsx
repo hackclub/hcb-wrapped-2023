@@ -85,7 +85,19 @@ export default function Start({ data, isPaused }: SlideProps) {
     !!isPaused
   );
 
-  const firstName = data.individual.firstName || data.individual.name.split(" ")[0];
+  const firstName =
+    data.individual.firstName || data.individual.name.split(" ")[0];
+
+  const roundedSpentAmount =
+    Math.floor(
+      data.individual.totalMoneySpent /
+        Math.pow(10, data.individual.totalMoneySpent.toString().length - 1)
+    ) * Math.pow(10, data.individual.totalMoneySpent.toString().length - 1);
+
+  const spentAmount =
+    (roundedSpentAmount || data.individual.totalMoneySpent) / 100;
+
+  const spentNothing = spentAmount === 0;
 
   return (
     <div
@@ -115,24 +127,11 @@ export default function Start({ data, isPaused }: SlideProps) {
         })}
       >
         Welcome {firstName}; 2023 was a big year on HCB for you.{" "}
-        <b>
-          You spent over{" "}
-          {USDollarNoCents.format(
-            (Math.floor(
-              data.individual.totalMoneySpent /
-                Math.pow(
-                  10,
-                  data.individual.totalMoneySpent.toString().length - 1
-                )
-            ) *
-              Math.pow(
-                10,
-                data.individual.totalMoneySpent.toString().length - 1
-              )) /
-              100
-          )}
-          !
-        </b>
+          {spentNothing ?
+          <><br/>Although you didn't spend much this year, there are still many noteworthy achievements to recognize.</>
+          :
+          <b>You spent over {USDollarNoCents.format(spentAmount)}!</b>
+          }
       </p>
       <p
         {...$.lead({

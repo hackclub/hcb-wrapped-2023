@@ -58,14 +58,17 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
     if (window?.__wrapped_audio) return;
     // @ts-ignore
     window.__wrapped_audio = new Audio('https://cloud-auzh6ioja-hack-club-bot.vercel.app/041857.mp3');
-    navigator.mediaSession.metadata = new MediaMetadata({
-      title: "Wrapped Theme",
-      artist: "Hack Club",
-      album: "HCB Wrapped",
-      artwork: [
-        { src: "https://cloud-h35rphr9i-hack-club-bot.vercel.app/0bank_wrapped.jpg" }
-      ]
-    });
+
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: "Wrapped Theme",
+        artist: "Hack Club",
+        album: "HCB Wrapped",
+        artwork: [
+          { src: "https://cloud-h35rphr9i-hack-club-bot.vercel.app/0bank_wrapped.jpg" }
+        ]
+      });
+    } catch (err) {}
   
     // @ts-ignore
     window.__wrapped_audio.loop = true;
