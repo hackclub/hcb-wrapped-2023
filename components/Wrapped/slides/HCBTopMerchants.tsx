@@ -89,6 +89,7 @@ export function prettifyCategory(c: string) {
     case "precious stones and metals watches and jewelry":
     case "jewelry stores watches clocks and silverware stores":
       return "jewelry stores";
+    case "telecommunication services":
     case "telecommunication equipment and telephone sales":
       return "telecommunication";
     case "sewing needlework fabric and piece goods stores":
@@ -98,6 +99,8 @@ export function prettifyCategory(c: string) {
     case "miscellaneous apparel and accessory shops":
     case "mens and boys clothing and accessories stores":
       return "clothing stores";
+    case "legal services attorneys":
+      return "legal services";
     default:
       return c;
   }
