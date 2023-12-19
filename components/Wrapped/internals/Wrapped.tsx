@@ -891,39 +891,36 @@ td {
     border-bottom-width: 1px;
 }
 
-@media screen and (min-width: 32em) {
-    .ultratitle {
-        font-size: var(--font-5);
-    }
-    .title {
-        font-size: var(--font-4);
-    }
-    .subtitle {
-        font-size: var(--font-2);
-    }
-    .eyebrow {
-        font-size: var(--font-3);
-    }
-    .lead {
-        font-size: var(--font-2);
-        margin-top: var(--spacing-2);
-        margin-bottom: var(--spacing-2);
-    }
-    .card {
-        padding: var(--spacing-3);
-    }
-    .container {
-        max-width: var(--size-layout);
-    }
-    .container.copy {
-        max-width: var(--size-copy);
-    }
-    .container.narrow {
-        max-width: var(--size-narrow);
-    }
+.ultratitle {
+    font-size: var(--font-5);
+}
+.title {
+    font-size: var(--font-4);
+}
+.subtitle {
+    font-size: var(--font-2);
+}
+.eyebrow {
+    font-size: var(--font-3);
+}
+.lead {
+    font-size: var(--font-2);
+    margin-top: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+}
+.card {
+    padding: var(--spacing-3);
+}
+.container {
+    max-width: var(--size-layout);
+}
+.container.copy {
+    max-width: var(--size-copy);
+}
+.container.narrow {
+    max-width: var(--size-narrow);
 }
 
-@media screen and (min-width: 48em) {
     .ultratitle {
         font-size: var(--font-6);
     }
@@ -944,9 +941,9 @@ td {
     .card {
         padding: var(--spacing-4);
     }
-}
 
-@media screen and (min-width: 64em) {
+
+
     .ultratitle {
         font-size: var(--font-7);
     }
@@ -965,7 +962,7 @@ td {
     .container.narrow {
         max-width: var(--size-narrow-plus);
     }
-}
+
 
 @keyframes _fadeIn {
     0% {
