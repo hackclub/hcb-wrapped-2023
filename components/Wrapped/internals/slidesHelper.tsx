@@ -32,7 +32,7 @@ export type WrappedSlide = WrappedSlideComponent & { config?: SlideOptions };
 export default function Slides({ data }: { data: WrappedData }) {
   let { width, height } = useViewport(true);
 
-  const padding = width * 3 > height ? 120 : 0;
+  const padding = (width * 3 > height) && (width > 500) ? 120 : 0;
   width -= padding;
   height -= padding;
   const ratio = width / height;
@@ -52,9 +52,9 @@ export default function Slides({ data }: { data: WrappedData }) {
 
   return (
     <>
-      <button style={{ marginRight: 10 }} onClick={handlePrev}>
+      {padding ? <button style={{ marginRight: 10 }} onClick={handlePrev}>
         &#x25C0;
-      </button>
+      </button> : null}
       <div
         className="main"
         style={{
@@ -125,9 +125,9 @@ export default function Slides({ data }: { data: WrappedData }) {
           keyboardNavigation
         />
       </div>
-      <button style={{ marginLeft: 10 }} onClick={handleNext}>
+      {padding ? <button style={{ marginLeft: 10 }} onClick={handleNext}>
         &#x25B6;
-      </button>
+      </button> : null}
     </>
   );
 }
