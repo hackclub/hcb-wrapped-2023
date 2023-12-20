@@ -23,27 +23,38 @@ export default function Run({ data, filename }: { data: WrappedData, filename: s
 // prevents hydration errors
 
 export async function getServerSideProps() {
-  const folder = process.cwd() // You can change this path to your downloads folder
-
-  const files = await fs.readdir(folder);
-  const nums = files
-    .map((file) => file.match(/wrapped \((\d+)\)\.json/)?.[1])
-    .filter((num) => num !== undefined)
-    .map((num) => parseInt(num as string));
-
-  const num = Math.max(...nums);
-  const filename = num == -Infinity ? "wrapped.json" : `wrapped (${num}).json`;
-
-  // Attempt to load data from wrapped.json
-  const filePath = path.join(folder, filename);
-  console.log({ filePath });
-
-  const jsonData = await fs.readFile(filePath, "utf-8");
-  const data = JSON.parse(jsonData);
-  return {
-    props: {
-      data,
-      filename
-    }
-  };
+  try {
+    const folder = process.cwd() // You can change this path to your downloads folder
+    
+    const files = await fs.readdir(folder);
+    const nums = files
+      .map((file) => file.match(/wrapped \((\d+)\)\.json/)?.[1])
+      .filter((num) => num !== undefined)
+      .map((num) => parseInt(num as string));
+    
+    const num = Math.max(...nums);
+    const filename = num == -Infinity ? "wrapped.json" : `wrapped (${num}).json`;
+    
+    // Attempt to load data from wrapped.json
+    const filePath = path.join(folder, filename);
+    console.log({ filePath });
+    
+    const jsonData = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(jsonData);
+    return {
+      props: {
+        data,
+        filename
+      }
+    };
+  }
+  catch {
+    return {
+      props: {
+        data: generateTestData(),
+        filename: 'wrapped.json'
+      }
+    };
+  }
+  
 }

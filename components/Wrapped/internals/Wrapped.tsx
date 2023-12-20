@@ -9,6 +9,7 @@ import { WrappedData } from "../utils/data";
 import $ from "../utils/theme";
 import Slides from "./slidesHelper";
 import React, { useState, useEffect } from "react";
+import Background from "../components/Background";
 
 export default function HcbWrapped({ data }: { data: WrappedData }) {
   const [started, setStarted] = useState(false);
@@ -103,9 +104,17 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
         })}
         id="main-wrapped-part"
       >
-        {started ? <Slides data={data} /> : <div>
-          <button onClick={start}>Start</button>
-        </div>}
+        {started ? <Slides data={data} /> : 
+        <div className="card" style={{textAlign: 'center', display: 'flex', flexDirection: 'column', width: '95%', maxWidth: '400px', gap: '8px'}}>
+          <h2 style={{fontSize: '2.3rem'}}>🏦 🎁 🎉</h2>
+          <h1 style={{fontSize: '2.7rem'}}>Welcome to <br /> Wrapped 2023</h1>
+          <div>This year's HCB Wrapped is open-sourced and built by 10+ Hack Clubbers; check it out <a href="https://github.com/hackclub/hcb-wrapped-2023" target="_blank">on Github</a>.</div>
+          <div>
+            <button onClick={start}>Unwrap The Year on HCB....</button>
+          </div>
+          <Background />
+        </div>
+      }
       </div>
       <div className="bg-wrapper">
         <div className="bg"></div>
