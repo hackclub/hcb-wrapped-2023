@@ -145,6 +145,7 @@ export default function Slides({ data }: { data: WrappedData }) {
           defaultInterval={8_000}
           width={432}
           height={768}
+          onStoryStart={(index: number) => setIndex(index)}
           keyboardNavigation
         />
         {mobile && <style
