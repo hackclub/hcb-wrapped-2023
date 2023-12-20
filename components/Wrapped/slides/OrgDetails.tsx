@@ -191,7 +191,7 @@ export default function OrgDetails({
     </div>,
     (edges, rand, i) => <div
       key="spending-town"
-      style={{
+      {...$({
         backgroundImage: `url(https://wrapped-maps.hackclub.dev/api/maps?location=${encodeURIComponent(
           JSON.stringify(location)
         )})`,
@@ -200,8 +200,13 @@ export default function OrgDetails({
         backgroundPosition: "center",
         width: "100%",
         borderRadius: "12px",
-        position: "relative"
-      }}
+        position: "relative",
+        animate$fadeIn: {
+          args: (edges.includes("bottom") && rand <= 0.5) ? ["fromBottom"] : rand <= 0.5 ? ["fromLeft"] : ["fromRight"],
+          duration: "1s",
+          delay: "150ms"
+        }
+      })}
     >
       <div
         style={{
