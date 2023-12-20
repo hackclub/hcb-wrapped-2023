@@ -83,7 +83,6 @@ export default function Slides({ data }: { data: WrappedData }) {
           overflow: mobile ? undefined : "hidden"
         }}
       >
-        <div className="content"></div>
         <Stories
           currentIndex={index}
           stories={slides
