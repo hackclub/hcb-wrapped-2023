@@ -218,6 +218,24 @@ export default function OrgDetails({
       >
         {organization.name}'s Spending Town
       </div>
+
+      <div
+        style={{
+          color: $.darkless,
+          borderRadius: "4px",
+          position: "absolute",
+          bottom: 2,
+          left: 8,
+          fontSize: "0.8em",
+          textTransform: "uppercase",
+          color: $.muted,
+          fontStyle: "italic",
+          textShadow: "0 0 4px rgba(255,255,255,0.75)"
+        }}
+      >
+        {location.reverse()[0]}
+      </div>
+
     </div>
   ];
 

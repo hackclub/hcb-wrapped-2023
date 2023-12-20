@@ -114,7 +114,7 @@ export default function ByDate({ data }: SlideProps) {
           )
         })}
       </div>
-      <p>Your spending on {maxDate.toLocaleDateString('en-us', { day:"numeric", month:"long"})} skyrocketed to {USDollarNoCents.format(max)}</p>
+      <p>Your spending on {maxDate.toLocaleDateString('en-us', { day:"numeric", month:"long"})} skyrocketed to {USDollarNoCents.format(max / 100)}</p>
       <Background />
     </div>
   );

@@ -4,28 +4,38 @@ import Background from "../components/Background";
 import React from "react";
 import { WrappedData } from "../utils/data";
 
-function generateWordsUrl (data: WrappedData) {
-  return           "https://quickchart.io/wordcloud" +
-  "?text=" +
-  data.individual.words.join(",") +
-  "&colors=" +
-  encodeURIComponent(
-    JSON.stringify(
-      `#ec3750
+function generateWordsUrl(data: WrappedData) {
+  const words = data.individual.words
+    // Remove symbols because Quick Chart's word cloud don't render them
+    .map((word) => word.replaceAll(/[.,:-_#\/\\]/g, ""))
+    // Remove empty words and words that are only numbers
+    .filter((word) => word.length > 0 && !parseInt(word))
+    // URL encode the words
+    .map((word) => encodeURIComponent(word));
+
+  return (
+    "https://quickchart.io/wordcloud" +
+    "?text=" +
+    words.join(",") +
+    "&colors=" +
+    encodeURIComponent(
+      JSON.stringify(
+        `#ec3750
 #ff8c37
 #f1c40f
 #33d6a6
 #5bc0de
 #338eda
 #a633d6`.split("\n")
-    )
-  ) +
-  "&useWordList=true" +
-  "&width=400" +
-  "&height=600" +
-  "&fontFamily=" + encodeURIComponent("system-ui, sans-serif") +
-  "&fontScale=50"
-;
+      )
+    ) +
+    "&useWordList=true" +
+    "&width=400" +
+    "&height=580" +
+    "&fontFamily=" +
+    encodeURIComponent("system-ui, sans-serif") +
+    "&fontScale=50"
+  );
 }
 export default function WordCloud({ data }: SlideProps) {
   return (
