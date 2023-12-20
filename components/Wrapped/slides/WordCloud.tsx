@@ -22,7 +22,7 @@ function generateWordsUrl (data: WrappedData) {
   ) +
   "&useWordList=true" +
   "&width=400" +
-  "&height=600" +
+  "&height=580" +
   "&fontFamily=" + encodeURIComponent("system-ui, sans-serif") +
   "&fontScale=50"
 ;
