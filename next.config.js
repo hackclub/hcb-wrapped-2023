@@ -6,6 +6,7 @@ const nextConfig = {
         {
           source: '/',
           destination: 'https://hcb.hackclub.com/wrapped',
+          permanent: false,
         },
       ]
     },
