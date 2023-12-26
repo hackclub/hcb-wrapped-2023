@@ -4,7 +4,7 @@ import Background from "../components/Background";
 import React from "react";
 import { WrappedData } from "../utils/data";
 
-function generateWordsUrl(data: WrappedData) {
+export function generateWordsUrl(data: WrappedData, width = "400", height = "580") {
   const words = data.individual.words
     // Remove symbols because Quick Chart's word cloud don't render them
     .map((word) => word.replaceAll(/[.,:-_#\/\\]/g, ""))
@@ -30,8 +30,8 @@ function generateWordsUrl(data: WrappedData) {
       )
     ) +
     "&useWordList=true" +
-    "&width=400" +
-    "&height=580" +
+    "&width=" + width +
+    "&height=" + height +
     "&fontFamily=" +
     encodeURIComponent("system-ui, sans-serif") +
     "&fontScale=50"

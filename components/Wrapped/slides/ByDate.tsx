@@ -70,21 +70,15 @@ const shape = [
   }
 ]
 
-export default function ByDate({ data }: SlideProps) {
+export function Content({ data }: SlideProps) {
   const changeByDate = Object.entries(data.individual.spendingByDate)
   const max = Math.max(
     ...Object.values(data.individual.spendingByDate)
   )
   const maxDate = new Date(changeByDate.find(([_, v]) => v === max)?.[0] as string)
-
   return (
-    <div {...$({animate$fadeIn: {
-        duration: "2s"
-      }})}>
-      <h1 {...$.title({ marginBottom: $.s2, marginTop: '-32px', fontSize: "2.8em" })}>
-        You painted the town red.
-      </h1>
-      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px'}}>
+    <>
+      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '12px'}}>
         {shape.map((month, i) => {
           const passed = shape.slice(0, i).map(x => x.length).reduce((a, b) => a + b, 0)
           return (
@@ -114,7 +108,20 @@ export default function ByDate({ data }: SlideProps) {
           )
         })}
       </div>
-      <p>Your spending on {maxDate.toLocaleDateString('en-us', { day:"numeric", month:"long"})} skyrocketed to {USDollarNoCents.format(max / 100)}</p>
+      <p className="hidden-in-one-pager">Your spending on {maxDate.toLocaleDateString('en-us', { day:"numeric", month:"long"})} skyrocketed to {USDollarNoCents.format(max / 100)}</p>
+    </>
+  )
+}
+
+export default function ByDate({ data }: SlideProps) {
+  return (
+    <div {...$({animate$fadeIn: {
+        duration: "2s"
+      }})}>
+      <h1 {...$.title({ marginBottom: $.s2, marginTop: '-32px', fontSize: "2.8em" })}>
+        You painted the town red.
+      </h1>
+      <Content data={data} />
       <Background />
     </div>
   );

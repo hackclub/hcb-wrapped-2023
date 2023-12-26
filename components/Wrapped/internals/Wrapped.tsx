@@ -128,7 +128,7 @@ export default function HcbWrapped({ data }: { data: WrappedData }) {
   );
 }
 
-const css = `
+export const css = `
     * {
         box-sizing: border-box;
     }

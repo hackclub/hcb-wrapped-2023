@@ -3,7 +3,7 @@ import type { SlideProps, SlideOptions } from "../internals/slidesHelper";
 import Background from "../components/Background";
 import React from "react";
 
-function formatDuration(seconds: number) {
+export function formatDuration(seconds: number) {
   const minute = 60;
   const hour = 60 * minute;
   const day = 24 * hour;

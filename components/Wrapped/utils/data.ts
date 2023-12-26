@@ -393,13 +393,13 @@ export function generateSpendingByLocation(
     for (let i = 0; i < locations.length; i++) {
         const location = locations[i];
         if (i === locations.length - 1) {
-            spendingByLocation[`${location} - 000000`] = max - totalSpent;
+            spendingByLocation[`${location}`] = max - totalSpent;
         } else if (Math.random() < 0.2) {
             const amount = getRandomArbitrary(
                 1,
                 max - totalSpent - (locations.length - i - 1)
             );
-            spendingByLocation[`${location} - 000000`] = amount;
+            spendingByLocation[`${location}`] = amount;
         } else if (Math.random() < 0.8) {
             let amount = getRandomArbitrary(
                 1,
@@ -430,7 +430,7 @@ export function generateSpendingByLocation(
                     };
                     amount = amount - spendingData.amount;
                     spendingByLocation[
-                        `${location} - ${randomLocation} - 000000`
+                        `${location} - ${randomLocation}`
                     ] = spendingData.amount;
                 } else if (type == "state") {
                     randomLocation = localFaker.location.state();
@@ -440,7 +440,7 @@ export function generateSpendingByLocation(
                     };
                     amount = amount - spendingData.amount;
                     spendingByLocation[
-                        `${location} - ${randomLocation} - 000000`
+                        `${location} - ${randomLocation}`
                     ] = spendingData.amount;
                 }
             }
