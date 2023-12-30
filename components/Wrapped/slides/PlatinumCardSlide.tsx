@@ -22,7 +22,8 @@ export default function PlatinumCardSlide({ data }: SlideProps) {
           marginBottom: $.s4
         })}
       >
-        On the first day of April, you  earned yourself a one-of-a-kind exclusive HCB Platinum Card. <i>April Fools?</i>
+        On the first day of April, you earned yourself a one-of-a-kind exclusive
+        HCB Platinum Card. <i>April Fools?</i>
       </h1>
 
       <div
@@ -123,7 +124,7 @@ const css = `
     color: rgba(0, 0, 0, 0.4);
     font-family: sans-serif;
   }
-`
+`;
 
 PlatinumCardSlide.config = {
   bg: $.blue,

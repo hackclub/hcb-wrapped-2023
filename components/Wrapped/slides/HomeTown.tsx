@@ -74,7 +74,7 @@ Hometown.config = {
     )[0].split(" - ");
     return `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://wrapped-maps.hackclub.dev/api/mega-maps?location=${encodeURIComponent(
       JSON.stringify(location)
-    )})`
+    )})`;
   },
   cache: (data) => {
     let location = Object.keys(
@@ -82,9 +82,11 @@ Hometown.config = {
         .sort(([, a], [, b]) => b - a)
         .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
     )[0].split(" - ");
-    return [`https://wrapped-maps.hackclub.dev/api/mega-maps?location=${encodeURIComponent(
-      JSON.stringify(location)
-    )}`]
+    return [
+      `https://wrapped-maps.hackclub.dev/api/mega-maps?location=${encodeURIComponent(
+        JSON.stringify(location)
+      )}`
+    ];
   },
   skipSlide: (data) =>
     isEmpty(data.individual.spendingByLocation) ||

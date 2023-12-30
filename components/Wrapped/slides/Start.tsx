@@ -127,11 +127,15 @@ export default function Start({ data, isPaused }: SlideProps) {
         })}
       >
         Welcome {firstName}; 2023 was a big year on HCB for you.{" "}
-          {spentNothing ?
-          <><br/>Although you didn't spend much this year, there are still many noteworthy achievements to recognize.</>
-          :
+        {spentNothing ? (
+          <>
+            <br />
+            Although you didn't spend much this year, there are still many
+            noteworthy achievements to recognize.
+          </>
+        ) : (
           <b>You spent over {USDollarNoCents.format(spentAmount)}!</b>
-          }
+        )}
       </p>
       <p
         {...$.lead({

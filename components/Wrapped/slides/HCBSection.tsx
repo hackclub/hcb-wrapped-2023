@@ -34,9 +34,9 @@ export default function HCBSection({ data }: SlideProps) {
           end={data.hcb.users.total}
           duration={1.5}
           {...$.title({ fontWeight: 800 })}
-          style={{fontSize: "2.5em"}}
+          style={{ fontSize: "2.5em" }}
         />{" "}
-        <span style={{whiteSpace: "nowrap"}}>users across HCB</span>
+        <span style={{ whiteSpace: "nowrap" }}>users across HCB</span>
       </h1>
       <h2
         {...$.title({

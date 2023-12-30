@@ -12,6 +12,7 @@
         "package:iterate": "yarn run package:build && ./package/iterate.sh"
     },
     "dependencies": {
+        "@hackclub/icons": "^0.0.14",
         "@hugocxl/react-to-image": "^0.0.9",
         "@types/d3-scale": "^4.0.8",
         "confetti-js": "^0.0.18",

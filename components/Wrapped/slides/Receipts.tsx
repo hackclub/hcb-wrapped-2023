@@ -9,24 +9,27 @@ export function formatDuration(seconds: number) {
   const day = 24 * hour;
   const month = 30 * day;
   if (seconds < minute) {
-    return seconds + (seconds === 1 ? ' second' : ' seconds');
+    return seconds + (seconds === 1 ? " second" : " seconds");
   } else if (seconds < hour) {
     const minutes = Math.floor(seconds / minute);
-    return minutes + (minutes === 1 ? ' minute' : ' minutes');
+    return minutes + (minutes === 1 ? " minute" : " minutes");
   } else if (seconds < day) {
     const hours = Math.floor(seconds / hour);
-    const hoursStr = hours + (hours === 1 ? ' hour' : ' hours');
+    const hoursStr = hours + (hours === 1 ? " hour" : " hours");
     return hoursStr;
   } else {
     const days = Math.floor(seconds / day);
-    const daysStr = days + (days === 1 ? ' day' : ' days');
+    const daysStr = days + (days === 1 ? " day" : " days");
     return daysStr;
   }
 }
 
 export default function Receipts({ data }: SlideProps) {
   const uploadTime = data.individual.averageReceiptUploadTime || 0;
-  const prettyLostReceiptCount = data.individual.lostReceiptCount == 0 ? "none" : data.individual.lostReceiptCount;
+  const prettyLostReceiptCount =
+    data.individual.lostReceiptCount == 0
+      ? "none"
+      : data.individual.lostReceiptCount;
   const naughty = uploadTime > 604800 || data.individual.lostReceiptCount > 50;
   return (
     <div
@@ -42,27 +45,55 @@ export default function Receipts({ data }: SlideProps) {
       })}
     >
       <h2 {...$.title({ marginBottom: $.s3 })}>📃</h2>
-      <h1 {...$.title({ marginBottom: $.s4, fontSize: "2.8em", color: 'white' })}>
+      <h1
+        {...$.title({ marginBottom: $.s4, fontSize: "2.8em", color: "white" })}
+      >
         Receipts are important; you've got{" "}
-        <span style={{color: naughty ? "#fcbec5" : "#095465", whiteSpace: "nowrap"}}>{prettyLostReceiptCount} missing</span>{" "}
-        {uploadTime == 0 ? null :
+        <span
+          style={{
+            color: naughty ? "#fcbec5" : "#095465",
+            whiteSpace: "nowrap"
+          }}
+        >
+          {prettyLostReceiptCount} missing
+        </span>{" "}
+        {uploadTime == 0 ? null : (
           <>
             and take on average{" "}
-            <span style={{color: naughty ? "#fcbec5" : "#095465", whiteSpace: "nowrap"}}>{formatDuration(data.individual.averageReceiptUploadTime)}</span>{" "}
+            <span
+              style={{
+                color: naughty ? "#fcbec5" : "#095465",
+                whiteSpace: "nowrap"
+              }}
+            >
+              {formatDuration(data.individual.averageReceiptUploadTime)}
+            </span>{" "}
             to upload them.
           </>
-        }
+        )}
       </h1>
-      <h2 {...$.title({ marginTop: $.s3, color: 'white',animate$fadeIn: {
-        args: ["fromLeft"],
-        delay: "0.1s"
-      } })}><i>That's pretty {naughty ? "naughty" : "nice"} of you?</i></h2>
+      <h2
+        {...$.title({
+          marginTop: $.s3,
+          color: "white",
+          animate$fadeIn: {
+            args: ["fromLeft"],
+            delay: "0.1s"
+          }
+        })}
+      >
+        <i>That's pretty {naughty ? "naughty" : "nice"} of you?</i>
+      </h2>
       <Background />
     </div>
   );
 }
 
 Receipts.config = {
-  conditionalBg: (data) => data.individual.averageReceiptUploadTime > 604800 || data.individual.lostReceiptCount > 50 ? $.red : $.green,
+  conditionalBg: (data) =>
+    data.individual.averageReceiptUploadTime > 604800 ||
+    data.individual.lostReceiptCount > 50
+      ? $.red
+      : $.green,
   duration: 10_000
 } satisfies SlideOptions;

@@ -55,7 +55,9 @@ export default function OrgIntro({ data }: SlideProps) {
       >
         {orgCount > 3
           ? "Let's take a look back at the three that meant the most."
-          : `Let's take a look back at the project${orgCount == 1 ? "" : "s"} you worked on.`}
+          : `Let's take a look back at the project${
+              orgCount == 1 ? "" : "s"
+            } you worked on.`}
       </h2>
 
       <Background />

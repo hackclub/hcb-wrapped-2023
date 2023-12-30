@@ -1,6 +1,5 @@
 import Wrapped from "./internals/Wrapped";
-import One from "./components/One";
 import React from "react";
 
-export { Wrapped, One };
+export { Wrapped };
 export default Wrapped;

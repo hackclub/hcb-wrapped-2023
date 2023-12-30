@@ -429,9 +429,8 @@ export function generateSpendingByLocation(
                         [type]: randomLocation
                     };
                     amount = amount - spendingData.amount;
-                    spendingByLocation[
-                        `${location} - ${randomLocation}`
-                    ] = spendingData.amount;
+                    spendingByLocation[`${location} - ${randomLocation}`] =
+                        spendingData.amount;
                 } else if (type == "state") {
                     randomLocation = localFaker.location.state();
                     const spendingData = {
@@ -439,9 +438,8 @@ export function generateSpendingByLocation(
                         [type]: randomLocation
                     };
                     amount = amount - spendingData.amount;
-                    spendingByLocation[
-                        `${location} - ${randomLocation}`
-                    ] = spendingData.amount;
+                    spendingByLocation[`${location} - ${randomLocation}`] =
+                        spendingData.amount;
                 }
             }
             totalSpent += amount;
@@ -479,7 +477,7 @@ export function generateTestData() {
     let organizations = generateTestOrganizations();
     let newOrganizations = getRandomArbitrary(40, 1000);
     let newUsers = getRandomArbitrary(newOrganizations, 1500);
-    let firstName = faker.person.firstName()
+    let firstName = faker.person.firstName();
     let individual = {
         name: firstName + " " + faker.person.lastName(),
         firstName,

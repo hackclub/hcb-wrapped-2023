@@ -71,7 +71,7 @@ export default function Spender({ data }: SlideProps) {
           style$={{
             animate$fadeIn: {
               args: ["fromBottom"],
-              delay: '150ms'
+              delay: "150ms"
             }
           }}
         />
@@ -84,7 +84,7 @@ export default function Spender({ data }: SlideProps) {
             style$={{
               animate$fadeIn: {
                 args: ["fromBottom"],
-                delay: '300ms'
+                delay: "300ms"
               }
             }}
           />
@@ -97,7 +97,7 @@ export default function Spender({ data }: SlideProps) {
             style$={{
               animate$fadeIn: {
                 args: ["fromBottom"],
-                delay: '300ms'
+                delay: "300ms"
               }
             }}
           />
@@ -111,5 +111,7 @@ export default function Spender({ data }: SlideProps) {
 Spender.config = {
   bg: $.primary,
   duration: 10_000,
-  skipSlide: (data) => isEmpty(data.individual.spendingByMerchant) || isEmpty(data.individual.spendingByCategory)
+  skipSlide: (data) =>
+    isEmpty(data.individual.spendingByMerchant) ||
+    isEmpty(data.individual.spendingByCategory)
 } satisfies SlideOptions;

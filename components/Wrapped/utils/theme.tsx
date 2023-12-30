@@ -88,7 +88,7 @@ export type StyleProps = CSSProperties & StyleUtilProperties;
 function fn(styles: StyleProps = {}) {
   // @ts-ignore
   let { classes } = this;
-  classes = [...classes]
+  classes = [...classes];
 
   const animationName = (Object.keys(styles) as (keyof typeof styles)[])
     .filter((key) => key.startsWith("animate$"))
@@ -120,7 +120,7 @@ function fn(styles: StyleProps = {}) {
       ...styles
     };
     classes.push(keyframe);
-    classes.push('_' + animationName);
+    classes.push("_" + animationName);
     delete styles[`animate$${animationName}`];
   }
 

@@ -4,7 +4,11 @@ import Background from "../components/Background";
 import React from "react";
 import { WrappedData } from "../utils/data";
 
-export function generateWordsUrl(data: WrappedData, width = "400", height = "580") {
+export function generateWordsUrl(
+  data: WrappedData,
+  width = "400",
+  height = "580"
+) {
   const words = data.individual.words
     // Remove symbols because Quick Chart's word cloud don't render them
     .map((word) => word.replaceAll(/[.,:-_#\/\\]/g, ""))
@@ -30,8 +34,10 @@ export function generateWordsUrl(data: WrappedData, width = "400", height = "580
       )
     ) +
     "&useWordList=true" +
-    "&width=" + width +
-    "&height=" + height +
+    "&width=" +
+    width +
+    "&height=" +
+    height +
     "&fontFamily=" +
     encodeURIComponent("system-ui, sans-serif") +
     "&fontScale=50"
@@ -40,9 +46,13 @@ export function generateWordsUrl(data: WrappedData, width = "400", height = "580
 export default function WordCloud({ data }: SlideProps) {
   return (
     <>
-      <div {...$({animate$fadeIn: {
-          args: ["fromTop"]
-        }})}>
+      <div
+        {...$({
+          animate$fadeIn: {
+            args: ["fromTop"]
+          }
+        })}
+      >
         <h2
           {...$.headline({
             textAlign: "center",
@@ -58,7 +68,7 @@ export default function WordCloud({ data }: SlideProps) {
           marginTop: -22,
           marginBottom: 8,
           textAlign: "center",
-          textTransform: 'uppercase',
+          textTransform: "uppercase",
           animate$fadeIn: {
             args: ["fromBottom"]
           }
@@ -74,12 +84,12 @@ export default function WordCloud({ data }: SlideProps) {
         </h1>
       </div>
       <img
-        src={
-          generateWordsUrl(data)
-        }
-        {...$({animate$fadeIn: {
+        src={generateWordsUrl(data)}
+        {...$({
+          animate$fadeIn: {
             args: ["fromBottom"]
-          }})}
+          }
+        })}
       />
       <Background />
     </>
@@ -90,5 +100,5 @@ WordCloud.config = {
   bg: $.white,
   duration: 8_000, // 8 seconds
   skipSlide: (data) => data.individual.words.length === 0,
-  cache: data => [generateWordsUrl(data)]
+  cache: (data) => [generateWordsUrl(data)]
 } satisfies SlideOptions;
