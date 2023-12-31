@@ -28,7 +28,7 @@ export default function Run({
         height: "100vh"
       }}
     >
-      <One data={data} />
+      <One {...{data: data} as any} />
     </div>
   );
 }
