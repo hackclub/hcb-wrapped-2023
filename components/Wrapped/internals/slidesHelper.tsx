@@ -95,6 +95,37 @@ export default function Slides({ data }: { data: WrappedData }) {
         >
           &#x25C0;
         </button>
+      ) : index == slides.length - 1 ? (
+        <>
+          <button
+            style={{
+              marginLeft: 10,
+              height: "50px",
+              width: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "8px",
+              position: "absolute",
+              bottom: "16px",
+              right: "16px",
+              zIndex: "1001"
+            }}
+            onClick={convert}
+          >
+            <Icon glyph="download" size={50} />
+          </button>
+          <div
+            style={{
+              position: "absolute",
+              bottom: "100vh",
+              left: 0,
+              opacity: 0
+            }}
+          >
+            <OnePager ref={ref} {...{ data: data }} />
+          </div>
+        </>
       ) : null}
       <div>
         <div
@@ -219,8 +250,7 @@ export default function Slides({ data }: { data: WrappedData }) {
                 position: "absolute",
                 bottom: "100vh",
                 left: 0,
-                opacity: 0,
-                
+                opacity: 0
               }}
             >
               <OnePager ref={ref} {...{ data: data }} />
