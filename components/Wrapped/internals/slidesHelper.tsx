@@ -62,7 +62,7 @@ export default function Slides({ data }: { data: WrappedData }) {
     quality: 0.8, //@ts-ignore
     onSuccess: (data) => {
       const link = document.createElement("a");
-      link.download = "my-image-name.jpeg";
+      link.download = "wrapped.png";
       link.href = data;
       link.click();
     }
@@ -216,10 +216,11 @@ export default function Slides({ data }: { data: WrappedData }) {
             </button>
             <div
               style={{
-                top: 0,
+                position: "absolute",
+                bottom: "100vh",
                 left: 0,
                 opacity: 0,
-                display: "none"
+                
               }}
             >
               <OnePager ref={ref} {...{ data: data }} />
